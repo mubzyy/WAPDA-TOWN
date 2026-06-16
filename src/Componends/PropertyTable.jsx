@@ -3,11 +3,12 @@ import { TbHomeEdit } from "react-icons/tb";
 import { MdDeleteOutline } from "react-icons/md";
 
 const PropertyTable = ({filterProperty  , handleDeleteRow , handleEdit}) => {
+  const withUnit = (value, unit) => [value, unit].filter(Boolean).join(" ")
 
   return (
-    <div className="m-10 overflow-hidden rounded-2xl shadow-sm ">
+    <div className="m-10 overflow-hidden rounded-2xl shadow-sm  ">
       {/* TITLE */}
-      <div className="px-4 py-2 font-semibold text-sm text-gray-700  ">
+      <div className="px-4 py-2 font-semibold text-sm text-gray-700  bg-yellow-500 ">
         Properties already in the name of this member
       </div>
       {/* HEADER */}
@@ -35,8 +36,8 @@ const PropertyTable = ({filterProperty  , handleDeleteRow , handleEdit}) => {
             <div>{member.propertyType}</div>
             <div>{member.propertyNumber}</div>
             <div>{member.block}</div>
-            <div>{member.landArea}</div>
-            <div>{member.coveredArea}</div>
+            <div>{withUnit(member.landArea, member.landAreaUnit)}</div>
+            <div>{withUnit(member.coveredArea, member.coveredAreaUnit)}</div>
             <div>{member.ownerSince}</div>
             <div className="flex gap-2">
               {/* EDIT BUTTON */}

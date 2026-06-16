@@ -59,11 +59,11 @@ const OpenPaymentModal = ({ isOpen, onClose, onSubmit, memberData }) => {
 
     return (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[99999] animate-fade-in">
-            <div className="w-[750px] max-h-[90vh] overflow-y-auto bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl p-8 animate-slide-up">
+            <div className="w-[750px] max-h-[90vh] overflow-y-auto bg-gradient-to-br bg-[#d6dbcb] rounded-3xl shadow-2xl p-8 animate-slide-up">
                 {/* Header with Gradient */}
-                <div className="mb-8 flex justify-between items-center border-b-2 border-gray-200 pb-6 bg-[#c4d3a5]  -m-8 mb-8 px-8 py-6 rounded-t-1xl">
+                <div className="mb-8 flex justify-between items-center border-b-2 border-green-800 pb-6 bg-[#c4d3a5]  -m-8 mb-8 px-8 py-6 rounded-t-1xl">
                     <div>
-                        <h2 className="text-3xl font-bold bg-blue-900 bg-clip-text text-transparent">
+                        <h2 className="text-3xl font-bold bg-blue-900 bg-clip-text text-transparent ">
                             Payment Processing
                         </h2>
                         <p className="text-sm font-semibold text-blue-900 mt-1">Complete payment details securely</p>

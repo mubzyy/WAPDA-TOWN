@@ -11,33 +11,60 @@ const AllottProperty = () => {
       id: 1,
       sr: 1,
       membershipNo: "M-1001",
+      cnic: "35202-1234567-1",
+      name: "Ahmed Ali",
+      fatherName: "Muhammad Ali",
       propertyType: "Agricultural Land",
       propertyNumber: "P-002",
       block: "B-Block",
-      landArea: "5 Acres",
-      coveredArea: "2 Acres",
+      landArea: "5",
+      landAreaUnit: "Acres",
+      coveredArea: "2",
+      coveredAreaUnit: "Acres",
+      dimensionL: "",
+      dimensionLUnit: "",
+      dimensionW: "",
+      dimensionWUnit: "",
       ownerSince: "2005",
     },
     {
       id: 2,
       sr: 2,
       membershipNo: "M-1002",
+      cnic: "35202-1234567-2",
+      name: "Usman Khan",
+      fatherName: "Imran Khan",
       propertyType: "Residential Plot",
       propertyNumber: "P-015",
       block: "A-Block",
-      landArea: "10 Marla",
-      coveredArea: "8 Marla",
+      landArea: "10",
+      landAreaUnit: "Marla",
+      coveredArea: "8",
+      coveredAreaUnit: "Marla",
+      dimensionL: "",
+      dimensionLUnit: "",
+      dimensionW: "",
+      dimensionWUnit: "",
       ownerSince: "2012",
     },
     {
       id: 3,
       sr: 3,
       membershipNo: "M-1003",
+      cnic: "35202-1234567-3",
+      name: "Bilal Ahmed",
+      fatherName: "Nadeem Ahmed",
       propertyType: "Commercial Plot",
       propertyNumber: "P-021",
       block: "C-Block",
-      landArea: "1 Kanal",
-      coveredArea: "1 Kanal",
+      landArea: "1",
+      landAreaUnit: "Kanal",
+      coveredArea: "1",
+      coveredAreaUnit: "Kanal",
+      dimensionL: "",
+      dimensionLUnit: "",
+      dimensionW: "",
+      dimensionWUnit: "",
       ownerSince: "2018",
     }
   ])
@@ -47,6 +74,7 @@ const AllottProperty = () => {
 
   // STATE FOR FILTERED DATA 
   const [filterProperty, setFilterProperty] = useState(properties);
+  const [searchedMember, setSearchedMember] = useState(null);
 
 //  STATE FOR EDIT  STATE
 const[edit , setEdit] = useState(null)
@@ -62,13 +90,15 @@ const[editMode , setEditMode] = useState(false)
   //  handleSearch
   const handleSearch = () => {
     const filterData = properties.filter((property) =>
-      property[searchKey]
-        .toString()
+      String(property[searchKey] || "")
         .toLowerCase()
-        .includes(value.toLowerCase())
+        .trim()
+        .includes(value.toLowerCase().trim())
+      
     );
 
     setFilterProperty(filterData);
+    setSearchedMember(filterData[0] || null);
   };
   // handleAddProperty 
   const handleAddProperty = (newProperty) => {
@@ -127,7 +157,7 @@ const handleUpdateProperty = (updatedProperty) => {
 
 
   return (
-    <div className='bg-[#a7b38f] min-h-screen  '>
+    <div className='bg-[#a7b38f] min-h-screen  border-b '>
       <NotificationBar />
       <UpdatedHeader />
       <Navbar />
@@ -140,6 +170,7 @@ const handleUpdateProperty = (updatedProperty) => {
         setValue={setValue}
         handleSearch={handleSearch}
         filterProperty={filterProperty}
+        searchedMember={searchedMember}
         handleAddProperty={handleAddProperty}
         handleDeleteRow = {handleDeleteRow}
         handleEdit = {handleEdit}

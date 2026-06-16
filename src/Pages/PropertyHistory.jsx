@@ -1,10 +1,15 @@
 
+import { useState } from 'react'
 import NotificationBar from '/src/Components/NotificationBar'
 import UpdatedHeader from '/src/Components/UpdatedHeader'
 import Navbar from '../Components/Navbar'
 import Section from '../Componendd/Section'
 
 const PropertyHistory = () => {
+  const [propertyType, setPropertyType] = useState("")
+  const [propertyNumber, setPropertyNumber] = useState("")
+  const [selectedProperty, setSelectedProperty] = useState(null)
+
   const properties = [
   {
     id: 1,
@@ -142,13 +147,45 @@ const PropertyHistory = () => {
     ],
   },
 ];
+
+//  handleSearch 
+
+  const handleSearch = () => {
+    const trimmedPropertyNumber = propertyNumber.trim()
+
+    if (!trimmedPropertyNumber) {
+      setSelectedProperty(null)
+      return
+    }
+
+    const property = properties.find((item) => {
+      const matchesType = propertyType
+        ? item.propertyType.toLowerCase() ===
+          propertyType.toLowerCase()
+        : true
+
+      const matchesNumber = item.propertyNumber
+        .toLowerCase()
+        .includes(trimmedPropertyNumber.toLowerCase())
+
+      return matchesType && matchesNumber
+    })
+
+    setSelectedProperty(property || null)
+  }
+
   return (
     <div className='bg-[#b0bb97] border-b'>
       <NotificationBar/>
       <UpdatedHeader/>
       <Navbar/>
       <Section 
-      properties = {properties}
+      propertyType={propertyType}
+      setPropertyType={setPropertyType}
+      propertyNumber={propertyNumber}
+      setPropertyNumber={setPropertyNumber}
+      handleSearch={handleSearch}
+      selectedProperty={selectedProperty}
       />
     </div>
   )

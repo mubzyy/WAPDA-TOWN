@@ -1,6 +1,7 @@
-import React from 'react'
 
-const SearchSectionAllott = ({searchKey , setSearchKey , value , setValue   , filterProperty , handleSearch}) => {
+import InputFeild from '../ReusableComponents/InputFeild'
+
+const SearchSectionAllott = ({searchKey , setSearchKey , value , setValue    , searchedMember , handleSearch}) => {
     //  PRO CLEAN DESIGNING TECHNIQUE
     const inputStyle =" p-1 border-2 border-[#537903] px-4 text-sm bg-[#9daf77]  rounded-xl outline-none "
     const buttonStylePrimary = "border-2 rounded-xl bg-[#233494]  p-1 font-semibold text-white  w-28 hover:bg-blue-800 transition duration-200"
@@ -49,35 +50,33 @@ const SearchSectionAllott = ({searchKey , setSearchKey , value , setValue   , fi
             </div>
             </div>
              {/* Member Ship Number +  Name + Father / Husband Name */}
-             <div className='flex items-center'>
+             <div className='flex items-center justify-evenly m-8'>
              {/* MemberShip Number */}
-             <div className='m-8'>
-             <label className='font-semibold'> Membership No : </label>
-             <input 
-             className='mx-4 outline-none bg-[#9daf77] rounded-lg px-2  py-1 text-sm'
-             type= "text" 
-             placeholder='NNNNNNNNNNNNNNNNNNNNNNNNNN'
-             
+             <InputFeild 
+             label= "Membership No."
+             placeholder='NNNNNNNNNNNNNNNNN'
+             value={searchedMember?.membershipNo || ""}
+             readOnly
+             varient='Search'
              />
-             </div>
              {/* Name */}
              <div>
-                <label  className='font-semibold' >Name :</label>
-                <input 
-             className='mx-4 outline-none bg-[#9daf77] rounded-lg px-2  py-1 text-sm w-80'
-             type= "text" 
-             placeholder='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+             <InputFeild 
+             label= "Name :"
+             placeholder='XXXXXXXXXXXXXXXXXX'
+             value={searchedMember?.name || ""}
+             readOnly
+             varient='Search'
              />
              </div>
              {/* Father/Husband Name */}
-              <div>
-                <label  className='font-semibold' >Father/Husband Name :</label>
-                <input 
-             className='mx-4 outline-none bg-[#9daf77] rounded-lg px-2  py-1 text-sm w-80'
-             type= "text" 
-             placeholder=' XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX '
+            <InputFeild 
+             label= "Father/Husband Name :"
+             placeholder='XXXXXXXXXXXXXXXXXXXXXXX'
+             value={searchedMember?.fatherName || ""}
+             readOnly
+             varient='Search'
              />
-             </div>
 </div>
         </div>
 

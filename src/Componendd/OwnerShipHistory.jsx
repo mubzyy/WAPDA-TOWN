@@ -1,9 +1,7 @@
 
-const OwnerShipHistory = ({properties = []}) => {
-  // Get the first property to display its history
-  const firstProperty = properties[0] || {};
-  const ownershipHistory = firstProperty.ownershipHistory || [];
-  const paymentHistory = firstProperty.paymentHistory || [];
+const OwnerShipHistory = ({property}) => {
+  const ownershipHistory = property?.ownershipHistory || [];
+  const paymentHistory = property?.paymentHistory || [];
 
   return (
     <div  className='flex  justify-around'>
@@ -22,7 +20,11 @@ const OwnerShipHistory = ({properties = []}) => {
           </div>
           {/* ENTRIES */}
           <div className="bg-white">
-            {ownershipHistory.map((property , index)=>(
+            {ownershipHistory.length === 0 ? (
+              <div className="p-3 text-center text-gray-500 border-b">
+                Search user to view ownership history
+              </div>
+            ) : ownershipHistory.map((property , index)=>(
             <div
             key={index}
              className="grid grid-cols-4 p-3  border-b hover:bg-[#f5f5f5] transition-colors duration-200"
@@ -53,7 +55,11 @@ const OwnerShipHistory = ({properties = []}) => {
           </div>
           {/* entries */}
           <div className="bg-white">
-            {paymentHistory.map((payment, index) => (
+            {paymentHistory.length === 0 ? (
+              <div className="p-3 text-center text-gray-500 border-b">
+                Search user to view payment history
+              </div>
+            ) : paymentHistory.map((payment, index) => (
               <div
                 key={index}
                 className="grid grid-cols-3 p-3  border-b hover:bg-[#f5f5f5] transition-colors duration-200"

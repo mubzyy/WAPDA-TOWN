@@ -21,7 +21,7 @@ const ManagerMember = () => {
     {
       id: 2,
       membershipNo: "M-1034202",
-      cnic: "987265-4321098-7",
+      cnic: "987265-422328-7",
       name: "Sara Ahmed",
       regDate: "2024-03-15",
       properties: 1,
@@ -30,7 +30,7 @@ const ManagerMember = () => {
      {
       id: 3,
       membershipNo: "M-310202",
-      cnic: "987265-4325098-7",
+      cnic: "987265-432298-7",
       name: "Sana",
       regDate: "2024-03-15",
       properties: 1,
@@ -39,7 +39,7 @@ const ManagerMember = () => {
      {
       id: 4,
       membershipNo: "M-102002",
-      cnic: "987265-4421098-7",
+      cnic: "987265-409228-7",
       name: "Raza",
       regDate: "2024-03-15",
       properties: 1,
@@ -48,7 +48,7 @@ const ManagerMember = () => {
      {
       id: 5,
       membershipNo: "M-102024",
-      cnic: "987265-43215409-7",
+      cnic: "987265-452409-7",
       name: "Ahmed",
       regDate: "2024-03-15",
       properties: 1,
@@ -57,7 +57,7 @@ const ManagerMember = () => {
      {
       id: 6,
       membershipNo: "M-102042",
-      cnic: "98726512-4321098-7",
+      cnic: "98726512-48998-7",
       name: "Arslan",
       regDate: "2024-03-15",
       properties: 1,
@@ -66,7 +66,7 @@ const ManagerMember = () => {
      {
       id: 7,
       membershipNo: "M-1020412",
-      cnic: "98712265-4321098-7",
+      cnic: "9265-432108-7",
       name: "Abubakr",
       regDate: "2024-03-15",
       properties: 1,
@@ -75,7 +75,7 @@ const ManagerMember = () => {
      {
       id: 8,
       membershipNo: "M-5510202",
-      cnic: "98721265-4398-7",
+      cnic: "981265-4398-7",
       name: "Ibrahim",
       regDate: "2024-03-15",
       properties: 1,
@@ -84,7 +84,7 @@ const ManagerMember = () => {
      {
       id: 9,
       membershipNo: "M-1054202",
-      cnic: "965-43221098-7",
+      cnic: "965-42231098-7",
       name: "Abdullah",
       regDate: "2024-03-15",
       properties: 1,
@@ -129,6 +129,7 @@ const ManagerMember = () => {
       member[searchKey]
         .toString()
         .toLowerCase()
+        .trim()
         .includes(searchValue.toLowerCase())
     );
 
@@ -216,7 +217,7 @@ const ManagerMember = () => {
 
   // ================= UI =================
   return (
-    <div className='bg-[#ebf1de]  min-h-screen'>
+    <div className='bg-[#ebf1de]  min-h-screen border-b'>
 
       <NotificationBar />
       <UpdatedHeader />

@@ -1,210 +1,124 @@
-import { useForm } from 'react-hook-form'
+import InputFeild from "../ReusableComponents/InputFeild"
+const PendingDues = ({ property }) => {
+  const formatAmount = (amount) => Number(amount || 0).toLocaleString()
 
-
-const PendingDues = () => {
-    const {
-        register,
-        handleSubmit,
-        formState : {errors}
-    } = useForm({
-        mode : "all"
-    })
-    const onSubmit = (data) => {
-        console.log(data)
-    }
   return (
-     // Main Container
+    // Main Container
     <div className='m-8 space-y-2 mt-6 grid grid-cols-2 '>
-        <div>
- <form onSubmit={handleSubmit(onSubmit)} className='
- space-y-3' >
-      {/* Property Type */}
-     <div className="flex">
-  <label className="font-semibold w-42">Property Type :</label>
+      <div>
+        <form className=' space-y-3' >
 
-  <div>
-    <input
-      {...register("PropertyType", {
-        required: "Property Type is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Property Type"
-      type="text"
-    />
+          {/* Property Type */}
+          <InputFeild
+            label="PropertyType"
+            value={property?.propertyType}
+            placeholder="Property Type"
+            readOnly
+            varient="basic"
 
-    <p className="text-red-500 text-sm">
-      {errors.PropertyType?.message}
-    </p>
-  </div>
-</div>
+          />
+          {/* Property Number */}
+          <InputFeild
+            label="Property No."
+            value={property?.propertyNumber}
+            placeholder="Property No."
+            readOnly
+            varient="basic"
+          />
 
-      {/* Property Number */}
-    <div className="flex">
-  <label className="font-semibold w-42">Property No. :</label>
+          {/* Date Of AllotMent */}
+          <InputFeild
+            label="Date of Allottment"
+            value={property?.dateOfAllotment}
+            placeholder="Date of Allotment"
+            readOnly
+            varient="basic"
+          />
 
-  <div>
-    <input
-      {...register("PropertyNo", {
-        required: "Property No. is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Property No."
-      type="text"
-    />
+          {/* BLOCK/SECTOR */}
+          <InputFeild
+            label="Block/Sector"
+            value={property?.blockSector}
+            placeholder="Block/Sector"
+            readOnly
+            varient="basic"
 
-    <p className="text-red-500 text-sm">
-      {errors.PropertyNo?.message}
-    </p>
-  </div>
-</div>
+          />
 
-      {/* Date Of AllotMent */}
-     <div className="flex">
-  <label className="font-semibold w-42">Date of Allottment :</label>
+          {/* Land Area */}
+          <InputFeild
+            label="Land Area"
+            placeholder="Land Area"
+            value={property?.landArea}
+            readOnly
+            varient="basic"
 
-  <div>
-    <input
-      {...register("DateOfAllottment", {
-        required: "Date of Allottment is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Date"
-      type="Date"
-    />
+          />
 
-    <p className="text-red-500 text-sm">
-      {errors.DateOfAllottment?.message}
-    </p>
-  </div>
-</div>
+          {/* Covered Area */}
+          <InputFeild
+            label="Covered Area"
+            placeholder="Covered Area"
+            value={property?.coveredArea}
+            readOnly
+            varient="basic"
+          />
 
-{/* BLOCK/SECTOR */}
-<div className='flex'>
-  <label className='font-semibold w-42' >Block/Sector</label>
-  <div>
-    <input 
-    {...register("Block" , { 
-      required : "Block/Sector is required"
-    })}
-    placeholder='Block/Sector'
-     className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-    />
-    <p className='text-red-500 text-sm'>{errors.Block?.message}</p>
-  </div>
-</div>
+          {/* Dimension L */}
+          <InputFeild
+            label="Dimension L"
+            placeholder="Dimension L"
+            value={property?.length}
+            readOnly
+            varient="basic"
 
-      {/* Land Area */}
-     <div className="flex">
-  <label className="font-semibold w-42">Land Area :</label>
+          />
 
-  <div>
-    <input
-      {...register("LandArea", {
-        required: "Land Area is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Property Type"
-      type="text"
-    />
+          {/* Dimension W */}
+          <InputFeild
+            label="Dimension W"
+            placeholder="Dimension W"
+            value={property?.width}
+            readOnly
+            varient="basic"
 
-    <p className="text-red-500 text-sm">
-      {errors.LandArea?.message}
-    </p>
-  </div>
-</div>
+          />
 
-      {/* Covered Area */}
-<div className="flex">
-  <label className="font-semibold w-42">Property Type :</label>
 
-  <div>
-    <input
-      {...register("CoveredArea", {
-        required: "Covered Area is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Covered Area"
-      type="text"
-    />
+        </form>
+      </div>
+      {/* PENDING DUES IF ANY  */}
+      <div className='border-2  rounded-2xl bg-red-600' >
+        {/* UPPER PART  */}
+        <div className=' flex justify-center items-center border-b-2 h-8'>
+          <p className='text-white text-sm  font-bold '>PENDING DUES, IF ANY</p>
+        </div>
+        {/* LOWER  PART  */}
+        <div className='m-10 text-white space-y-4'>
+          <div className='flex  justify-between'>
+            <p>1.Orignal Amount Due</p>
+            <p>{property ? formatAmount(property.originalAmountDue) : "0"}</p>
+          </div>
+          <div className='flex  justify-between'>
+            <p>2.Amount Due Since</p>
+            <p>{property?.amountDueSince || "0"}</p>
+          </div>
+          <div className='flex  justify-between'>
+            <p>3.Period of Default</p>
+            <p>{property ? `${property.defaultMonths} Months` : "0"}</p>
+          </div>
+          <div className='flex  justify-between'>
+            <p>4.Default/Surcharge/Penalty/Fine</p>
+            <p>{property ? formatAmount(property.penalty) : "0"}</p>
+          </div>
+          <div className='flex  justify-between'>
+            <p>5.Total Amount Due</p>
+            <p className='border-2 p-2 text-sm'>{property ? formatAmount(property.totalAmountDue) : "0"}</p>
+          </div>
+        </div>
 
-    <p className="text-red-500 text-sm">
-      {errors.CoveredArea?.message}
-    </p>
-  </div>
-</div>
-
-      {/* Dimension L */}
-     <div className="flex">
-  <label className="font-semibold w-42">Dimension L :</label>
-
-  <div>
-    <input
-      {...register("DimensionL", {
-        required: "Property Type is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Dimension L"
-      type="text"
-    />
-
-    <p className="text-red-500 text-sm">
-      {errors.DimensionL?.message}
-    </p>
-  </div>
-</div>
-
-         {/* Dimension W */}
- <div className='flex'>
-  <label className="font-semibold w-42" >Dimension W</label>
-  <div>
-  <input 
-    {...register("DimensionW" , {
-     required : "Dimension W is required"
-    })}
-    className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Dimension W"
-      type="text"
-  />
-   <p className='text-red-500 text-sm'>{errors.DimensionW?.message}</p>
-  </div>
-  
- </div>
-
- 
-</form>
-</div>
-{/* PENDING DUES IF ANY  */}
-<div className='border-2  rounded-2xl bg-red-600' >
-    {/* UPPER PART  */}
-    <div className=' flex justify-center items-center border-b-2 h-8'>
- <p className='text-white text-sm  font-bold '>PENDING DUES, IF ANY</p>
+      </div>
     </div>
-    {/* LOWER  PART  */}
-    <div className='m-10 text-white space-y-4'>
-        <div className='flex  justify-between'>
-        <p>1.Orignal Amount Due</p>
-        <p>99,999,999,999,999</p>
-        </div>
-        <div className='flex  justify-between'>
-        <p>2.Amount Due Since</p>
-        <p>DD/MM/YYYY</p>
-        </div>
-       <div className='flex  justify-between'>
-        <p>3.Period of Default</p>
-        <p>MONTHS AND DAYS</p>
-        </div>
-        <div className='flex  justify-between'>
-        <p>4.Default/Surcharge/Penalty/Fine</p>
-        <p>99,999,999,999</p>
-        </div>
-     <div className='flex  justify-between'>
-        <p>5.Total Amount Due</p>
-        <p className='border-2 p-2 text-sm'>99,999,999,999</p>
-        </div>
-    </div>
-
-</div>
-</div>
   )
 }
 

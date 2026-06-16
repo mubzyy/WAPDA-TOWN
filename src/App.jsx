@@ -1,10 +1,11 @@
 import React from 'react'
-import PropertyHistory from './Pages/PropertyHistory'
+import AllottProperty from './Pages/AllottProperty'
+import UpdatePayment from './Pages/UpdatePayment'
 
 const App = () => {
   return (
     <div>
-   <PropertyHistory/>
+   <UpdatePayment/>
     </div>
   )
 }

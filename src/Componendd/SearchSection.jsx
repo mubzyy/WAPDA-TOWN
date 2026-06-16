@@ -1,6 +1,10 @@
-import React from 'react'
-
-const SearchSection = () => {
+const SearchSection = ({
+  propertyType,
+  setPropertyType,
+  propertyNumber,
+  setPropertyNumber,
+  handleSearch,
+}) => {
   return (
     <div>
       {/* Main div */}
@@ -16,16 +20,19 @@ const SearchSection = () => {
           
           {/* Search Key */}
           <div>
-            <span className="mx-2 font-semibold">Search Key:</span>
+            <span className="mx-2 font-semibold">Property Type :</span>
 
             <select
+              value={propertyType}
+              onChange={(e) => setPropertyType(e.target.value)}
               className="p-1 border-2 border-[#537014] px-4 text-sm bg-[#9daf77] rounded-xl outline-none"
             >
-              <option value="">Residential Plot</option>
-              <option value="">Commercial Plot</option>
-              <option value="">House</option>
-              <option value="">Flat</option>
-              <option value="">Shop</option>
+              <option value="">All Types</option>
+              <option value="Residential Plot">Residential Plot</option>
+              <option value="Commercial Plot">Commercial Plot</option>
+              <option value="House">House</option>
+              <option value="Flat">Flat</option>
+              <option value="Shop">Shop</option>
             </select>
           </div>
 
@@ -34,6 +41,8 @@ const SearchSection = () => {
             <label className="font-semibold">Property No.</label>
 
             <input
+              value={propertyNumber}
+              onChange={(e) => setPropertyNumber(e.target.value)}
               type="text"
               placeholder="Enter Value"
               className="p-1 border-2 border-[#537014] rounded-xl outline-none px-3"
@@ -43,6 +52,7 @@ const SearchSection = () => {
           {/* Action Button */}
           <div className="flex gap-8">
             <button
+              onClick={handleSearch}
               className="bg-[#233494] text-white px-4 py-1 rounded-xl hover:opacity-90"
             >
               Search

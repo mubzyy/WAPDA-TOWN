@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form'
+import InputFeild from '../ReusableComponents/InputFeild';
 
 
 const PropertyType = ({handleAddProperty , editFormData , handleUpdateProperty , editMode , setEditFormData , setEdit , setEditMode   }) => {
@@ -16,7 +17,7 @@ const PropertyType = ({handleAddProperty , editFormData , handleUpdateProperty ,
   })
 
 
-    // 🔥 FILL FORM WHEN EDIT CLICKED
+    // ðŸ”¥ FILL FORM WHEN EDIT CLICKED
  useEffect(() => {
   if (!editFormData) return;
 
@@ -26,9 +27,13 @@ const PropertyType = ({handleAddProperty , editFormData , handleUpdateProperty ,
     DateOfAllottment: "",
     Block: editFormData.block || "",
     LandArea: editFormData.landArea || "",
+    LandAreaUnit: editFormData.landAreaUnit || "",
     CoveredArea: editFormData.coveredArea || "",
-    DimensionL: "",
-    DimensionW: "",
+    CoveredAreaUnit: editFormData.coveredAreaUnit || "",
+    DimensionL: editFormData.dimensionL || "",
+    DimensionLUnit: editFormData.dimensionLUnit || "",
+    DimensionW: editFormData.dimensionW || "",
+    DimensionWUnit: editFormData.dimensionWUnit || "",
 
 
   });
@@ -39,17 +44,23 @@ const PropertyType = ({handleAddProperty , editFormData , handleUpdateProperty ,
   const onSubmit = (data) => {
 
     if (editFormData) {
-      // 🔥 UPDATE MODE
+      // ðŸ”¥ UPDATE MODE
       handleUpdateProperty({
         propertyType: data.PropertyType,
         propertyNumber: data.PropertyNo,
         block: data.Block,
         landArea: data.LandArea,
+        landAreaUnit: data.LandAreaUnit,
         coveredArea: data.CoveredArea,
+        coveredAreaUnit: data.CoveredAreaUnit,
+        dimensionL: data.DimensionL,
+        dimensionLUnit: data.DimensionLUnit,
+        dimensionW: data.DimensionW,
+        dimensionWUnit: data.DimensionWUnit,
         ownerSince: data.DateOfAllottment,
       })
     } else {
-      // 🔥 ADD MODE
+      // ðŸ”¥ ADD MODE
       handleAddProperty({
         id: Date.now(),
         membershipNo: "M-NEW", // temporary
@@ -57,7 +68,13 @@ const PropertyType = ({handleAddProperty , editFormData , handleUpdateProperty ,
         propertyNumber: data.PropertyNo,
         block: data.Block,
         landArea: data.LandArea,
+        landAreaUnit: data.LandAreaUnit,
         coveredArea: data.CoveredArea,
+        coveredAreaUnit: data.CoveredAreaUnit,
+        dimensionL: data.DimensionL,
+        dimensionLUnit: data.DimensionLUnit,
+        dimensionW: data.DimensionW,
+        dimensionWUnit: data.DimensionWUnit,
         ownerSince: data.DateOfAllottment,
       })
     }
@@ -104,136 +121,158 @@ const handleCancel = () => {
 </div>
 
       {/* Property Number */}
-    <div className="flex">
-  <label className="font-semibold w-42">Property No. :</label>
-
-  <div>
-    <input
-      {...register("PropertyNo", {
-        required: "Property No. is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Property No."
-      type="text"
-    />
-
-    <p className="text-red-500 text-sm">
-      {errors.PropertyNo?.message}
-    </p>
-  </div>
-</div>
+     <InputFeild
+     label = "Property No."
+     placeholder='Property No.'
+     type='text'
+     name="PropertyNo"
+     register={register}
+     errors={errors}
+     rules={{
+      required : "Property No. is required"
+     }}
+     varient='basic'
+     />
+    
 
       {/* Date Of AllotMent */}
-     <div className="flex">
-  <label className="font-semibold w-42">Date of Allottment :</label>
-
-  <div>
-    <input
-      {...register("DateOfAllottment", {
-        required: "Date of Allottment is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Date"
-      type="Date"
-    />
-
-    <p className="text-red-500 text-sm">
-      {errors.DateOfAllottment?.message}
-    </p>
-  </div>
-</div>
+        <InputFeild
+     label = "Date of Allottment"
+     placeholder='Date of Allottment'
+     type='Date'
+     name="DateOfAllottment"
+     register={register}
+     errors={errors}
+     rules={{
+      required : "Date of Allottment is required"
+     }}
+     varient='basic'
+     />
 
 {/* BLOCK/SECTOR */}
-<div className='flex'>
-  <label className='font-semibold w-42' >Block/Sector</label>
-  <div>
-    <input 
-    {...register("Block" , { 
+    <InputFeild
+     label = "Block/Sector"
+     placeholder='Block/Sector'
+     type='text'
+     name="Block"
+     register={register}
+     errors={errors}
+     rules={{
       required : "Block/Sector is required"
-    })}
-    placeholder='Block/Sector'
-     className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-    />
-    <p className='text-red-500 text-sm'>{errors.Block?.message}</p>
-  </div>
-</div>
+     }}
+     varient='basic'
+     />
 
       {/* Land Area */}
-     <div className="flex">
-  <label className="font-semibold w-42">Land Area :</label>
-
-  <div>
-    <input
-      {...register("LandArea", {
-        required: "Land Area is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Property Type"
-      type="text"
-    />
-
-    <p className="text-red-500 text-sm">
-      {errors.LandArea?.message}
-    </p>
-  </div>
-</div>
+   <div className='flex gap-4 items-start'>
+     <InputFeild
+       label = "Land Area"
+       placeholder='Land Area'
+       type='text'
+       name="LandArea"
+       register={register}
+       errors={errors}
+       rules={{
+        required : "Land Area is required"
+       }}
+       varient='basic'
+       />
+     <InputFeild
+    
+       placeholder='Unit'
+       type='text'
+       name="LandAreaUnit"
+       register={register}
+       errors={errors}
+       rules={{
+        required : "Unit is required"
+       }}
+       varient='unit'
+       />
+   </div>
 
       {/* Covered Area */}
-<div className="flex">
-  <label className="font-semibold w-42">Property Type :</label>
-
-  <div>
-    <input
-      {...register("CoveredArea", {
-        required: "Covered Area is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Covered Area"
-      type="text"
-    />
-
-    <p className="text-red-500 text-sm">
-      {errors.CoveredArea?.message}
-    </p>
-  </div>
-</div>
+ <div className='flex gap-4 items-start'>
+   <InputFeild
+       label = "Covered Area"
+       placeholder='Covered Area'
+       type='text'
+       name="CoveredArea"
+       register={register}
+       errors={errors}
+       rules={{
+        required : "Covered Area is required"
+       }}
+       varient='basic'
+       />
+   <InputFeild
+       placeholder='Unit'
+       type='text'
+       name="CoveredAreaUnit"
+       register={register}
+       errors={errors}
+       rules={{
+        required : "Unit is required"
+       }}
+       varient='unit'
+       />
+ </div>
 
       {/* Dimension L */}
-     <div className="flex">
-  <label className="font-semibold w-42">Dimension L :</label>
-
-  <div>
-    <input
-      {...register("DimensionL", {
-        required: "Property Type is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Dimension L"
-      type="text"
-    />
-
-    <p className="text-red-500 text-sm">
-      {errors.DimensionL?.message}
-    </p>
+  <div className='flex gap-4 items-start'>
+    <InputFeild
+       label = "Dimension L"
+       placeholder='Dimension L'
+       type='text'
+       name="DimensionL"
+       register={register}
+       errors={errors}
+       rules={{
+        required : "Dimension L is required"
+       }}
+       varient='basic'
+       />
+    <InputFeild
+       placeholder='Unit'
+       type='text'
+       name="DimensionLUnit"
+       register={register}
+       errors={errors}
+       rules={{
+        required : "Unit is required"
+       }}
+       varient='unit'
+       />
   </div>
-</div>
 
          {/* Dimension W */}
- <div className='flex'>
-  <label className="font-semibold w-42" >Dimension W</label>
-  <div>
-  <input 
-    {...register("DimensionW" , {
-     required : "Dimension W is required"
-    })}
-    className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Dimension W"
-      type="text"
-  />
-   <p className='text-red-500 text-sm'>{errors.DimensionW?.message}</p>
-  </div>
-  
+ <div className='flex gap-4 items-start'>
+   <InputFeild
+      label = "Dimension W"
+       placeholder='Dimension W'
+       type='text'
+       name="DimensionW"
+       register={register}
+       errors={errors}
+       rules={{
+        required : "Dimension W is required"
+       }}
+       varient='basic'
+       />
+   <InputFeild
+       placeholder='Unit'
+       type='text'
+       name="DimensionWUnit"
+       register={register}
+       errors={errors}
+       rules={{
+        required : "Unit is required"
+       }}
+       varient='unit'
+       />
  </div>
+
+     {/* EDIT MODE */}
 {!editMode ? (
   <div className='flex justify-center gap-4'>
     <button

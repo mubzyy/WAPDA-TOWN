@@ -3,13 +3,26 @@ import SearchSection from './SearchSection'
 import PendingDues from './PendingDues'
 import OwnerShipHistory from './OwnerShipHistory'
 
-const Section = ({properties}) => {
+const Section = ({
+  propertyType,
+  setPropertyType,
+  propertyNumber,
+  setPropertyNumber,
+  handleSearch,
+  selectedProperty,
+}) => {
    return (
   <div className='border min-h-screen m-3 rounded-xl overflow-hidden bg-[#e7eed8]'>
-      <SearchSection/>
-      <PendingDues/>
+      <SearchSection
+        propertyType={propertyType}
+        setPropertyType={setPropertyType}
+        propertyNumber={propertyNumber}
+        setPropertyNumber={setPropertyNumber}
+        handleSearch={handleSearch}
+      />
+      <PendingDues property={selectedProperty}/>
       <OwnerShipHistory 
-      properties = {properties}
+      property={selectedProperty}
       
       />
     </div>
