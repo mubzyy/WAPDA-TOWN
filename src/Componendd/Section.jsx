@@ -12,7 +12,7 @@ const Section = ({
   selectedProperty,
 }) => {
    return (
-  <div className='border min-h-screen m-3 rounded-xl overflow-hidden bg-[#e7eed8]'>
+  <div className='border-2 min-h-screen m-4 rounded-2xl overflow-hidden bg-[#e7eed8]'>
       <SearchSection
         propertyType={propertyType}
         setPropertyType={setPropertyType}

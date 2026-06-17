@@ -9,7 +9,7 @@ const PropertyType = ({handleAddProperty , editFormData , handleUpdateProperty ,
     register,
     handleSubmit,
     reset,
-    setValue,
+    
   
     formState  : {errors}
   } = useForm({
@@ -101,24 +101,18 @@ const handleCancel = () => {
  <form onSubmit={handleSubmit(onSubmit)} className='
  space-y-3' >
       {/* Property Type */}
-     <div className="flex">
-  <label className="font-semibold w-42">Property Type :</label>
-
-  <div>
-    <input
-      {...register("PropertyType", {
-        required: "Property Type is Required",
-      })}
-      className="outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80"
-      placeholder="Property Type"
-      type="text"
-    />
-
-    <p className="text-red-500 text-sm">
-      {errors.PropertyType?.message}
-    </p>
-  </div>
-</div>
+    <InputFeild
+     label = "Property Type"
+     placeholder='Property Type'
+     type='text'
+     name="PropertyType"
+     register={register}
+     errors={errors}
+     rules={{
+      required : "Property No. is required"
+     }}
+     varient='basic'
+     />
 
       {/* Property Number */}
      <InputFeild

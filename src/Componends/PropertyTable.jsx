@@ -1,8 +1,7 @@
-import React from "react";
 import { TbHomeEdit } from "react-icons/tb";
 import { MdDeleteOutline } from "react-icons/md";
 
-const PropertyTable = ({filterProperty  , handleDeleteRow , handleEdit}) => {
+const PropertyTable = ({filterProperty  , handleEdit , handleDeleteModal}) => {
   const withUnit = (value, unit) => [value, unit].filter(Boolean).join(" ")
 
   return (
@@ -54,7 +53,7 @@ const PropertyTable = ({filterProperty  , handleDeleteRow , handleEdit}) => {
               <button 
                 type="button" 
                
-                onClick={()=> {handleDeleteRow(member.id); console.log("delete Button") }}  
+                onClick={()=>  handleDeleteModal(member)}  
                 className="px-2 py-1 bg-orange-500 text-white rounded hover:scale-115 transition-all duration-200"
              
               >

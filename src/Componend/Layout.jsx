@@ -1,13 +1,13 @@
-import React from 'react'
+
 import SearchSectionUpdate from './SearchSectionUpdate'
 import AmountDueTable from './AmountDueTable'
 import PropertyPayment from './PropertyPayment'
 import OpenPaymentModal from './OpenPaymentModal'
 
 
-const Layout = ({members , setMembers , searchKey , setSearchKey , value , setValue  , handleSearch, handleUpdatePayment , filterMembers , handleEdit , totalAmountDue  , editFormData , setEditFormData , handlePay , showPaymentModal }) => {
+const Layout = ({members , setMembers , searchKey , setSearchKey , value , setValue  , handleSearch, handleUpdatePayment , handleResetPaymentForm , filterMembers , handleEdit , totalAmountDue  , editFormData , setEditFormData , handlePay , showPaymentModal }) => {
   return (
-        <div className='border min-h-screen m-3 rounded-xl overflow-hidden bg-[#e7eed8]'>
+        <div className='border-2 min-h-screen m-4 rounded-2xl overflow-hidden bg-[#e7eed8]'>
       <SearchSectionUpdate 
        searchKey = {searchKey}
        setSearchKey = {setSearchKey}
@@ -30,6 +30,7 @@ const Layout = ({members , setMembers , searchKey , setSearchKey , value , setVa
       editFormData = {editFormData}
       setEditFormData = {setEditFormData}
       handleUpdatePayment = {handleUpdatePayment}
+      handleResetPaymentForm = {handleResetPaymentForm}
       />
       { showPaymentModal && (
       <OpenPaymentModal />

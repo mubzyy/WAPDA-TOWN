@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import NotificationBar from '/src/Components/NotificationBar'
+import SignupNavbar from '../Components/SignupNavbar'
 import UpdatedHeader from '../Components/UpdatedHeader'
-import Navbar from '../Components/Navbar'
 import Wrapper from '../Componends/Wrapper'
 import Footerr from '../Componends/Footerr'
 
@@ -85,6 +85,10 @@ const[editFormData , setEditFormData] = useState(null)
 //STATE FOR EDIT MODE 
 const[editMode , setEditMode] = useState(false) 
 
+// STATE FOR DELETEMODAL 
+const [openDModal , setOpenDModal] = useState(false)
+const[selectedMember , setSelectMember] = useState(null)
+
 
   
   //  handleSearch
@@ -115,6 +119,7 @@ const handleDeleteRow  = (id) => {
   console.log("Deleting:", id);
   setFilterProperty((prev)=>prev.filter((prop)=> prop.id !== id))
   setProperties((prev)=>prev.filter((prop)=> prop.id !== id))
+  
 } 
  
 // HANDLE EDIT FUNCTION 
@@ -151,17 +156,22 @@ const handleUpdateProperty = (updatedProperty) => {
   setEditFormData(null);
 };
 
-
+//  OpenDeleteModal 
+const  handleDeleteModal = (property) => {
+  setOpenDModal(true)
+  setSelectMember(property)
+}
 
 
 
 
   return (
-    <div className='bg-[#a7b38f] min-h-screen  border-b '>
+    <div className='bg-[#ebf1de] min-h-screen   border-b '>
       <NotificationBar />
-      <UpdatedHeader />
-      <Navbar />
-      <Wrapper
+      <UpdatedHeader/>
+       <SignupNavbar/>
+      
+      <Wrapper 
         properties={properties}
         setProperties={setProperties}
         searchKey={searchKey}
@@ -180,7 +190,10 @@ const handleUpdateProperty = (updatedProperty) => {
        setEdit = {setEdit}
        setEditFormData = {setEditFormData}
        setEditMode = {setEditMode}
-     
+       handleDeleteModal = {handleDeleteModal}
+       openDModal = {openDModal}
+       selectedMember = {selectedMember}
+       setOpenDModal = {setOpenDModal}
       />
       <Footerr />
     </div>

@@ -9,44 +9,44 @@ const UpdatedHeader = () => {
 
     return (
         // MAIN CONTAINER 
-        <div className='h-28 bg-[#fce2c5] flex items-center px-2 justify-between' >
+        <div className='flex flex-col   lg:flex-row   lg:items-center justify-between  px-1  lg:px-2   h-28  w-full   lg:h-28 bg-[#fce2c5]   ' >
 
             {/* WAPDA LOGO + TEXT */}
-            <div className="flex items-center gap-4">
-                <img className='h-26 w-28 bg-white  rounded-2xl' src={WapdaLOGO} alt="WapdaLogo" />
+            <div className="flex items-center gap-2 mt-2 lg:mt-0 lg:gap-4">
+                <img className=' h-16  w-16  lg:h-26  lg:w-28 bg-white  rounded-2xl' src={WapdaLOGO} alt="WapdaLogo" />
 
                 {/* TEXT SECTION */}
-                <div className='mx-2'>
-                    <p className='font-bold text-2xl text-blue-900'>
+                <div className='   lg:mx-2'>
+                    <p className='  text-sm   font-bold  lg:text-2xl text-blue-900'>
                         Rawalpindi / Islamabad WAPDA Employees
                     </p>
-                    <p className='font-bold text-lg text-blue-900'>
+                    <p className=' text-xs font-bold lg:text-lg text-blue-900'>
                         Co-Operative Housing Society
                     </p>
                 </div>
             </div>
 
             {/* BUTTON + SEARCH SECTION */}
-            <div className='flex gap-6 items-center'>
+            <div className='flex  px-18  lg:px-2 mb-2  lg:flex-row  items-center  gap-2  lg:gap-6 '>
 
-                <button className='rounded-3xl text-xl text-blue-900 p-2 bg-white   hover:bg-gray-100 hover:scale-125 transition-all duration-200 cursor-pointer'>
+                <button className='rounded-3xl  text-xs  p-1      lg:text-xl text-blue-900 lg:p-2 bg-white   hover:bg-gray-100 hover:scale-125 transition-all duration-200 cursor-pointer'>
                     <MdCalendarMonth />
                 </button>
 
-                <button className='rounded-3xl text-xl text-blue-900 p-2 bg-white  hover:bg-gray-100 hover:scale-125 transition-all duration-200 cursor-pointer'>
+                <button className='rounded-3xl   text-xs p-1  lg:text-xl text-blue-900 lg:p-2 bg-white  hover:bg-gray-100 hover:scale-125 transition-all duration-200 cursor-pointer'>
                     <FaBell />
                 </button>
 
                 {/* SEARCH */}
                 <div className='relative'>
                     <input
-                        className='bg-white p-2 pr-8 text-sm rounded-3xl w-56 outline-none'
+                        className=   ' w-36 p-1 text-xs   bg-white lg:p-2 pr-8 lg:text-sm rounded-3xl lg:w-56 outline-none'
                         type="text"
                         placeholder='Search...'
                     />
 
                     {/* SEARCH ICON */}
-                    <div className='absolute right-3 top-1/2 -translate-y-1/2 hover:bg-gray-50 hover:scale-125 transition-all duration-200 cursor-pointer '>
+                    <div className='absolute  right-2 top-1/2 text-xs  lg:text-lg  lg:right-3  lg:top-1/2 -translate-y-1/2 hover:bg-gray-50 hover:scale-125 transition-all duration-200 cursor-pointer '>
                         <button>
                             <FcSearch />
                         </button>
@@ -55,7 +55,7 @@ const UpdatedHeader = () => {
                 </div>
                 {/* Image  */}
                 <div>
-                    <button className='bg-white p-2 rounded-3xl text-blue-900 text-xl  hover:bg-gray-100 hover:scale-125 transition-all duration-200 cursor-pointer'>< FaUser/></button>
+                    <button className='bg-white   p-1  lg:p-2  text-xs rounded-3xl text-blue-900 lg:text-xl  hover:bg-gray-100 hover:scale-125 transition-all duration-200 cursor-pointer'>< FaUser/></button>
                 </div>
             </div>
 

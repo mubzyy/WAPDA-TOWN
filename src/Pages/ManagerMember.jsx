@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import UpdatedHeader from '../Components/UpdatedHeader';
 import NotificationBar from '../Components/NotificationBar';
-import Navbar from '../Components/Navbar';
 import MainBody from '../Component/ManageMember/MainBody';
 import Footer from '../Component/Footer';
+import SignupNavbar from '../Components/SignupNavbar';
 
 const ManagerMember = () => {
 
@@ -221,7 +221,7 @@ const ManagerMember = () => {
 
       <NotificationBar />
       <UpdatedHeader />
-      <Navbar />
+      <SignupNavbar />
 
       <MainBody
         searchKey={searchKey}

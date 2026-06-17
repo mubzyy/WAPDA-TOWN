@@ -1,9 +1,10 @@
 
 import { useState } from 'react'
+import UpdatedHeader from '../Components/UpdatedHeader'
 import NotificationBar from '/src/Components/NotificationBar'
-import UpdatedHeader from '/src/Components/UpdatedHeader'
 import Navbar from '../Components/Navbar'
 import Section from '../Componendd/Section'
+import SignupNavbar from '../Components/SignupNavbar'
 
 const PropertyHistory = () => {
   const [propertyType, setPropertyType] = useState("")
@@ -175,10 +176,11 @@ const PropertyHistory = () => {
   }
 
   return (
-    <div className='bg-[#b0bb97] border-b'>
+    <div className='bg-[#ebf1de] border-b'>
       <NotificationBar/>
       <UpdatedHeader/>
-      <Navbar/>
+      <SignupNavbar/>
+  
       <Section 
       propertyType={propertyType}
       setPropertyType={setPropertyType}

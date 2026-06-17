@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import NotificationBar from '/src/Components/NotificationBar'
 import UpdatedHeader from '/src/Components/UpdatedHeader'
-import Navbar from '../Components/Navbar'
 import Layout from '../Componend/Layout'
 import OpenPaymentModal from '../Componend/OpenPaymentModal'
+import SignupNavbar from '../Components/SignupNavbar'
 
 const UpdatePayment = () => {
   const [members , setMembers] = useState([
@@ -45,9 +45,6 @@ const UpdatePayment = () => {
   //   USESTATES
   const[searchKey , setSearchKey] = useState("membershipNo")
   const[value , setValue] = useState("")
-
-//  STATE FOR EDITMODE
-const[editMode , setEditMode] = useState(false)
 
 // State For Edit 
 const [edit , setEdit] = useState(null)
@@ -109,34 +106,60 @@ const totalAmountDue = filterMembers.reduce(
 
 //  handleEdit 
 const handleEdit = (member) => {
-  setEditMode(true)
   setEdit(member.id)
   setEditFormData(member)
     
 }
 
- const handleUpdatePayment = (data) => {
+const handleResetPaymentForm = () => {
+  setEdit(null)
+  setEditFormData(null)
+}
+
+ const handleUpdatePayment = (data, mode = "update") => {
+if (!data || edit === null) return;
+
 const updatedMembers = members.map((member)=> {
-  if(member.id === edit )
+  if(member.id !== edit ) return member;
+
+  if (mode === "update") {
     return {
-  ...member,
-  amountDue: 
-  Number(member.amountDue)- Number(data.AmountReceived),
+      ...member,
+        propertyType: data.PropertyType,
+        propertyNumber: data.PropertyNo,
+        block: data.Block,
+        landArea: data.LandArea,
+        coveredArea: data.CoveredArea,
+      }
+  }
+
+  const paymentRecord = {
+    id: Date.now(),
+    challanNo: data.ChallanNo,
+    amountReceived: data.AmountReceived,
+    paymentMode: data.PaymentMode,
+    instrumentNo: data.InstrumentNo,
+    paymentDate: data.PaymentDate,
+    bank: data.Bank,
+  }
+
+  return {
+    ...member,
+    amountDue: Math.max(0, Number(member.amountDue)- Number(data.AmountReceived)),
+    payments: [...(member.payments || []), paymentRecord],
     }
-     return member;
 })
   setMembers(updatedMembers)
   setFilterMembers(updatedMembers)
   setEdit(null)
-  setEditMode(false)
   setEditFormData(null)
  }
 
   return ( 
-        <div className='bg-[#a7b38f] min-h-screen border-b '>
+        <div className='bg-[#ebf1de] min-h-screen border-b '>
       <NotificationBar/>
       <UpdatedHeader/>
-      <Navbar/>
+      <SignupNavbar/>
       <Layout 
       members = {members}
       setMembers = {setMembers}
@@ -151,6 +174,7 @@ const updatedMembers = members.map((member)=> {
       editFormData = {editFormData}
       setEditFormData = {setEditFormData}
       handleUpdatePayment = {handleUpdatePayment}
+      handleResetPaymentForm = {handleResetPaymentForm}
       handlePay = {handlePay}
       />
       

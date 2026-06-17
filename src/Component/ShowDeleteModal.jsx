@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { FiAlertTriangle } from "react-icons/fi";
 
 const ShowDeleteModal = ({

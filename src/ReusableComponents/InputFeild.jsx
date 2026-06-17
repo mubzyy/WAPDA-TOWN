@@ -27,7 +27,7 @@ const InputFeild = ({
     disabled = false,
     placeholder = "",
     type = "text",
-    readOnly = false,
+    readOnly ,
     value,
     onChange,
     register,

@@ -1,6 +1,6 @@
 import React from 'react'
 import NotificationBar from '../Components/NotificationBar'
-import Header from '../Components/Header'
+import UpdatedHeader from '../Components/UpdatedHeader'
 import Navbar from '../Components/Navbar'
 import MainContent from '../Components/MainContent'
 import LoginCard from '../Components/LoginCard'
@@ -14,7 +14,7 @@ const MainPage = () => {
       <NotificationBar />
 
       {/* Header */}
-      <Header />
+      <UpdatedHeader />
 
       {/* Navbar */}
       <Navbar />
