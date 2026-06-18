@@ -19,7 +19,7 @@ toggleStatus, filteredMembers, totalPages,currentPage , members,handleView,showM
 
   
   return (
-    <div className='border-2 h-[520px] m-4 bg-[#ebf1de] rounded-2xl overflow-hidden '>
+    <div className='border-2 h-[560px] m-4 bg-[#ebf1de] rounded-2xl overflow-hidden '>
 
  <SearchSection
   searchKey={searchKey}
@@ -34,6 +34,7 @@ toggleStatus, filteredMembers, totalPages,currentPage , members,handleView,showM
 
       {/* TABLE GETS DATA */}
       <TableSection 
+      
        currentData={currentData}
        startIndex={startIndex}
        toggleStatus={toggleStatus}
@@ -44,7 +45,7 @@ toggleStatus, filteredMembers, totalPages,currentPage , members,handleView,showM
        handlePrint = {handlePrint}
       />
       {/* PAGINATION + TOTAL RECORD SELECTED */}
-      <div className='flex items-center justify-around mt-4'>
+      <div className='flex flex-col items-center space-y-8  lg:space-y-0 lg:flex-row  lg:justify-around  mt-4'>
         {/* PAGINATION CONTROLS STATE  */}
         <Pagination
         currentPage={currentPage}

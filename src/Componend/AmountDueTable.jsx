@@ -8,9 +8,10 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
   return (
     // MAIN DIV
     <div className="m-4 overflow-hidden rounded-2xl">
-
-      {/* Header */}
-      <div className="grid grid-cols-9 bg-blue-900 text-white p-2">
+   <div className='overflow-x-auto'>
+    <div className='min-h-[1000px]'>
+        {/* Header */}
+      <div className="grid grid-cols-9 bg-blue-900 lg:text-base text-xs text-white p-2">
         <div>Sr.</div>
         <div>Membership No.</div>
         <div>Property Type</div>
@@ -27,7 +28,7 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
         {filterMembers.map((member, index) => (
           <div
             key={member.id}
-            className="grid grid-cols-9 px-2 bg-white space-y-2 border-b py-2 hover:bg-gray-200 transition-colors duration-200"
+            className="grid grid-cols-9 px-2 lg:text-base text-xs bg-white space-y-2 border-b py-2 hover:bg-gray-200 transition-colors duration-200"
           >
             <div>{index + 1}</div>
             <div>{member.membershipNo}</div>
@@ -39,18 +40,18 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
             <div>{member.amountDue}</div>
 
             {/* BUTTON SECTION */}
-            <div className="flex gap-4 text-sm">
-              <button className="px-2 bg-blue-500 text-white rounded hover:scale-115 transition-all duration-200">
+            <div className="flex gap-4  lg:text-sm">
+              <button className="  text-xs  lg:text-sm  px-1 lg:px-2 bg-blue-500 text-white rounded hover:scale-115 transition-all duration-200">
                 <GrFormView />
               </button>
 
               <button  
               onClick={()=>handleEdit(member)}
-              className="px-2 bg-green-500 text-white rounded hover:scale-115 transition-all duration-200">
+              className="  text-xs  lg:text-sm px-1 py-0.5 lg:px-2 bg-green-500 text-white rounded hover:scale-115 transition-all duration-200">
                 <TbHomeEdit />
               </button>
 
-              <button onClick={()=>handlePay(member)} className="px-2 bg-green-800 text-white rounded hover:scale-115 transition-all duration-200">
+              <button onClick={()=>handlePay(member)} className=" px-1 py-0.5 lg:py-2 lg:px-2 bg-green-800 text-white rounded hover:scale-115 transition-all duration-200">
                 <FaAmazonPay />
               </button>
             </div>
@@ -77,6 +78,10 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
           <div></div>
         </div>
       </div>
+      </div>
+      </div>
+      
+
     </div>
   );
 };

@@ -10,7 +10,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
       <button
         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
         disabled={currentPage === 1}
-        className={`px-4 py-1 rounded-xl transition ${
+        className={`px-4 py-1 text-xs lg:text-base rounded-xl transition ${
           currentPage === 1
             ? "bg-gray-100 text-gray-400 cursor-not-allowed"
             : "bg-gray-200 hover:bg-gray-400"
@@ -21,7 +21,7 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
 
       {/* INFO */}
       <div className="text-sm font-medium text-gray-700">
-        Page <span className="font-bold">{currentPage}</span> of{" "}
+        Page <span className="font-bold text-xs lg:text-base ">{currentPage}</span> of{" "}
         <span className="font-bold">{totalPages}</span>
       </div>
 
@@ -31,9 +31,9 @@ const Pagination = ({ currentPage, setCurrentPage, totalPages }) => {
           setCurrentPage((prev) => Math.min(prev + 1, totalPages))
         }
         disabled={currentPage === totalPages}
-        className={`px-4 py-1 rounded-xl transition ${
+        className={`px-4 py-1 rounded-xl text-xs lg:text-base transition ${
           currentPage === totalPages
-            ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+            ? "bg-gray-100  text-gray-400 cursor-not-allowed"
             : "bg-gray-200 hover:bg-gray-400"
         }`}
       >
