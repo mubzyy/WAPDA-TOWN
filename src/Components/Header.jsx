@@ -6,8 +6,8 @@ import { FcSearch } from "react-icons/fc";
 
 const Header = () => {
   return (
-    <header className="h-20 border-b border-orange-200/80 bg-gradient-to-r from-[#f7d7b3] via-[#fbe2c8] to-[#f7d7b3] shadow-sm">
-      <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between gap-4 px-4">
+    <header className="min-h-20 border-b border-orange-200/80 bg-gradient-to-r from-[#f7d7b3] via-[#fbe2c8] to-[#f7d7b3] shadow-sm">
+      <div className="mx-auto flex min-h-20 w-full flex-wrap items-center justify-between gap-4 px-4 py-3">
         {/* Left */}
         <div className="flex min-w-0 items-center gap-3">
           <div className="shrink-0 rounded-xl bg-white/80 p-1.5 shadow-sm ring-1 ring-white/60">
@@ -29,7 +29,7 @@ const Header = () => {
         </div>
 
         {/* Right */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
           <button className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/70 text-blue-900 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-md hover:ring-1 hover:ring-blue-200 active:translate-y-0 sm:h-10 sm:w-10">
             <MdCalendarMonth className="text-lg sm:text-xl" />
           </button>

@@ -1,7 +1,7 @@
-import React from 'react'
 import {useState} from 'react'
 import Header from '../Components/Header'
 import Navbar from '../Components/Navbar'
+import InputField from '../Components/InputField'
 import NotificationBar from '../Components/NotificationBar'
 
 const TransferProperty = () => {
@@ -78,15 +78,55 @@ const initialNewOwner = {
 
 
 const propertyFields = [
-  {label:"Property Type", value:propertyDetails?.propertyType},
-  {label:"Property Number", value:propertyDetails?.propertyNumber},
-  {label:"Date Of Allotment", value:propertyDetails?.dateOfAllotment},
-  {label:"Block/Sector", value:propertyDetails?.block},
-  {label:"Land Area", value:propertyDetails?.landArea},
-  {label:"Covered Area", value:propertyDetails?.coveredArea},
-  {label:"Dimension (L)", value:propertyDetails?.length},
-  {label:"Dimension (W)", value:propertyDetails?.width},
-]
+  {
+    label: "Property Type",
+    name: "propertyType",
+    value: propertyDetails?.propertyType,
+    readOnly: true,
+  },
+  {
+    label: "Property Number",
+    name: "propertyNumber",
+    value: propertyDetails?.propertyNumber,
+    readOnly: true,
+  },
+  {
+    label: "Date Of Allotment",
+    name: "dateOfAllotment",
+    value: propertyDetails?.dateOfAllotment,
+    readOnly: true,
+  },
+  {
+    label: "Block/Sector",
+    name: "block",
+    value: propertyDetails?.block,
+    readOnly: true,
+  },
+  {
+    label: "Land Area",
+    name: "landArea",
+    value: propertyDetails?.landArea,
+    unit: "Feet"
+},
+{
+  label: "Covered Area",
+  name: "coveredArea",
+  value: propertyDetails?.coveredArea,
+  unit: "Feet"
+},
+{
+    label: "Dimension (L)",
+    name: "length",
+    value: propertyDetails?.length,
+    unit: "Feet"
+},
+{
+    label: "Dimension (W)",
+    name: "width",
+    value: propertyDetails?.width,
+    unit: "Feet"
+}
+];
   const [searchData, setSearchData] = useState({
   propertyType: "",
   propertyNo: "",
@@ -244,24 +284,29 @@ if (Object.keys(validationErrors).length > 0) {
 
   setNewOwner(member);
 };
-
+const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outline-none w-full sm:w-auto"
 
   return (
+    
     <div>
         <NotificationBar />
         <Header />
         <Navbar />
-        <div className="p-4 w-full min-h-screen border">
+        <div className="w-full min-h-screen border p-3 sm:p-4">
         <div className='border min-h-screen '>
             <div className="border-b-2">
                  <p className='w-full text-white bg-blue-700 px-4'>Transfer Property</p>
                 </div>
-    <div>
+                {/* PARENT DIV */}
+    <div className='m-3 space-y-8 sm:m-8 sm:space-y-10'>
+        {/* SEARCH SECTION */}
+    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
 
-      <label className='p-2 '>Property Type:</label>
+      <label className='p-0 sm:p-2 font-semibold'>Property Type:</label>
     <select
   value={searchData.propertyType}
-  className='border m-2'
+  className = {InputStyle}
+  
   onChange={(e) => {
 
   setSearchData({
@@ -304,11 +349,11 @@ if (Object.keys(validationErrors).length > 0) {
   </p>
 )}
 
-      <label>Property No:</label>
+      <label className='font-semibold'>Property No:</label>
     <input
       type="text"
       // placeholder="Property No"
-      className='border m-2'
+      className={InputStyle}
       value={searchData.propertyNo}
       onChange={(e) => {
 
@@ -330,38 +375,46 @@ if (Object.keys(validationErrors).length > 0) {
   </p>
 )}
 
-    <button onClick={handleSearch} className='bg-green-600 text-white px-4 py-2 rounded'>
+    <button onClick={handleSearch} className='h-8 rounded bg-green-600 px-4 text-white sm:w-auto'>
       Search
     </button>
-
-    {/* Property Details */}
-    
-  <div className='flex flex-col ml-4 w-1/3 space-y-3 '>
-    {
-  propertyFields.map(field => (
-    <div key={field.label} className='grid grid-cols-2 w-full '>
-      <label className='col-span-1'>{field.label}</label>
-
-      <input
-        value={field.value || ""}
-        readOnly
-        className='border col-span-1'
-      />
     </div>
-  ))
-}
-
-  </div>
-
-
-  </div>
-   {/* Transfer Details  */}
+    {/* Property Details */}
     <div>
-  <label>Transfer Date:</label>
+  <div className="ml-0 flex w-full max-w-full flex-col space-y-3 sm:ml-4">
+  {propertyFields.map((field) => (
+    <div key={field.name} className="flex w-full flex-col gap-2 sm:flex-row sm:items-center">
+
+      <InputField
+        label={field.label}
+        name={field.name}
+        value={field.value || ""}
+        readOnly={field.readOnly}
+        varient="basic"
+      />
+
+      {field.unit && (
+        <InputField
+          value={field.unit}
+          readOnly
+          varient="unit"
+        />
+      )}
+
+    </div>
+  ))}
+  
+  </div>
+    </div>
+
+  
+   {/* Transfer Details  */}
+    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+  <label className='font-semibold'>Transfer Date:</label>
   <input
     type="date"
     value={transferData.transferDate}
-    className='border m-2'
+    className={InputStyle + ' w-full border sm:m-2 sm:w-auto'}
     onChange={(e) =>
       setTransferData({
         ...transferData,
@@ -374,12 +427,12 @@ if (Object.keys(validationErrors).length > 0) {
     {errors.transferDate}
   </p>
 )}
-    <label>Transfer Fee Paid:</label>
+    <label className='font-semibold'>Transfer Fee Paid:</label>
   <input
     type="number"
     // placeholder="Transfer Fee"
     value={transferData.transferFee}
-    className='no-spinner border m-2'
+    className={InputStyle + ' w-full border sm:m-2 sm:w-auto'}
     onChange={(e) =>
       setTransferData({
         ...transferData,
@@ -391,11 +444,10 @@ if (Object.keys(validationErrors).length > 0) {
     {errors.transferFee}
   </p>
 )}
-
-  <label>Payment Mode:</label>
+    <label className='font-semibold'>Payment Mode:</label>
   <select
     value={transferData.paymentMode}
-    className='border m-2'  
+    className={InputStyle + ' w-full border sm:m-2 sm:w-auto'}
     onChange={(e) =>
       setTransferData({
         ...transferData,
@@ -412,12 +464,12 @@ if (Object.keys(validationErrors).length > 0) {
     {errors.paymentMode}
   </p>
 )}
-    <label>Instrument No:</label>
+    <label className='font-semibold'>Instrument No:</label>
   <input
     type="text"
     // placeholder="Instrument No"
     value={transferData.instrumentNo}
-    className='border m-2'
+    className={InputStyle + ' w-full border sm:m-2 sm:w-auto'}
     onChange={(e) =>
       setTransferData({
         ...transferData,
@@ -430,26 +482,71 @@ if (Object.keys(validationErrors).length > 0) {
   </p>
 )}
 </div>
+   {/* Property Transferer Details */}
+<div className="ml-0 flex w-full max-w-3xl flex-col sm:ml-2 gap-2">
+  <p className="text-lg font-bold sm:text-xl">
+    PROPERTY TO BE TRANSFERRED FROM
+  </p>
 
-  <div>
-    <h2 className='font-bold text-xl'>PROPERTY TO BE TRANSFERRED FROM</h2>
-
-    <p>Membership: {currentOwner?.membershipNo || ""}</p>
-    <p>Name: {currentOwner?.name || ""}</p>
-    <p>Father Name: {currentOwner?.fatherName || ""}</p>
-    <p>CNIC: {currentOwner?.cnic || ""}</p>
+  <div className="flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4">
+    <label className="font-semibold sm:w-40 sm:shrink-0">
+      Membership No:
+    </label>
+    <input
+      type="text"
+      value={currentOwner?.membershipNo || ""}
+      readOnly
+      className={InputStyle + " w-full border  sm:w-auto"}
+    />
   </div>
 
-<div className='flex flex-col ml-2 w-1/2 '>
-  <p className='font-bold text-xl'>PROPERTY TO BE TRANSFERRED TO</p>
-  <div className='flex flex-row items-center px-4'>
-  <label className='w-40'>Membership No:</label>
+  <div className="flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4">
+    <label className="font-semibold sm:w-40 sm:shrink-0">
+      Name:
+    </label>
+    <input
+      type="text"
+      value={currentOwner?.name || ""}
+      readOnly
+      className={InputStyle + " w-full border  sm:w-auto"}
+    />
+  </div>
+
+  <div className="flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4">
+    <label className="font-semibold sm:w-40 sm:shrink-0">
+      Father Name:
+    </label>
+    <input
+      type="text"
+      value={currentOwner?.fatherName || ""}
+      readOnly
+      className={InputStyle + " w-full border  sm:w-auto"}
+    />
+  </div>
+
+  <div className="flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4">
+    <label className="font-semibold sm:w-40 sm:shrink-0">
+      CNIC:
+    </label>
+    <input
+      type="text"
+      value={currentOwner?.cnic || ""}
+      readOnly
+      className={InputStyle + " w-full border  sm:w-auto"}
+    />
+  </div>
+</div>
+   {/* Property Transferee Details */}
+<div className='ml-0 flex w-full max-w-3xl flex-col sm:ml-2 gap-2'>
+  <p className='text-lg font-bold sm:text-xl'>PROPERTY TO BE TRANSFERRED TO</p>
+  <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4'>
+  <label className='sm:w-40 sm:shrink-0 font-semibold'>Membership No:</label>
   <input
     type="text"
     // placeholder="Membership No"
     disabled={!propertyDetails}
     value={newOwner.membershipNo}
-    className='border'
+    className={InputStyle + ' w-full border sm:w-auto'}
     onChange={(e) =>
       setNewOwner({
         ...newOwner,
@@ -462,46 +559,47 @@ if (Object.keys(validationErrors).length > 0) {
     {errors.membershipNo}
   </p>
 )}
-   <button onClick={handleMemberSearch} className=' m-2 bg-green-600 text-white px-4 py-2 rounded'>
+   <button onClick={handleMemberSearch} className='h-8 rounded bg-green-600 px-4 text-white sm:ml-4'>
     Search 
     </button>
     </div>
-    <div className='flex flex-row items-center px-4'>
-  <label className='w-40'>Name:</label>
+    <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4'>
+  <label className='sm:w-40 sm:shrink-0 font-semibold'>Name:</label>
   <input
     type="text"
     // placeholder="Name"
     disabled={!propertyDetails}
     value={newOwner.name}
-    className='border border-b-0'
+    className={InputStyle + ' w-full border  sm:w-auto'}
     readOnly
   />
   </div>
-  <div className='flex flex-row items-center px-4'>
-  <label className='w-40'>Father Name:</label>
+  <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4'>
+  <label className='sm:w-40 sm:shrink-0 font-semibold'>Father Name:</label>
   <input
     type="text"
     // placeholder="Father Name"
     disabled={!propertyDetails}
     value={newOwner.fatherName}
-    className='border border-b-0'
+    className={InputStyle + ' w-full border  sm:w-auto'}
     readOnly
   />
   </div>
-  <div className='flex flex-row items-center px-4'>
-  <label className='w-40'>CNIC:</label>
+  <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4'>
+  <label className='sm:w-40 sm:shrink-0 font-semibold'>CNIC:</label>
   <input
     type="text"
     // placeholder="CNIC"
     disabled={!propertyDetails}
     value={newOwner.cnic}
-    className='border'
+    className={InputStyle + ' w-full border  sm:w-auto'}
     readOnly
   />
   </div>
 </div>
-<div>
-  <h2>Enter PIN to Transfer the Property</h2>
+    {/* PIN */}
+<div className="max-w-full">
+  <h2 className="text-lg font-bold sm:text-xl">Enter PIN to Transfer the Property</h2>
 
   <input
     type="password"
@@ -509,20 +607,27 @@ if (Object.keys(validationErrors).length > 0) {
     placeholder="Enter PIN"
     value={pin}
     onChange={(e) => setPin(e.target.value)}
+    className={InputStyle + ' w-full border sm:w-auto'}
   />
   {errors.pin && (
   <p className="text-red-500 text-sm">
     {errors.pin}
   </p>
 )}
-  <p>and click Transfer Property</p>
+  <p className="text-sm text-gray-600">
+    and click Transfer Property
+  </p>
 </div>
-<button>
+{/* BUTTONS */}
+<div className="flex flex-col sm:block">
+<button className='bg-red-600 text-white px-4 py-2 rounded m-2'>
   Cancel Process
 </button>
-<button onClick={handleTransfer}>
+<button className='bg-green-600 text-white px-4 py-2 rounded m-2' onClick={handleTransfer}>
   Transfer Property
 </button>
+  </div>
+    </div>
       </div>  
       </div>
   </div>
