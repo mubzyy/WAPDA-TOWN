@@ -1,8 +1,8 @@
 
 import SearchSection from './SearchSection'
-import TableSection from './ManageMember/TableSection'
-import Pagination from './ManageMember/Pagination'
-import TotalRecordSelected from './ManageMember/TotalRecordSelected'
+import TableSection from './TableSection'
+import Pagination from './Pagination'
+import TotalRecordSelected from './TotalRecordSelected'
 import ViewMemberModal from './ViewMemberModal'
 import ShowEditModal from './ShowEditModal'
 import ShowDeleteModal from './ShowDeleteModal'
