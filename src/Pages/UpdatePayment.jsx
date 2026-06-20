@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import NotificationBar from '/src/Components/NotificationBar'
-import UpdatedHeader from '/src/Components/UpdatedHeader'
-import Layout from '../Componend/Layout'
-import OpenPaymentModal from '../Componend/OpenPaymentModal'
-import SignupNavbar from '../Components/SignupNavbar'
+import NotificationBar from '/src/MainPage/NotificationBar'
+import UpdatedHeader from '/src/MainPage/UpdatedHeader'
+import Layout from '../UpdatePayment/Layout'
+import OpenPaymentModal from '../UpdatePayment/OpenPaymentModal'
+import SignupNavbar from '../MainPage/SignupNavbar'
 
 const UpdatePayment = () => {
   const [members , setMembers] = useState([

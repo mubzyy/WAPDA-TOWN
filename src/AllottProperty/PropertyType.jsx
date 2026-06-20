@@ -97,7 +97,7 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
 
   return (
     // Main Container
-    <div className=' m-4 lg:m-8     mt-1'>
+    <div className=' m-8 lg:m-8     mt-1'>
       <form onSubmit={handleSubmit(onSubmit)} className='
    space-y-1 lg:space-y-3' >
         {/* Property Type */}

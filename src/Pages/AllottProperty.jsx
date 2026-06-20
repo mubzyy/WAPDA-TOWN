@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import NotificationBar from '/src/Components/NotificationBar'
-import SignupNavbar from '../Components/SignupNavbar'
-import UpdatedHeader from '../Components/UpdatedHeader'
-import Wrapper from '../Componends/Wrapper'
-import Footerr from '../Componends/Footerr'
+import NotificationBar from '/src/MainPage/NotificationBar'
+import SignupNavbar from '../MainPage/SignupNavbar'
+import UpdatedHeader from '../MainPage/UpdatedHeader'
+import Wrapper from '../AllottProperty/Wrapper'
+import Footerr from '../AllottProperty/Footerr'
 
 const AllottProperty = () => {
   const [properties, setProperties] = useState([

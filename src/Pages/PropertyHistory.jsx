@@ -1,10 +1,10 @@
 
 import { useState } from 'react'
-import UpdatedHeader from '../Components/UpdatedHeader'
-import NotificationBar from '/src/Components/NotificationBar'
-import Navbar from '../Components/Navbar'
-import Section from '../Componendd/Section'
-import SignupNavbar from '../Components/SignupNavbar'
+import UpdatedHeader from '../MainPage/UpdatedHeader'
+import NotificationBar from '/src/MainPage/NotificationBar'
+import Navbar from '../MainPage/Navbar'
+import Section from '../PaymentHistory/Section'
+import SignupNavbar from '../MainPage/SignupNavbar'
 
 const PropertyHistory = () => {
   const [propertyType, setPropertyType] = useState("")
@@ -23,7 +23,7 @@ const PropertyHistory = () => {
     length: "35 ft",
     width: "65 ft",
 
-    originalAmountDue: 500000,
+    originalAmountDue: 5000000000,
     amountDueSince: "01-01-2025", 
     defaultMonths: 5,
     penalty: 25000,
@@ -48,7 +48,7 @@ const PropertyHistory = () => {
       {
         date: "10-01-2024",
         paymentHead: "Development Charges",
-        amountPaid: 50000,
+        amountPaid: 50000000000000000000000,
       },
       {
         date: "15-06-2024",
@@ -98,7 +98,7 @@ const PropertyHistory = () => {
       {
         date: "01-08-2024",
         paymentHead: "Installment",
-        amountPaid: 50000,
+        amountPaid: 500000000000000000,
       },
     ],
   },

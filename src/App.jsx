@@ -4,7 +4,7 @@ import ManagerMember from "./Pages/ManagerMember";
 import AllottProperty from "./Pages/AllottProperty";
 import UpdatePayment from "./Pages/UpdatePayment";
 import PropertyHistory from "./Pages/PropertyHistory";
-import Loader from "./Components/Loader";
+import Loader from "./MainPage/Loader";
 
 const App = () => {
   return (

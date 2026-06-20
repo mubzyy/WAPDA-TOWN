@@ -9,9 +9,9 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
     // MAIN DIV
     <div className="m-4 overflow-hidden rounded-2xl">
    <div className='overflow-x-auto'>
-    <div className='min-h-[1000px]'>
+    <div className='min-w-[1000px]'>
         {/* Header */}
-      <div className="grid grid-cols-9 bg-blue-900 lg:text-base text-xs text-white p-2">
+      <div className="grid  grid-cols-9   bg-blue-900 lg:text-base text-xs text-white  p-2">
         <div>Sr.</div>
         <div>Membership No.</div>
         <div>Property Type</div>
@@ -28,7 +28,7 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
         {filterMembers.map((member, index) => (
           <div
             key={member.id}
-            className="grid grid-cols-9 px-2 lg:text-base text-xs bg-white space-y-2 border-b py-2 hover:bg-gray-200 transition-colors duration-200"
+            className="grid grid-cols-9   px-2 lg:text-base text-xs bg-white space-y-2 border-b py-2 hover:bg-gray-200 transition-colors duration-200"
           >
             <div>{index + 1}</div>
             <div>{member.membershipNo}</div>
@@ -67,11 +67,11 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
           <div></div>
           <div></div>
 
-          <div className="font-bold text-right pr-2">
+          <div className="font-bold text-xs  lg:text-base   lg:text-right pr-2">
             Total Amount Due
           </div>
 
-          <div className="bg-red-500 font-bold text-center">
+          <div className="bg-red-500  text-xs lg:text-base font-bold text-center">
             {totalAmountDue}
           </div>
 

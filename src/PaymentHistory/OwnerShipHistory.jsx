@@ -3,11 +3,13 @@ const OwnerShipHistory = ({property}) => {
   const ownershipHistory = property?.ownershipHistory || [];
   const paymentHistory = property?.paymentHistory || [];
 
-  return (
-    <div  className='flex  justify-around'>
+  return ( 
+    <div  className= '  m-2 flex  flex-col space-y-10   lg:space-y-0  lg:flex-row lg:justify-around'>
         {/* OWNERSHIP HISTORY */}
+        <div className="overflow-x-auto">
+          <div className="min-w-[700px]">
         {/* UpperPart */}
-        <div className='border-2 rounded-2xl overflow-hidden  '>
+        <div className='border-2 rounded-2xl  text-xs lg:text-base overflow-hidden  '>
             {/* header */}
         <div className='bg-[#060c30] flex  justify-center text-white font-bold'>
         OWNERSHIP HISTORY
@@ -40,10 +42,17 @@ const OwnerShipHistory = ({property}) => {
 
           </div>
 </div>
+</div>
+</div>
+
+<div>
   
         {/* PAYEMNET HISTORY */}
         {/* UPPERPART */} 
-         <div className='border-2  text-center rounded-2xl overflow-hidden'>
+        <div>
+          <div className="overflow-x-auto">
+          <div className="min-w-[600px]">
+         <div className='border-2 text-xs  lg:text-base   text-center rounded-2xl overflow-hidden'>
             {/* header */}
         <div className='bg-[#060c30] text-white font-bold'>
         PAYMENT HISTORY
@@ -70,6 +79,10 @@ const OwnerShipHistory = ({property}) => {
               </div>
             ))}
           </div>
+      </div>
+      </div>
+      </div>
+      </div>
       </div>
     </div>
   )

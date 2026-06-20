@@ -18,7 +18,7 @@ const searchSectionUpdate = ({searchKey , setSearchKey , value , setValue , hand
                  <div className='mb-2  lg:m-0'> 
                     <span className='mx-2 font-semibold  text-xs lg:text-base  '>SearchKey :  </span>
  <select
-    className=' lg:p-0.5 border-2 border-[#537903] px-2 w-48 text-center lg:w-50  text-xs lg:text-sm bg-[#9daf77]  rounded-xl outline-none'
+    className=' lg:p-0.5 border-2 border-[#537903]   px-2 w-48  lg:w-50  text-xs lg:text-sm bg-[#9daf77]  rounded-xl outline-none'
    value={searchKey}
    onChange = {(e)=>setSearchKey(e.target.value)}
 >

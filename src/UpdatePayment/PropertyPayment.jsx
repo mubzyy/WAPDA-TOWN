@@ -123,7 +123,7 @@ const PropertyPayment = ({ editFormData, handleUpdatePayment, handleResetPayment
 
   return (
     <div>
-      <p className='font-bold mx-10'>Particulars of the property for which payment is received and being updated now :</p>
+      <p className='font-bold text-xs lg:text-base  mx-8'>Particulars of the property for which payment is received and being updated now :</p>
 
       {/* MAIN CONTAINER */}
       <div className="m-8 space-y-2 mt-1">
@@ -340,7 +340,7 @@ const PropertyPayment = ({ editFormData, handleUpdatePayment, handleResetPayment
               <button
                 onClick={handleAddPayment}
                 type="button"
-                className="bg-green-600 px-6 py-2 rounded-2xl text-sm font-semibold text-white hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
+                className="bg-green-600  px-4 lg:px-6  py-2 rounded-2xl text-xs lg:text-sm font-semibold text-white hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
               >
                 Add
               </button>
@@ -348,7 +348,7 @@ const PropertyPayment = ({ editFormData, handleUpdatePayment, handleResetPayment
                 onClick={handleUpdateClick}
                 type="button"
                 disabled={!editFormData}
-                className="bg-[#233494] px-6 py-2 rounded-2xl text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-800 hover:shadow-lg hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:hover:scale-100 disabled:hover:shadow-none"
+                className="bg-[#233494]  px-4 lg:px-6 py-2 rounded-2xl  text-xs lg:text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-800 hover:shadow-lg hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:hover:scale-100 disabled:hover:shadow-none"
               >
                 Update
               </button>
@@ -356,7 +356,7 @@ const PropertyPayment = ({ editFormData, handleUpdatePayment, handleResetPayment
 
                 onClick={handleResetForm}
                 type="button"
-                className="bg-red-500 px-6 py-2 rounded-2xl text-sm font-semibold  hover:bg-red-600 text-white hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
+                className="bg-red-500  px-4 lg:px-6 py-2 rounded-2xl  text-xs lg:text-sm font-semibold  hover:bg-red-600 text-white hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
               >
                 Delete
               </button>

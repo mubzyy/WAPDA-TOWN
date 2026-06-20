@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import UpdatedHeader from '../Components/UpdatedHeader';
-import NotificationBar from '../Components/NotificationBar';
-import MainBody from '../Component/ManageMember/MainBody';
-import Footer from '../Component/Footer';
-import SignupNavbar from '../Components/SignupNavbar';
+import UpdatedHeader from '../MainPage/UpdatedHeader';
+import NotificationBar from '../MainPage/NotificationBar';
+import MainBody from '../ManageMember/Container';
+import Footer from '../ManageMember/Footer';
+import SignupNavbar from '../MainPage/SignupNavbar';
 
 const ManagerMember = () => {
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import NotificationBar from '../Components/NotificationBar'
-import UpdatedHeader from '../Components/UpdatedHeader'
-import Navbar from '../Components/Navbar'
-import MainContent from '../Components/MainContent'
-import LoginCard from '../Components/LoginCard'
-import NewsCard from '../Components/NewsCard'
+import NotificationBar from '../MainPage/NotificationBar'
+import UpdatedHeader from '../MainPage/UpdatedHeader'
+import Navbar from '../MainPage/Navbar'
+import MainContent from '../MainPage/MainContent'
+import LoginCard from '../MainPage/LoginCard'
+import NewsCard from '../MainPage/NewsCard'
 
 const MainPage = () => {
   return (
