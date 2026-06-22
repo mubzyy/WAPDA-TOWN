@@ -11,7 +11,7 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
    <div className='overflow-x-auto'>
     <div className='min-w-[1000px]'>
         {/* Header */}
-      <div className="grid  grid-cols-9   bg-blue-900 lg:text-base text-xs text-white  p-2">
+      <div className="grid  grid-cols-9   bg-blue-900 xl:text-base text-xs text-white  p-2">
         <div>Sr.</div>
         <div>Membership No.</div>
         <div>Property Type</div>
@@ -28,7 +28,7 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
         {filterMembers.map((member, index) => (
           <div
             key={member.id}
-            className="grid grid-cols-9   px-2 lg:text-base text-xs bg-white space-y-2 border-b py-2 hover:bg-gray-200 transition-colors duration-200"
+            className="grid grid-cols-9   px-2 xl:text-base text-xs bg-white space-y-2 border-b py-2 hover:bg-gray-200 transition-colors duration-200"
           >
             <div>{index + 1}</div>
             <div>{member.membershipNo}</div>
@@ -41,13 +41,13 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
 
             {/* BUTTON SECTION */}
             <div className="flex gap-4  lg:text-sm">
-              <button className="  text-xs  lg:text-sm  px-1 lg:px-2 bg-blue-500 text-white rounded hover:scale-115 transition-all duration-200">
+              <button className="  text-xs  xl:text-sm  px-1 xl:px-2 bg-blue-500 text-white rounded hover:scale-115 transition-all duration-200">
                 <GrFormView />
               </button>
 
               <button  
               onClick={()=>handleEdit(member)}
-              className="  text-xs  lg:text-sm px-1 py-0.5 lg:px-2 bg-green-500 text-white rounded hover:scale-115 transition-all duration-200">
+              className="  text-xs  xl:text-sm px-1  py-0 xl:px-2 bg-green-500 text-white rounded hover:scale-115 transition-all duration-200">
                 <TbHomeEdit />
               </button>
 
@@ -67,11 +67,11 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
           <div></div>
           <div></div>
 
-          <div className="font-bold text-xs  lg:text-base   lg:text-right pr-2">
+          <div className="font-bold text-xs  xl:text-base   xl:text-right pr-2">
             Total Amount Due
           </div>
 
-          <div className="bg-red-500  text-xs lg:text-base font-bold text-center">
+          <div className="bg-red-500  text-xs xl:text-base font-bold text-center">
             {totalAmountDue}
           </div>
 

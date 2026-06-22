@@ -11,7 +11,7 @@ const wrapperStyles = {
 const labelStyles = {
   basic : "font-semibold w-42 lg:text-base text-xs",
   Allott :  "font-semibold w-42",
-  Search  : "font-semibold text-xs lg:text-base w-34 lg:w-auto ",
+  Search  : "font-semibold text-xs lg:text-base w-32  xl:w-auto ",
   unit : "w-42",
   new : "flex flex-col gap-2 w-full",
   modern: " absolute left-3 top-1 bg-[#ebf1de] text-gray-500 transition-all duration-200 peer-focus:  -top-8 peer-focus: text-xs peer-focus: bg-white  peer-placeholder-shown: top-10 peer-placeholder-shown: text-xs "

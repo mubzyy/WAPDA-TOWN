@@ -130,7 +130,7 @@ const ManagerMember = () => {
         .toString()
         .toLowerCase()
         .trim()
-        .includes(searchValue.toLowerCase())
+        .includes(searchValue.toLowerCase().trim())
     );
 
     setFilteredMembers(result);
@@ -165,6 +165,7 @@ const ManagerMember = () => {
     const result = updatedMembers.filter((member) =>
       member[searchKey]
         .toString()
+        .trim()
         .toLowerCase()
         .includes(searchValue.toLowerCase())
     );

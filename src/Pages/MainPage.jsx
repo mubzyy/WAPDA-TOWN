@@ -2,13 +2,14 @@ import React from 'react'
 import NotificationBar from '../MainPage/NotificationBar'
 import UpdatedHeader from '../MainPage/UpdatedHeader'
 import Navbar from '../MainPage/Navbar'
-import MainContent from '../MainPage/MainContent'
 import LoginCard from '../MainPage/LoginCard'
-import NewsCard from '../MainPage/NewsCard'
+import ContentAnimation from '../MainPage/ContentAnimation'
+import Footer from '../MainPage/footer'
+
 
 const MainPage = () => {
   return (
-    <div className='bg-[#ebf1de] min-h-screen border-2'>
+    <div className='bg-[#ebf1de] min-h-screen'>
 
       {/* Notification Bar */}
       <NotificationBar />
@@ -19,23 +20,31 @@ const MainPage = () => {
       {/* Navbar */}
       <Navbar />
 
-      {/* MAIN LAYOUT AREA */}
-      <div className='flex w-full m-4 gap-4'>
-
-        {/* LEFT SIDE (75%) */}
-        <div className= ' mx-2 w-[70%]'>
-          <MainContent />
-        </div>
-
-        {/* RIGHT SIDE (25%) */}
-        <div className='w-[30%] flex flex-col gap-4'>
+      {/* MainContent */}
+      <div className="relative ">
+        <ContentAnimation />
+        <div className="absolute inset-0 flex items-center justify-end  px-4 py-10  lg:px-16">
           <LoginCard />
-          <NewsCard />
         </div>
-
       </div>
 
-    </div>
+      <Footer />
+
+      {/* MAIN LAYOUT AREA */}
+      {/* <div className='flex w-full m-4 gap-4'> */}
+
+        {/* LEFT SIDE (75%) */}
+        {/* <div className= ' mx-2 w-[70%]'>
+          <MainContent />
+        </div> */}
+
+        {/* RIGHT SIDE (25%) */}
+        {/* <div className='w-[30%] flex flex-col gap-4'>
+          <LoginCard />
+          <NewsCard />
+        </div> */}
+
+      </div>
   )
 }
 

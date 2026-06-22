@@ -4,7 +4,7 @@ const PendingDues = ({ property }) => {
 
   return (
     // Main Container
-    <div className='m-8 space-y-6 lg:space-y-2 mt-6 grid lg:grid-cols-2  grid-cols-1 '>
+    <div className='m-8 space-y-8 xl:space-y-2 mt-6 grid xl:grid-cols-2  grid-cols-1 '>
       <div>
         <form className=' space-y-3' >
 

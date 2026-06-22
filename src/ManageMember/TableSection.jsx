@@ -10,9 +10,9 @@ const TableSection = ({ currentData, startIndex, toggleStatus , members , handle
   return (
     <div className=" lg:overflow-visible ">
     {/* Table */}
-    <div className='mt-1  rounded-xl m-6 shadow border overflow-hidden overflow-x-auto  '>
+    <div className='  rounded-xl m-6 shadow border  overflow-x-auto  '>
    {/* Table Header */}
-   <div className='bg-[#233494]   min-w-[1000px] h-8 grid grid-cols-8 p-2 text-white font-semibold  text-xs lg:text-sm  '>
+   <div className='bg-[#233494]   min-w-[1000px] h-8 grid grid-cols-[0.5fr_1fr_2fr_2fr_1fr_1fr_1fr_1fr] p-2 pr-8 text-white font-semibold  text-xs xl:text-sm  '>
   
   <div>Sr.</div>
   <div>Membership No.</div>
@@ -25,18 +25,18 @@ const TableSection = ({ currentData, startIndex, toggleStatus , members , handle
 
    </div>
    {/* Table Body */}
-   <div className='main-h-screen min-w-[1000px] overflow-y-auto'>
+   <div className=' min-w-[1000px] '>
 {currentData.map((member , index)=>(
     <div
     key={member.id}
-    className="grid grid-cols-8 p-3 border-b hover:bg-gray-200 bg-white  gap-x-4  "
+    className="grid grid-cols-[0.5fr_1fr_2fr_2fr_1fr_0.5fr_1fr_1fr] p-3 pr-8 border-b hover:bg-gray-200 bg-white  gap-x-4   "
     >
-        <div className='text-xs  lg:text-base'>{startIndex + index + 1}</div>
-        <div className='text-xs  lg:text-base'>{member.membershipNo}</div>
-        <div className='text-xs  lg:text-base'>{member.cnic}</div>
-        <div className='text-xs  lg:text-base'>{member.name}</div>   
-        <div className='text-xs  lg:text-base'>{member.regDate}</div>
-        <div className=' text-xs  lg:text-base px-12'>{member.properties}</div>
+        <div className='text-xs  xl:text-base'>{startIndex + index + 1}</div>
+        <div className='text-xs  xl:text-base'>{member.membershipNo}</div>
+        <div className='text-xs  xl:text-base'>{member.cnic}</div>
+        <div className='text-xs  xl:text-base'>{member.name}</div>   
+        <div className='text-xs  xl:text-base'>{member.regDate}</div>
+        <div className=' text-xs  xl:text-base px-4 '>{member.properties}</div>
     <div className="flex items-center">
   <span >
    <button
@@ -62,6 +62,11 @@ const TableSection = ({ currentData, startIndex, toggleStatus , members , handle
 </div>
     
 ))}
+    {(!currentData || currentData.length === 0) && (
+          <div className="text-center text-xs x l:text-base py-8 text-gray-500">
+            No properties found
+          </div>
+        )}
    </div>
     </div>
     </div>

@@ -93,8 +93,13 @@ const[selectedMember , setSelectMember] = useState(null)
   
   //  handleSearch
   const handleSearch = () => {
-    const filterData = properties.filter((property) =>
-      String(property[searchKey] || "")
+     if (value.trim() === "") {
+    setFilterProperty([]);
+    setSearchedMember(null);
+    return;
+  }
+    const filterData  = properties.filter((property) =>
+    String(property.membershipNo || "")
         .toLowerCase()
         .trim()
         .includes(value.toLowerCase().trim())
@@ -102,7 +107,9 @@ const[selectedMember , setSelectMember] = useState(null)
     );
 
     setFilterProperty(filterData);
-    setSearchedMember(filterData[0] || null);
+     setSearchedMember(filterData[0] || null);
+    
+  
   };
   // handleAddProperty 
   const handleAddProperty = (newProperty) => {

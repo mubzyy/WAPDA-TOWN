@@ -17,6 +17,8 @@ const UpdatePayment = () => {
       landArea: "5 Acres",
       coveredArea: "2 Acres",
       amountDue: "20000000",
+      name: "Ahmed Ali",
+      fatherName: "Muhammad Ali",
     },
      {
       id: 2,
@@ -28,6 +30,8 @@ const UpdatePayment = () => {
       landArea: "15 Acres",
       coveredArea: "21 Acres",
       amountDue: "16000000",
+      name: "Qasim Abdullah",
+      fatherName: "Muhammad Raees",
     },
      {
       id: 3,
@@ -39,6 +43,8 @@ const UpdatePayment = () => {
       landArea: "25 Acres",
       coveredArea: "22 Acres",
       amountDue: "10000000",
+      name: "Muhammad Taha ",
+      fatherName: "Muhammad Baloch",
     }
   ])
 
@@ -54,6 +60,7 @@ const [edit , setEdit] = useState(null)
 
   // FILTER 
   const [filterMembers , setFilterMembers] = useState(members)
+  const [searchedMember , setSearchedMember] = useState(null)
 
 // STATE FOR OPENPAYMENT MODAL
 const [showPaymentModal  , setShowPaymentModal] = useState(false)
@@ -96,6 +103,7 @@ const handlePaymentSubmit = (paymentData) => {
    .includes(value.trim().toLowerCase())
 )
 setFilterMembers(updatedFilter)
+setSearchedMember(updatedFilter[0] || null)
   }
 
   // Amount Due 
@@ -176,6 +184,7 @@ const updatedMembers = members.map((member)=> {
       handleUpdatePayment = {handleUpdatePayment}
       handleResetPaymentForm = {handleResetPaymentForm}
       handlePay = {handlePay}
+      searchedMember = {searchedMember}
       />
       
       {/* PAYMENT MODAL */}

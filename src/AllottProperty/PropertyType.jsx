@@ -221,7 +221,7 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
         </div>
 
         {/* Dimension L */}
-        <div className="flex flex-col sm:flex-row gap-2">
+       <div className=' flex lg:flex-row  flex-col  gap-1   lg:space-y-0'>
           <InputFeild
             label="Dimension L"
             placeholder='Dimension L'

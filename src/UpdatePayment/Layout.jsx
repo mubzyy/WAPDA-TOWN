@@ -5,7 +5,7 @@ import PropertyPayment from './PropertyPayment'
 import OpenPaymentModal from './OpenPaymentModal'
 
 
-const Layout = ({members , setMembers , searchKey , setSearchKey , value , setValue  , handleSearch, handleUpdatePayment , handleResetPaymentForm , filterMembers , handleEdit , totalAmountDue  , editFormData , setEditFormData , handlePay , showPaymentModal }) => {
+const Layout = ({members , searchedMember ,  setMembers , searchKey , setSearchKey , value , setValue  , handleSearch, handleUpdatePayment , handleResetPaymentForm , filterMembers , handleEdit , totalAmountDue  , editFormData , setEditFormData , handlePay , showPaymentModal }) => {
   return (
         <div className='border-2 min-h-screen m-4 rounded-2xl overflow-hidden bg-[#e7eed8]'>
       <SearchSectionUpdate 
@@ -14,7 +14,7 @@ const Layout = ({members , setMembers , searchKey , setSearchKey , value , setVa
        setValue = {setValue}
        value = {value}
        handleSearch = {handleSearch}
-       
+       searchedMember = {searchedMember}
       />
       <div className='mb-8'>
       <AmountDueTable 

@@ -6,8 +6,8 @@ const SearchSection = ({searchKey,setSearchKey,searchValue,setSearchValue,handle
 
 //  PRO CLEAN DESIGNING TECHNIQUE
     const inputStyle ="  lg:p-0.5 mx-4 lg:m-0   border-2 border-[#537903] px-3 text-sm bg-[#9daf77]  w-48 lg:w-50 rounded-xl outline-none "
-    const buttonStylePrimary = "border-2  rounded-2xl lg:rounded-xl bg-[#233494]  p-1 font-semibold text-white w-16 text-xs lg:text-base  lg:w-28 hover:bg-blue-800 transition duration-200"
-    const buttonStyleSecondary = "border-2  rounded-2xl lg:rounded-xl bg-yellow-500  p-1 font-semibold text-white w-18  text-xs lg:text-base  lg:w-28 hover:bg-yellow-600 transition duration-200"
+    const buttonStylePrimary = "border-2  rounded-2xl lg:rounded-xl bg-[#233494]  p-1 font-semibold text-white w-18 text-xs lg:text-sm  lg:w-24 hover:bg-blue-800 transition duration-200"
+    const buttonStyleSecondary = "border-2  rounded-2xl lg:rounded-xl bg-yellow-500  p-1 font-semibold text-white w-18  text-xs lg:text-sm  lg:w-24 hover:bg-yellow-600 transition duration-200"
 
 
     return (
@@ -20,12 +20,12 @@ const SearchSection = ({searchKey,setSearchKey,searchValue,setSearchValue,handle
             </div>
            
          {/* Search Controls */}
-            <div className='flex flex-col lg:flex-row  h-26 mb-4 lg:items-center lg:gap-16  p-4  '>
+            <div className='flex flex-col lg:flex-row md:flex-row md:items-center   h-26 mb-4 lg:items-center lg:gap-8  p-4  '>
                 {/* Search Key */}
-                <div className='mb-2  lg:m-0'> 
+                <div className='mb-2  md-0 lg:m-0'> 
                     <span className='mx-2 font-semibold  text-xs lg:text-base  '>SearchKey :  </span>
  <select
-   className=' lg:p-0.5 border-2 border-[#537903] px-2 w-48  lg:w-50  text-xs lg:text-sm bg-[#9daf77]  rounded-xl outline-none'
+   className=' lg:p-0.5 border-2 border-[#537903] px-2 w-48 md:w-32  lg:w-50  text-xs lg:text-sm bg-[#9daf77]  rounded-xl outline-none'
   value={searchKey}
   onChange={(e) => setSearchKey(e.target.value)}
 >
@@ -36,7 +36,7 @@ const SearchSection = ({searchKey,setSearchKey,searchValue,setSearchValue,handle
 </div>
             {/* Value*/}
             <div className='flex  gap-3 items-center mb-2 lg:mb-0 ' >
-                <label  className='font-semibold  mx-2 text-xs  lg:text-base ' >Value :</label>
+                <label  className='font-semibold  mx-2 text-xs   lg:text-base ' >Value :</label>
                 <input 
                        className={inputStyle}
                        type="text"
@@ -48,7 +48,7 @@ const SearchSection = ({searchKey,setSearchKey,searchValue,setSearchValue,handle
                 />
             </div>
             {/* Action Button */}
-            <div className='flex mx-20 lg:mb-0  gap-2 lg:gap-8' >
+            <div className='flex ml-20 lg:mb-0  gap-2 md:gap-4 lg:gap-6' >
                 <button   onClick={handleSearch} className={buttonStylePrimary}>Search</button>
                 <button onClick={handleAdd} className={buttonStyleSecondary }>Add New</button>
             </div>

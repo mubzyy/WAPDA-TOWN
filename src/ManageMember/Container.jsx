@@ -19,7 +19,7 @@ toggleStatus, filteredMembers, totalPages,currentPage , members,handleView,showM
 
   
   return (
-    <div className='border-2 h-[560px] m-4 bg-[#ebf1de] rounded-2xl overflow-hidden '>
+    <div className='border-2 min-h-screen overflow-hidden m-4 bg-[#ebf1de] rounded-2xl  '>
 
  <SearchSection
   searchKey={searchKey}

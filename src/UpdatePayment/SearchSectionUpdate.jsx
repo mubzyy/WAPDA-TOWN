@@ -1,7 +1,7 @@
 import React from 'react'
 import InputFeild from '../ReusableComponents/InputFeild'
 
-const searchSectionUpdate = ({searchKey , setSearchKey , value , setValue , handleSearch  }) => {
+const searchSectionUpdate = ({searchKey , searchedMember ,  setSearchKey , value , setValue , handleSearch  }) => {
      //  PRO CLEAN DESIGNING TECHNIQUE
     const inputStyle ="  lg:p-0.5 mx-4 lg:m-0   border-2 border-[#537903] px-3 text-sm bg-[#9daf77]  w-48 lg:w-50 rounded-xl outline-none "
     const buttonStylePrimary = "border-2 mx-20 lg:m-0 rounded-2xl lg:rounded-xl bg-[#233494]  p-1 font-semibold text-white w-16 text-xs lg:text-base  lg:w-28 hover:bg-blue-800 transition duration-200"
@@ -13,7 +13,7 @@ const searchSectionUpdate = ({searchKey , setSearchKey , value , setValue , hand
             </div>
            
          {/* Search Controls */}
-            <div className='flex flex-col lg:flex-row  h-26 mb-4 lg:items-center lg:gap-16  p-4  '>
+           <div className='flex flex-col mt-2 lg:flex-row lg:gap-18  h-26 mb-4 lg:items-center xl:gap-40  mx-4  '>
                 {/* Search Key */}
                  <div className='mb-2  lg:m-0'> 
                     <span className='mx-2 font-semibold  text-xs lg:text-base  '>SearchKey :  </span>
@@ -47,13 +47,13 @@ const searchSectionUpdate = ({searchKey , setSearchKey , value , setValue , hand
             </div>
             </div>
              {/* Member Ship Number +  Name + Father / Husband Name */}
-            <div className='flex flex-col m-4  space-y-1 lg:flex-row lg:items-center lg:justify-evenly  mt-8 lg:mt-0 lg:m-8'>
+              <div className='flex flex-col m-4  xl:m-0 space-y-1 xl:flex-row xl:items-center xl:justify- xl:gap-14 xl:mx-6  mt-8 xl:mt-0 '>
              
               {/* MemberShip Number */}
              <InputFeild 
              label= "Membership No."
              placeholder='NNNNNNNNNNNNNNNNN'
-        
+             value={searchedMember?.membershipNo}
              readOnly
              varient='Search'
              />
@@ -62,7 +62,7 @@ const searchSectionUpdate = ({searchKey , setSearchKey , value , setValue , hand
              <InputFeild 
              label= "Name :"
              placeholder='XXXXXXXXXXXXXXXXXX'
-            
+            value={searchedMember?.name}
              readOnly
              varient='Search'
              />
@@ -71,7 +71,7 @@ const searchSectionUpdate = ({searchKey , setSearchKey , value , setValue , hand
             <InputFeild 
              label= "Father/Husband Name :"
              placeholder='XXXXXXXXXXXXXXXXXXXXXXX'
-            
+            value={searchedMember?.fatherName}
              readOnly
              varient='Search'
              />
