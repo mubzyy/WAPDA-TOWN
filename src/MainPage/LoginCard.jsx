@@ -21,13 +21,13 @@ const LoginCard = () => {
   return (
     <div className=" w-[92%] max-w-[430px] overflow-hidden rounded-2xl border border-white/35 bg-white/15 p-6 text-white shadow-2xl shadow-slate-950/35 backdrop-blur-xl">
       <div className="mb-6 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-yellow-200">
+        <p className=" hidden lg:block text-xs font-semibold uppercase tracking-[0.22em] text-yellow-200">
           Member Portal
         </p>
-        <h2 className="mt-2 text-3xl font-bold leading-tight">
+        <h2 className="  mt-2  text-xl lg:text-3xl font-bold leading-tight">
           Welcome to the Wapda
         </h2>
-        <p className="mt-2 text-sm text-white/75">
+        <p className=" mt-2 text-sm text-white/75">
           Sign in to manage society records and payments.
         </p>
       </div>
@@ -90,6 +90,12 @@ const LoginCard = () => {
           <p className="mt-1 min-h-5 text-sm text-yellow-200">
             {errors.password?.message}
           </p>
+
+          <div className="">
+            <button type="button" className="text-sm font-semibold text-yellow-200 transition hover:text-yellow-100">
+              Forgot your password?
+            </button>
+          </div>
         </div>
 
         {/* BUTTONS */}

@@ -95,6 +95,11 @@ const handlePaymentSubmit = (paymentData) => {
 
   //  handleSearch 
   const  handleSearch = () => {
+    if (value.trim() === "") {
+    setFilterProperty([]);
+    setSearchedMember(null);
+    return;
+  }
     console.log("button Clicked")
     const updatedFilter =  members.filter((member)=> 
    member[searchKey]

@@ -26,7 +26,7 @@ const ContentAnimation = () => {
   }, [])
   return (
      <div
-      className=" h-[600px] bg-cover bg-center transition-all duration-1000"
+      className="  h-[600px] bg-cover bg-center transition-all duration-1000"
       style={{
         backgroundImage: `url(${images[currentIndex]})`,
       }}

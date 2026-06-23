@@ -2,29 +2,53 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form'
 import InputFeild from '../ReusableComponents/InputFeild';
 
+const emptyFormValues = {
+  PropertyType: "",
+  PropertyNo: "",
+  DateOfAllottment: "",
+  Block: "",
+  LandArea: "",
+  LandAreaUnit: "",
+  CoveredArea: "",
+  CoveredAreaUnit: "",
+  DimensionL: "",
+  DimensionLUnit: "",
+  DimensionW: "",
+  DimensionWUnit: "",
+};
 
-const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, editMode, setEditFormData, setEdit, setEditMode }) => {
+
+const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, editMode, setEditFormData, setEdit, setEditMode  }) => {
 
   const {
     register,
+    trigger,
     handleSubmit,
     reset,
 
 
     formState: { errors }
   } = useForm({
-    mode: "all"
+    mode: "all",
+    defaultValues: emptyFormValues
   })
+
+  const resetFormAndEditMode = () => {
+    reset(emptyFormValues);
+    setEditFormData(null);
+    setEdit(null);
+    setEditMode(false);
+  };
 
 
   // ðŸ”¥ FILL FORM WHEN EDIT CLICKED
-  useEffect(() => {
+  useEffect(() => { 
     if (!editFormData) return;
 
     reset({
       PropertyType: editFormData.propertyType || "",
       PropertyNo: editFormData.propertyNumber || "",
-      DateOfAllottment: "",
+      DateOfAllottment: editFormData.ownerSince || "",
       Block: editFormData.block || "",
       LandArea: editFormData.landArea || "",
       LandAreaUnit: editFormData.landAreaUnit || "",
@@ -43,7 +67,7 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
   // onSubmit
   const onSubmit = (data) => {
 
-    if (editFormData) {
+    if (editMode && editFormData) {
       // ðŸ”¥ UPDATE MODE
       handleUpdateProperty({
         propertyType: data.PropertyType,
@@ -79,20 +103,18 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
       })
     }
 
-    reset()
+    resetFormAndEditMode();
+
   }
 
   //  DELETE BUTTON  ( DELETE INPUTS )
   const handleClear = () => {
-    reset();
+    resetFormAndEditMode();
   }
 
   // handleCancel 
   const handleCancel = () => {
-    reset(),
-      setEditFormData(null)
-    setEdit(null);
-    setEditMode(false)
+    resetFormAndEditMode();
   }
 
   return (
@@ -133,7 +155,7 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
         <InputFeild
           label="Date of Allottment"
           placeholder='Date of Allottment'
-          type='Date'
+          type='date'
           name="DateOfAllottment"
           register={register}
           errors={errors}
@@ -296,7 +318,7 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
 
             <button
               type="button"
-              onClick={handleClear}
+             onClick={handleClear}
               className="bg-red-500 px-4  text-xs   lg:px-6   py-2 rounded-2xl lg:text-sm font-semibold text-white hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300"
             >
               Delete

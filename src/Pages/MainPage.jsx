@@ -1,29 +1,33 @@
 import React from 'react'
 import NotificationBar from '../MainPage/NotificationBar'
-import UpdatedHeader from '../MainPage/UpdatedHeader'
-import Navbar from '../MainPage/Navbar'
 import LoginCard from '../MainPage/LoginCard'
 import ContentAnimation from '../MainPage/ContentAnimation'
 import Footer from '../MainPage/footer'
+import SignupHeader from '../MainPage/SignupHeader'
+import Navbar from "../MainPage/Navbar";
+import UpdatedHeader from '../MainPage/UpdatedHeader'
+
 
 
 const MainPage = () => {
   return (
-    <div className='bg-[#ebf1de] min-h-screen'>
+    <div className='  min-h-screen'>
 
       {/* Notification Bar */}
+    
       <NotificationBar />
 
       {/* Header */}
-      <UpdatedHeader />
+      <SignupHeader />
 
       {/* Navbar */}
-      <Navbar />
+      <Navbar/>
+      
 
       {/* MainContent */}
-      <div className="relative ">
+      <div className=" relative ">
         <ContentAnimation />
-        <div className="absolute inset-0 flex items-center justify-end  px-4 py-10  lg:px-16">
+        <div className=" absolute inset-0 flex items-center justify-end  px-4 py-10  lg:px-16">
           <LoginCard />
         </div>
       </div>

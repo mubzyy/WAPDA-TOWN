@@ -40,8 +40,10 @@ const InputFeild = ({
     register,
     rules,
     errors,
-    varient = "default"
+    varient = "default",
+
 }) => {
+    const isRHF = Boolean(register);
   return (
       <div className={wrapperStyles[varient]}>
 
@@ -53,15 +55,15 @@ const InputFeild = ({
   <div>
       <input
         className={inputStyles[varient]}
-        name={name}
-        value={value}
         onChange={onChange}
         placeholder={placeholder}
         readOnly={readOnly}
         type={type}
         disabled={disabled}
-        {...(register ? register(name, rules) : {})}
-
+          {...(isRHF
+            ? register(name, rules) // RHF mode
+            : { name, value, onChange })} // manual mode
+       
       />
 
 

@@ -4,8 +4,10 @@ import SignupNavbar from '../MainPage/SignupNavbar'
 import UpdatedHeader from '../MainPage/UpdatedHeader'
 import Wrapper from '../AllottProperty/Wrapper'
 import Footerr from '../AllottProperty/Footerr'
+import { useNavigate } from 'react-router'
 
 const AllottProperty = () => {
+  const navigate = useNavigate();
   const [properties, setProperties] = useState([
     {
       id: 1,
@@ -169,6 +171,10 @@ const  handleDeleteModal = (property) => {
   setSelectMember(property)
 }
 
+// handleBack 
+const handleBack = ()=>  {
+  navigate(-1);
+}
 
 
 
@@ -202,7 +208,9 @@ const  handleDeleteModal = (property) => {
        selectedMember = {selectedMember}
        setOpenDModal = {setOpenDModal}
       />
-      <Footerr />
+      <Footerr  
+      handleBack = {handleBack}
+      />
     </div>
   )
 }

@@ -12,15 +12,15 @@ const App = () => {
     <div>
 <MainPage/>
     </div>
-    // <Loader>
-    //   <Routes>
+    //  <Loader>
+    //    {/* <Routes>
     //     <Route path="/" element={<ManagerMember />} />
     //     <Route path="/members" element={<ManagerMember />} />
     //     <Route path="/allottproperty" element={<AllottProperty />} />
     //     <Route path="/updatepayment" element={<UpdatePayment />} />
     //     <Route path="/propertyhistory" element={<PropertyHistory />} />
     //   </Routes>
-    // </Loader>
+    // </Loader>  */}
   );
 };
 
