@@ -218,7 +218,7 @@ const ManagerMember = () => {
 
   // ================= UI =================
   return (
-    <div className='bg-[#ebf1de]  min-h-screen border-b'>
+    <div className='bg-[#ebf1de]   min-h-screen border-b'>
 
       <NotificationBar />
       <UpdatedHeader />

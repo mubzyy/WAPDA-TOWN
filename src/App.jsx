@@ -9,18 +9,18 @@ import Loader from "./MainPage/Loader";
 
 const App = () => {
   return (  
-    <div>
-<MainPage/>
-    </div>
-    //  <Loader>
-    //    {/* <Routes>
-    //     <Route path="/" element={<ManagerMember />} />
-    //     <Route path="/members" element={<ManagerMember />} />
-    //     <Route path="/allottproperty" element={<AllottProperty />} />
-    //     <Route path="/updatepayment" element={<UpdatePayment />} />
-    //     <Route path="/propertyhistory" element={<PropertyHistory />} />
-    //   </Routes>
-    // </Loader>  */}
+//     <div>
+// <MainPage/>
+//     </div>
+     <Loader>
+        <Routes>
+        <Route path="/" element={<ManagerMember />} />
+        <Route path="/members" element={<ManagerMember />} />
+        <Route path="/allottproperty" element={<AllottProperty />} />
+        <Route path="/updatepayment" element={<UpdatePayment />} />
+        <Route path="/propertyhistory" element={<PropertyHistory />} />
+      </Routes>
+    </Loader> 
   );
 };
 

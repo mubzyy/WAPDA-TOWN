@@ -12,7 +12,7 @@ const TableSection = ({ currentData, startIndex, toggleStatus , members , handle
     {/* Table */}
     <div className='  rounded-xl m-6 shadow border  overflow-x-auto  '>
    {/* Table Header */}
-   <div className='bg-[#233494]   min-w-[1000px] h-8 grid grid-cols-[0.5fr_1fr_2fr_2fr_1fr_1fr_1fr_1fr] p-2 pr-8 text-white font-semibold  text-xs xl:text-sm  '>
+   <div className='bg-[#233494]   min-w-[1000px] h-8 grid grid-cols-8 p-2 pr-8 text-white font-semibold  text-xs xl:text-sm  '>
   
   <div>Sr.</div>
   <div>Membership No.</div>
@@ -29,7 +29,7 @@ const TableSection = ({ currentData, startIndex, toggleStatus , members , handle
 {currentData.map((member , index)=>(
     <div
     key={member.id}
-    className="grid grid-cols-[0.5fr_1fr_2fr_2fr_1fr_0.5fr_1fr_1fr] p-3 pr-8 border-b hover:bg-gray-200 bg-white  gap-x-4   "
+    className="grid grid-cols-8 p-3 pr-8 border-b hover:bg-gray-200 bg-white  gap-x-4   "
     >
         <div className='text-xs  xl:text-base'>{startIndex + index + 1}</div>
         <div className='text-xs  xl:text-base'>{member.membershipNo}</div>

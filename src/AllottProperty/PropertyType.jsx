@@ -205,7 +205,10 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
               register={register}
               errors={errors}
               rules={{
-                required: "Unit is required"
+                required: "Unit is required",
+        validate: (value) =>
+      ["ft", "meter", "yard","Marla"].includes(value.toLowerCase().trim()) ||
+      "Only Ft, Meter  or Yard  are allowed",
               }}
               varient='unit'
             />
@@ -235,7 +238,10 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
             register={register}
             errors={errors}
             rules={{
-              required: "Unit is required"
+              required: "Unit is required",
+      validate: (value) =>
+      ["ft", "meter", "yard"].includes(value.toLowerCase().trim()) ||
+      "Only Ft, Meter or Yard are allowed",
             }}
             varient='unit'
           />
@@ -266,7 +272,11 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
             register={register}
             errors={errors}
             rules={{
-              required: "Unit is required"
+              required: "Unit is required",
+                 validate: (value) =>
+      ["ft", "meter", "yard"].includes(value.toLowerCase().trim()) ||
+      "Only Ft, Meter or Yard are allowed",
+          
             }}
             varient='unit'
           />
@@ -284,7 +294,7 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
             register={register}
             errors={errors}
             rules={{
-              required: "Dimension W is required"
+              required: "Dimension W is required",
             }}
             varient='basic'
           />
@@ -299,8 +309,12 @@ const PropertyType = ({ handleAddProperty, editFormData, handleUpdateProperty, e
             register={register}
             errors={errors}
             rules={{
-              required: "Unit is required"
+              required: "Unit is required",
+                validate: (value) =>
+      ["ft", "meter", "yard"].includes(value.toLowerCase().trim()) ||
+      "Only Ft, Meter or Yard are allowed",
             }}
+              
             varient='unit'
           />
 
