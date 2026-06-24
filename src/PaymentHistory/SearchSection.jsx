@@ -16,7 +16,7 @@ const SearchSection = ({
         </div>
 
         {/* Search Controls */}
-        <div className='flex flex-col lg:flex-row  h-26 mb-4 lg:items-center lg:gap-16  p-4  '>
+         <div className='flex flex-col mt-2 lg:flex-row lg:gap-18  h-26 mb-4 lg:items-center xl:gap-42  mx-2  '>
           
           {/* Search Key */}
        <div className='mb-2  lg:m-0'> 
@@ -37,7 +37,7 @@ const SearchSection = ({
           </div>
 
           {/* Value */}
-          <div className='flex  gap-3 items-center mb-2 lg:mb-0 ' >
+                     <div className='flex mx-0.5  gap-3 items-center mb-2 lg:mb-0 ' >
             <label className='font-semibold  mx-2 text-xs  lg:text-base '>Property No.</label>
 
             <input
