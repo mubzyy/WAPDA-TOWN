@@ -58,19 +58,20 @@ const OpenPaymentModal = ({ isOpen, onClose, onSubmit, memberData }) => {
     const isFullPayment = received >= totalDue
 
     return (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[99999] animate-fade-in">
-            <div className="w-[750px] max-h-[90vh] overflow-y-auto bg-gradient-to-br bg-[#d6dbcb] rounded-3xl shadow-2xl p-8 animate-slide-up">
+        <div className="fixed inset-0 bg-black/50 flex items-end sm:items-center justify-center z-[99999] animate-fade-in p-3 sm:p-4">
+            <div className="w-full max-w-[750px] max-h-[calc(100dvh-1.5rem)] sm:max-h-[90vh] overflow-y-auto bg-gradient-to-br bg-[#d6dbcb] rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 lg:p-8 animate-slide-up">
                 {/* Header with Gradient */}
-                <div className="mb-8 flex justify-between items-center border-b-2 border-green-800 pb-6 bg-[#c4d3a5]  -m-8 mb-8 px-8 py-6 rounded-t-1xl">
-                    <div>
-                        <h2 className="text-3xl font-bold bg-blue-900 bg-clip-text text-transparent ">
+                <div className="flex justify-between items-start gap-4 border-b-2 border-green-800 bg-[#c4d3a5] -m-4 sm:-m-6 lg:-m-8 mb-6 sm:mb-8 px-4 sm:px-6 lg:px-8 py-4 sm:py-6 rounded-t-2xl sm:rounded-t-3xl">
+                    <div className="min-w-0">
+                        <h2 className="text-2xl sm:text-3xl font-bold bg-blue-900 bg-clip-text text-transparent leading-tight">
                             Payment Processing
                         </h2>
-                        <p className="text-sm font-semibold text-blue-900 mt-1">Complete payment details securely</p>
+                        <p className="text-xs sm:text-sm font-semibold text-blue-900 mt-1">Complete payment details securely</p>
                     </div>
                     <button
                         onClick={onClose}
-                        className="text-gray-400 hover:text-red-500 text-3xl transition-all duration-200 hover:scale-110"
+                        className="shrink-0 text-gray-500 hover:text-red-500 text-2xl sm:text-3xl transition-all duration-200 hover:scale-110 p-1"
+                        aria-label="Close payment modal"
                     >
                         <FaTimes />
                     </button>
@@ -78,24 +79,24 @@ const OpenPaymentModal = ({ isOpen, onClose, onSubmit, memberData }) => {
 
                 {/* Member Info Display with Animation */}
                 {memberData && (
-                    <div className=" bg-[#d5e6b4] p-6 rounded-2xl mb-8 border-2 border-green-800 shadow-sm animate-fade-in-delayed">
+                    <div className=" bg-[#d5e6b4] p-4 sm:p-6 rounded-2xl mb-6 sm:mb-8 border-2 border-green-800 shadow-sm animate-fade-in-delayed">
                         <h3 className="text-sm font-semibold text-gray-700 mb-4 uppercase tracking-wider">Member Information</h3>
-                        <div className="grid grid-cols-2 gap-6">
-                            <div className="p-4 bg-[#a0af81] rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6">
+                            <div className="min-w-0 p-3 sm:p-4 bg-[#a0af81] rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 <p className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-1">Membership No.</p>
-                                <p className="text-lg font-bold text-gray-800">{memberData.membershipNo}</p>
+                                <p className="text-base sm:text-lg font-bold text-gray-800 break-words">{memberData.membershipNo}</p>
                             </div>
-                            <div className="p-4 bg-[#a0af81]  rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div className="min-w-0 p-3 sm:p-4 bg-[#a0af81]  rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 <p className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-1">Property No.</p>
-                                <p className="text-lg font-bold text-gray-800">{memberData.propertyNumber}</p>
+                                <p className="text-base sm:text-lg font-bold text-gray-800 break-words">{memberData.propertyNumber}</p>
                             </div>
-                            <div className="p-4 bg-[#a0af81]  rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                            <div className="min-w-0 p-3 sm:p-4 bg-[#a0af81]  rounded-xl shadow-sm hover:shadow-md transition-shadow">
                                 <p className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-1">Property Type</p>
-                                <p className="text-lg font-bold text-blue-900">{memberData.propertyType}</p>
+                                <p className="text-base sm:text-lg font-bold text-blue-900 break-words">{memberData.propertyType}</p>
                             </div>
-                            <div className="p-4 bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-sm hover:shadow-md transition-shadow border-2 border-red-200">
+                            <div className="min-w-0 p-3 sm:p-4 bg-gradient-to-br from-red-50 to-orange-50 rounded-xl shadow-sm hover:shadow-md transition-shadow border-2 border-red-200">
                                 <p className="text-xs font-semibold text-gray-900 uppercase tracking-wide mb-1">Amount Due</p>
-                                <p className="text-2xl font-bold text-red-600">Rs. {totalDue.toLocaleString()}</p>
+                                <p className="text-xl sm:text-2xl font-bold text-red-600 break-words">Rs. {totalDue.toLocaleString()}</p>
                             </div>
                         </div>
 
@@ -123,18 +124,18 @@ const OpenPaymentModal = ({ isOpen, onClose, onSubmit, memberData }) => {
                         </div>
 
                         {/* Balance Information */}
-                        <div className="grid grid-cols-3 gap-4 mt-6">
-                            <div className="bg-white p-3 rounded-lg text-center shadow-sm">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mt-6">
+                            <div className="min-w-0 bg-white p-3 rounded-lg text-center shadow-sm">
                                 <p className="text-xs text-gray-600 mb-1">Received</p>
-                                <p className="text-lg font-bold text-green-600">Rs. {received.toLocaleString()}</p>
+                                <p className="text-base sm:text-lg font-bold text-green-600 break-words">Rs. {received.toLocaleString()}</p>
                             </div>
-                            <div className="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div className="min-w-0 bg-white p-3 rounded-lg text-center shadow-sm">
                                 <p className="text-xs text-gray-600 mb-1">Remaining</p>
-                                <p className="text-lg font-bold text-orange-600">Rs. {remainingBalance.toLocaleString()}</p>
+                                <p className="text-base sm:text-lg font-bold text-orange-600 break-words">Rs. {remainingBalance.toLocaleString()}</p>
                             </div>
-                            <div className="bg-white p-3 rounded-lg text-center shadow-sm">
+                            <div className="min-w-0 bg-white p-3 rounded-lg text-center shadow-sm">
                                 <p className="text-xs text-gray-600 mb-1">Total Due</p>
-                                <p className="text-lg font-bold text-blue-600">Rs. {totalDue.toLocaleString()}</p>
+                                <p className="text-base sm:text-lg font-bold text-blue-600 break-words">Rs. {totalDue.toLocaleString()}</p>
                             </div>
                         </div>
                     </div>
@@ -142,7 +143,7 @@ const OpenPaymentModal = ({ isOpen, onClose, onSubmit, memberData }) => {
 
                 {/* Form */}
                 <form onSubmit={handleSubmit(handleFormSubmit)}>
-                    <div className="space-y-5 max-h-[400px] overflow-y-auto pr-2">
+                    <div className="space-y-4 sm:space-y-5 md:max-h-[400px] md:overflow-y-auto md:pr-2">
                         {/* Challan No */}
                         <div className="group">
                             <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
@@ -297,18 +298,18 @@ const OpenPaymentModal = ({ isOpen, onClose, onSubmit, memberData }) => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-4 mt-8 pt-6 border-t-2 border-gray-200">
+                    <div className="flex flex-col-reverse sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8 pt-5 sm:pt-6 border-t-2 border-gray-200">
                         <button
                             type="button"
                             onClick={onClose}
-                            className="flex-1 px-4 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-xl transition-all duration-200 hover:scale-105 active:scale-95"
+                            className="w-full sm:flex-1 px-4 py-3 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold rounded-xl transition-all duration-200 hover:scale-105 active:scale-95"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={loading || !isValid}
-                            className="flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-400 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                            className="w-full sm:flex-1 px-4 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-400 text-white font-semibold rounded-xl transition-all duration-200 hover:scale-105 active:scale-95 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                         >
                             {loading ? (
                                 <>
