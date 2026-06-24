@@ -5,10 +5,10 @@ import TransferProperty from './Pages/TransferProperty'
 const App = () => {
   return (
     <div>
-      {/* <ManageMemberAction /> */}
+       
       {/* <Login/> */}
-      <TransferProperty/>
-     
+      {/* <TransferProperty/> */}
+     <ManageMemberAction />
 
     </div>
   )

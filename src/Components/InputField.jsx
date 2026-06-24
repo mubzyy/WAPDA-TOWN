@@ -1,24 +1,33 @@
 const wrapperStyles = {
-    basic : "flex w-full flex-col gap-1 sm:w-auto sm:flex-row sm:items-center sm:gap-0",
+    basic : "flex w-full flex-col gap-1 sm:w-auto sm:flex-row sm:items-center sm:gap-0 no-spinner",
      Allott : "flex flex-col",
      Search : "flex w-full flex-col gap-1 sm:flex-row sm:items-center sm:gap-0",
-     unit : "flex"
+     unit : "flex",
+     newStyle: "flex w-full flex-col gap-1 sm:w-auto sm:flex-row sm:items-center sm:gap-0 no-spinner",
+     email: "flex w-full flex-col gap-1 lg:w-auto lg:flex-row lg:items-center lg:gap-0 no-spinner",
+     short:"flex w-full flex-col gap-1 sm:w-auto sm:flex-row sm:items-center sm:gap-2 no-spinner"
  
 }
 
 const labelStyles = {
-  basic : "font-semibold sm:w-42 sm:shrink-0",
+  basic : "font-semibold sm:w-46 sm:shrink-0 no-spinner",
   Allott :  "font-semibold w-42",
   Search  : "font-semibold",
-  unit : ""
+  unit : "",
+  newStyle: "font-semibold w-4 sm:w-4 sm:shrink-0 no-spinner ",
+  email:"font-semibold lg:w-46 lg:shrink-0 no-spinner",
+  short:"font-semibold sm:w-16 sm:shrink-0 no-spinner"
 
 }
 
 const inputStyles = {
-basic : " outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-full sm:w-80",
+basic : " outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-full sm:w-80 no-spinner",
 Allott : "outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80",
 Search : "outline-none bg-[#9daf77] rounded-lg px-2  py-1 text-sm w-full sm:mx-4 sm:w-64",
-unit : "outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-24 sm:w-36"
+unit : "outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-24 sm:w-36",
+newStyle : "outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-36 sm:w-48 no-spinner",
+ email :"outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-full lg:w-140 no-spinner",
+short:"outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-full sm:w-42 no-spinner"
 }
 
 const InputFeild = ({

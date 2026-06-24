@@ -37,18 +37,19 @@ const defaultValues = {
 };
 
 const inputClass =
-  "h-5 w-full border border-black bg-white px-1.5 text-[12px] outline-none";
+  "h-5 min-w-0 w-full border border-black bg-white px-1.5 text-[12px] outline-none";
 
 const selectClass =
-  "h-5 w-full border border-black bg-white px-1 text-[12px] outline-none";
+  "h-5 min-w-0 w-full border border-black bg-white px-1 text-[12px] outline-none";
 
-const shortFieldClass = "w-[126px]";
-const mediumFieldClass = "w-[356px]";
-const longFieldClass = "w-[572px]";
-const documentFieldClass = "w-[268px]";
-const fileFieldClass = "w-[112px]";
-const bankFieldClass = "w-[324px]";
-const labelWidthClass = "w-[168px]";
+const formRowClass = "flex flex-wrap items-center gap-2";
+const shortFieldClass = "w-full sm:w-[126px]";
+const mediumFieldClass = "w-full sm:w-[356px]";
+const longFieldClass = "w-full xl:w-[572px]";
+const documentFieldClass = "w-full sm:w-[268px]";
+const fileFieldClass = "w-full sm:w-[112px]";
+const bankFieldClass = "w-full sm:w-[324px]";
+const labelWidthClass = "w-full sm:w-[168px]";
 
 const sectionLabelClass =
   "flex items-center justify-center border border-black px-0.5 py-2";
@@ -256,22 +257,22 @@ const ManageMemberSearch = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#eef0df] p-3 text-slate-900">
+    <div className="min-h-screen overflow-x-hidden bg-[#eef0df] p-2 text-slate-900 sm:p-3">
       <div className="w-full border border-black bg-[#eef0df]">
         <div className="bg-[#244f86] px-1.5 py-0.5 text-[13px] font-normal text-white">
           Manage Member - Serach
         </div>
 
-        <div className="grid gap-3 px-3 py-3 lg:grid-cols-[1fr_148px]">
-          <div className="space-y-3">
+        <div className="grid min-w-0 gap-3 px-2 py-3 sm:px-3 lg:grid-cols-[minmax(0,1fr)_148px]">
+          <div className="min-w-0 space-y-3">
             <section className="grid grid-cols-[26px_minmax(0,1fr)] gap-2">
               <SectionHeader
                 title="Member's Particulars"
                 colorClass="bg-[#fff000]"
               />
 
-              <div className="grid gap-1 text-[12px] leading-none">
-                <div className="flex items-center gap-2">
+              <div className="grid min-w-0 gap-1 text-[12px] leading-none">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Membership No.
                   </label>
@@ -282,7 +283,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Membership Date
                   </label>
@@ -293,7 +294,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>Name</label>
                   <input
                     className={`${inputClass} ${mediumFieldClass}`}
@@ -301,7 +302,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Father/Husband's Name
                   </label>
@@ -311,7 +312,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Employee's Status
                   </label>
@@ -325,7 +326,7 @@ const ManageMemberSearch = () => {
                   </select>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Domicile
                   </label>
@@ -335,7 +336,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Designation
                   </label>
@@ -345,7 +346,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>BPS</label>
                   <input
                     className={`${inputClass} ${shortFieldClass}`}
@@ -353,7 +354,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Identity Type
                   </label>
@@ -365,14 +366,14 @@ const ManageMemberSearch = () => {
                     <option>Passport</option>
                     <option>Other</option>
                   </select>
-                  <span className="ml-3 shrink-0">Identity Number</span>
+                  <span className="shrink-0 sm:ml-3">Identity Number</span>
                   <input
                     className={`${inputClass} ${shortFieldClass}`}
                     {...register("identityNumber")}
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Permanent Address
                   </label>
@@ -387,7 +388,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Present Address
                   </label>
@@ -402,7 +403,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Service Id. Card No.
                   </label>
@@ -412,7 +413,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Present Place of Posting
                   </label>
@@ -422,7 +423,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Contact No.
                   </label>
@@ -443,7 +444,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     E-Mail Address
                   </label>
@@ -458,8 +459,8 @@ const ManageMemberSearch = () => {
             <section className="grid grid-cols-[26px_minmax(0,1fr)] gap-2">
               <SectionHeader title="Nominee" colorClass="bg-[#f7d0b5]" />
 
-              <div className="grid gap-1 text-[12px] leading-none">
-                <div className="flex items-center gap-2">
+              <div className="grid min-w-0 gap-1 text-[12px] leading-none">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Name of Nominee
                   </label>
@@ -469,7 +470,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Father/Husband's Name
                   </label>
@@ -479,7 +480,7 @@ const ManageMemberSearch = () => {
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Identity Type
                   </label>
@@ -491,14 +492,14 @@ const ManageMemberSearch = () => {
                     <option>Passport</option>
                     <option>Other</option>
                   </select>
-                  <span className="ml-3 shrink-0">Identity Number</span>
+                  <span className="shrink-0 sm:ml-3">Identity Number</span>
                   <input
                     className={`${inputClass} ${shortFieldClass}`}
                     {...register("nomineeIdentityNumber")}
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Relationship
                   </label>
@@ -513,8 +514,8 @@ const ManageMemberSearch = () => {
             <section className="grid grid-cols-[26px_minmax(0,1fr)] gap-2">
               <SectionHeader title="Payment" colorClass="bg-[#d7e79f]" />
 
-              <div className="grid gap-1 text-[12px] leading-none">
-                <div className="flex items-center gap-2">
+              <div className="grid min-w-0 gap-1 text-[12px] leading-none">
+                <div className={formRowClass}>
                   <label className={`${labelWidthClass} shrink-0`}>
                     Payment Made
                   </label>
@@ -525,7 +526,7 @@ const ManageMemberSearch = () => {
                     <option>No</option>
                     <option>Yes</option>
                   </select>
-                  <span className="ml-3 shrink-0">Currency</span>
+                  <span className="shrink-0 sm:ml-3">Currency</span>
                   <input
                     className={`${inputClass} ${shortFieldClass}`}
                     {...register("currency")}
@@ -534,7 +535,7 @@ const ManageMemberSearch = () => {
 
                 {paymentMade === "Yes" ? (
                   <>
-                    <div className="flex items-center gap-2">
+                    <div className={formRowClass}>
                       <label className={`${labelWidthClass} shrink-0`}>
                         Payment Mode
                       </label>
@@ -544,7 +545,7 @@ const ManageMemberSearch = () => {
                       />
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className={formRowClass}>
                       <label className={`${labelWidthClass} shrink-0`}>
                         Payment Instrument No.
                       </label>
@@ -552,7 +553,7 @@ const ManageMemberSearch = () => {
                         className={`${inputClass} ${shortFieldClass}`}
                         {...register("paymentInstrumentNo")}
                       />
-                      <span className="ml-3 shrink-0">Bank</span>
+                      <span className="shrink-0 sm:ml-3">Bank</span>
                       <input
                         className={`${inputClass} ${bankFieldClass}`}
                         {...register("bank")}
@@ -566,8 +567,8 @@ const ManageMemberSearch = () => {
             <section className="grid grid-cols-[26px_minmax(0,1fr)] gap-2">
               <SectionHeader title="Attachments" colorClass="bg-[#f2d0a3]" />
 
-              <div className="grid gap-1 text-[12px] leading-none">
-                <div className="flex items-center gap-1.5">
+              <div className="grid min-w-0 gap-1 text-[12px] leading-none">
+                <div className="flex flex-wrap items-center gap-1.5">
                   <label className={`${labelWidthClass} shrink-0`}>
                     Attachment Type
                   </label>
@@ -595,9 +596,9 @@ const ManageMemberSearch = () => {
                   </button>
                 </div>
 
-                <div className="flex gap-2">
-                  <div className="overflow-hidden border border-black bg-white">
-                    <table className="w-full border-collapse text-[12px] text-slate-900">
+                <div className="flex min-w-0 flex-wrap gap-2">
+                  <div className="max-w-full overflow-x-auto border border-black bg-white">
+                    <table className="min-w-[420px] w-full border-collapse text-[12px] text-slate-900">
                       <thead>
                         <tr className="bg-white">
                           <th className="border border-black px-2 py-1 text-left font-normal">
@@ -644,7 +645,7 @@ const ManageMemberSearch = () => {
                     </table>
                   </div>
 
-                  <div className="w-[195px] overflow-hidden border border-black bg-white">
+                  <div className="w-full overflow-x-auto border border-black bg-white sm:w-[195px]">
                     <table className="w-full border-collapse text-[12px] text-slate-900">
                       <thead>
                         <tr>

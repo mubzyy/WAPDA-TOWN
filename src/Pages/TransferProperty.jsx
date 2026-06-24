@@ -106,13 +106,13 @@ const propertyFields = [
     label: "Land Area",
     name: "landArea",
     value: propertyDetails?.landArea,
-    unit: "Feet"
+    unit: "Kanal"
 },
 {
   label: "Covered Area",
   name: "coveredArea",
   value: propertyDetails?.coveredArea,
-  unit: "Feet"
+  unit: "Sq Ft"
 },
 {
     label: "Dimension (L)",
@@ -207,7 +207,8 @@ const handleTransfer = () => {
   const validationErrors = {};
 
   if(!propertyDetails){
-    alert("Search Property First");
+    validationErrors.propertyNo = "Please search and select a property first";
+    setErrors(validationErrors);
     return;
   }
 
@@ -237,14 +238,41 @@ if (!transferData.instrumentNo) {
     "Please enter PIN";
 }
 if (Object.keys(validationErrors).length > 0) {
-  setErrors({
-    ...errors,
-    ...validationErrors,
-  });
-
+  setErrors(validationErrors);
   return;
 }
+
+const updatedOwner = {
+  membershipNo: newOwner.membershipNo,
+  name: newOwner.name,
+  fatherName: newOwner.fatherName,
+  cnic: newOwner.cnic,
+};
+
+setCurrentOwner(updatedOwner);
+setPropertyDetails({
+  ...propertyDetails,
+  owner: updatedOwner,
+});
+setNewOwner(initialNewOwner);
+setTransferData(initialTransferData);
+setPin("");
+setErrors({});
+window.alert("Property transferred successfully.");
 }
+
+const handleCancel = () => {
+  setSearchData({
+    propertyType: "",
+    propertyNo: "",
+  });
+  setPropertyDetails(null);
+  setCurrentOwner(null);
+  setTransferData(initialTransferData);
+  setNewOwner(initialNewOwner);
+  setPin("");
+  setErrors({});
+};
 
 const handleMemberSearch = () => {
   const validationErrors = {};
@@ -284,16 +312,16 @@ if (Object.keys(validationErrors).length > 0) {
 
   setNewOwner(member);
 };
-const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outline-none w-full sm:w-auto"
+const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outline-none w-full sm:w-auto no-spinner"
 
   return (
     
-    <div>
+    <div className=" bg-[#ebf1de] min-h-screen"> 
         <NotificationBar />
         <Header />
         <Navbar />
-        <div className="w-full min-h-screen border p-3 sm:p-4">
-        <div className='border min-h-screen '>
+        <div className="w-full min-h-screen border p-3 sm:p-4 ">
+        <div className='border border-2xl min-h-screen overflow-hidden '>
             <div className="border-b-2">
                  <p className='w-full text-white bg-blue-700 px-4'>Transfer Property</p>
                 </div>
@@ -406,8 +434,6 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
   
   </div>
     </div>
-
-  
    {/* Transfer Details  */}
     <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
   <label className='font-semibold'>Transfer Date:</label>
@@ -483,12 +509,15 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
 )}
 </div>
    {/* Property Transferer Details */}
-<div className="ml-0 flex w-full max-w-3xl flex-col sm:ml-2 gap-2">
+<div className="ml-0 flex w-full  sm:ml-2  justify-between">
+  <div className="flex flex-col items-center gap-4">
+
   <p className="text-lg font-bold sm:text-xl">
     PROPERTY TO BE TRANSFERRED FROM
   </p>
-
+      
   <div className="flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4">
+    
     <label className="font-semibold sm:w-40 sm:shrink-0">
       Membership No:
     </label>
@@ -496,7 +525,7 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
       type="text"
       value={currentOwner?.membershipNo || ""}
       readOnly
-      className={InputStyle + " w-full border  sm:w-auto"}
+      className={InputStyle + " w-full  sm:w-auto"}
     />
   </div>
 
@@ -508,7 +537,7 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
       type="text"
       value={currentOwner?.name || ""}
       readOnly
-      className={InputStyle + " w-full border  sm:w-auto"}
+      className={InputStyle + " w-full  sm:w-auto"}
     />
   </div>
 
@@ -520,7 +549,7 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
       type="text"
       value={currentOwner?.fatherName || ""}
       readOnly
-      className={InputStyle + " w-full border  sm:w-auto"}
+      className={InputStyle + " w-full  sm:w-auto"}
     />
   </div>
 
@@ -532,9 +561,29 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
       type="text"
       value={currentOwner?.cnic || ""}
       readOnly
-      className={InputStyle + " w-full border  sm:w-auto"}
+      className={InputStyle + " w-full sm:w-auto"}
     />
   </div>
+      </div>
+  <div className="w-34 h-34 border mt-10">
+
+  {currentOwner?.photo ? (
+
+    <img
+      src={currentOwner.photo}
+      alt="Current Owner"
+      className="w-full h-full object-cover"
+    />
+
+  ) : (
+
+    <span className="text-gray-500 flex items-center justify-center h-full">
+      No Photo
+    </span>
+
+  )}
+
+</div>
 </div>
    {/* Property Transferee Details */}
 <div className='ml-0 flex w-full max-w-3xl flex-col sm:ml-2 gap-2'>
@@ -619,11 +668,11 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
   </p>
 </div>
 {/* BUTTONS */}
-<div className="flex flex-col sm:block">
-<button className='bg-red-600 text-white px-4 py-2 rounded m-2'>
+<div className="flex flex-col sm:block"> 
+<button type="button" className='bg-red-600 text-white px-4 py-2 rounded m-2' onClick={handleCancel}>
   Cancel Process
 </button>
-<button className='bg-green-600 text-white px-4 py-2 rounded m-2' onClick={handleTransfer}>
+<button type="button" className='bg-green-600 text-white px-4 py-2 rounded m-2' onClick={handleTransfer}>
   Transfer Property
 </button>
   </div>
