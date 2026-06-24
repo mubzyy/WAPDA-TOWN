@@ -64,7 +64,7 @@ const TableSection = ({ currentData, startIndex, toggleStatus , members , handle
 ))}
     {(!currentData || currentData.length === 0) && (
           <div className="text-center text-xs x l:text-base py-8 text-gray-500">
-            No properties found
+            No Member found
           </div>
         )}
    </div>
