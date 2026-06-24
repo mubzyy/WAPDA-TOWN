@@ -88,13 +88,13 @@ const PendingDues = ({ property }) => {
         </form>
       </div>
       {/* PENDING DUES IF ANY  */}
-      <div className='border-2  rounded-4xl  lg:rounded-2xl bg-red-600 text-xs lg:text-base' >
+      <div className='border-2  rounded-2xl  lg:rounded-2xl bg-red-600 text-xs lg:text-base' >
         {/* UPPER PART  */}
         <div className=' flex justify-center items-center border-b-2 h-8'>
           <p className='text-white text-xs lg:text-sm  font-bold '>PENDING DUES, IF ANY</p>
         </div>
         {/* LOWER  PART  */}
-        <div className= ' m-6  text-white space-y-4'>
+        <div className= ' m-6  text-white space-y-2'>
        <div className="flex flex-col lg:flex-row lg:justify-between">
             <p >1.Orignal Amount Due</p>
             <p >{property ? formatAmount(property.originalAmountDue) : "0"}</p>
