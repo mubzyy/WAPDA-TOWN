@@ -20,7 +20,7 @@ const SearchSection = ({searchKey,setSearchKey,searchValue,setSearchValue,handle
             </div>
            
          {/* Search Controls */}
-            <div className='flex flex-col lg:flex-row md:flex-row md:items-center   h-26 mb-4 lg:items-center lg:gap-8  p-4  '>
+            <div className='flex flex-col lg:flex-row md:flex-row md:items-center mx-1   h-26 mb-4 lg:items-center lg:gap-8  p-4  '>
                 {/* Search Key */}
                 <div className='mb-2  md-0 lg:m-0'> 
                     <span className='mx-2 font-semibold  text-xs lg:text-base  '>SearchKey :  </span>
@@ -48,7 +48,7 @@ const SearchSection = ({searchKey,setSearchKey,searchValue,setSearchValue,handle
                 />
             </div>
             {/* Action Button */}
-            <div className='flex ml-20 lg:mb-0  gap-2 md:gap-4 lg:gap-6' >
+            <div className='flex ml-20 lg:ml-8 lg:mb-0  gap-2 md:gap-4 lg:gap-2' >
                 <button   onClick={handleSearch} className={buttonStylePrimary}>Search</button>
                 <button onClick={handleAdd} className={buttonStyleSecondary }>Add New</button>
             </div>

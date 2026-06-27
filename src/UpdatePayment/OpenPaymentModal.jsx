@@ -189,11 +189,16 @@ const OpenPaymentModal = ({ isOpen, onClose, onSubmit, memberData }) => {
                                     min: {
                                         value: 1,
                                         message: "Amount must be greater than 0"
+                                    },
+                                    max : {
+                                        value : totalDue,
+                                        message: `Amount cannot exceed Rs. ${totalDue}`
                                     }
+                                
                                 })}
                                 type="number"
                                 placeholder="Enter amount received"
-                                className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-200 ${
+                                className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-200 no-spinner ${
                                     errors.amountReceived
                                         ? "border-red-500 bg-red-50 focus:ring-2 focus:ring-red-300"
                                         : "border-gray-300 bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
@@ -265,8 +270,10 @@ const OpenPaymentModal = ({ isOpen, onClose, onSubmit, memberData }) => {
                             <input
                                 {...register("paymentDate", {
                                     required: "Payment date is required"
-                                })}
+                                   })}
                                 type="date"
+                              min="2026-06-25"
+                              max="2026-06-27"
                                 className={`w-full px-4 py-3 rounded-lg border-2 transition-all duration-200 ${
                                     errors.paymentDate
                                         ? "border-red-500 bg-red-50 focus:ring-2 focus:ring-red-300"

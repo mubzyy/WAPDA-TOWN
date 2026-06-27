@@ -13,7 +13,7 @@ const PropertyTable = ({filterProperty  , handleEdit , handleDeleteModal}) => {
       <div className="overflow-x-auto">
         <div className="min-w-[1000px]">
       {/* HEADER */}
-      <div className="grid grid-cols-9  xl:text-base text-xs bg-blue-900 text-white font-semibold p-2  xl:p-3   ">
+      <div className="grid grid-cols-[0.5fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr]  xl:text-base text-xs bg-blue-900 text-white font-semibold p-2  xl:p-3   ">
         <div>Sr.</div>
         <div>Membership No.</div>
         <div>Property Type</div>
@@ -26,11 +26,11 @@ const PropertyTable = ({filterProperty  , handleEdit , handleDeleteModal}) => {
       </div>
 
       {/* BODY */}
-      <div className="bg-white">
+      <div >
         {filterProperty?.map((member, index) => (
           <div
             key={member.id}
-            className="grid grid-cols-9 p-3  xl:text-base text-xs border-b hover:bg-[#f5f5f5] transition-colors duration-200"
+            className="grid grid-cols-[0.5fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr]   p-3  xl:text-base text-xs border-b odd:bg-white even:bg-gray-200 hover:bg-[#f5f5f5] transition-colors duration-200"
           >
             <div>{index + 1}</div>
             <div>{member.membershipNo}</div>

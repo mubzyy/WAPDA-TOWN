@@ -11,7 +11,7 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
    <div className='overflow-x-auto'>
     <div className='min-w-[1000px]'>
         {/* Header */}
-      <div className="grid  grid-cols-9   bg-blue-900 xl:text-base text-xs text-white  p-2">
+      <div className="grid grid-cols-[0.5fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr]   bg-blue-900 xl:text-base text-xs text-white  p-2">
         <div>Sr.</div>
         <div>Membership No.</div>
         <div>Property Type</div>
@@ -28,7 +28,7 @@ const AmountDueTable = ({ members, setMembers , filterMembers , totalAmountDue  
         {filterMembers.map((member, index) => (
           <div
             key={member.id}
-            className="grid grid-cols-9   px-2 xl:text-base text-xs bg-white space-y-2 border-b py-2 hover:bg-gray-200 transition-colors duration-200"
+            className="grid grid-cols-[0.5fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr_1fr]   px-2 xl:text-base text-xs odd:bg-white even:bg-gray-200 space-y-2 border-b py-2 hover:bg-gray-200 transition-colors duration-200"
           >
             <div>{index + 1}</div>
             <div>{member.membershipNo}</div>

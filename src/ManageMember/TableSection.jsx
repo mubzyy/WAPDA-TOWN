@@ -6,37 +6,39 @@ import { TbHomeEdit } from "react-icons/tb";
 
 
 const TableSection = ({ currentData, startIndex, toggleStatus , members , handleView , handleEdit , handleDelete , handlePrint}) => {
+  const tableColumns = '56px 150px 190px 180px 140px 130px 110px 150px';
  
   return (
     <div className=" lg:overflow-visible ">
     {/* Table */}
-    <div className='  rounded-xl m-6 shadow border  overflow-x-auto  '>
+    <div className='rounded-xl m-6 shadow border overflow-x-auto'>
    {/* Table Header */}
-   <div className='bg-[#233494]   min-w-[1000px] h-8 grid grid-cols-8 p-2 pr-8 text-white font-semibold  text-xs xl:text-sm  '>
+   <div style={{ gridTemplateColumns: tableColumns }} className='bg-[#233494] min-w-[1220px] h-8 grid gap-x-3 p-2 pr-8  text-white font-semibold text-xs xl:text-sm'>
   
-  <div>Sr.</div>
-  <div>Membership No.</div>
-  <div>CNIC/PP No./NTN</div>
-  <div>Name of Member</div>
-  <div>Registeration Dt</div>
-  <div>No. of Properties</div>
-  <div>Status</div>
-  <div>Action</div>
+  <div >Sr.</div>
+  <div >Membership No.</div>
+  <div >CNIC/PP No./NTN</div>
+  <div >Name of Member</div>
+  <div >Registeration Dt</div>
+  <div >No. of Properties</div>
+  <div >Status</div>
+  <div >Action</div>
 
    </div>
    {/* Table Body */}
-   <div className=' min-w-[1000px] '>
+   <div className='min-w-[1220px]'>
 {currentData.map((member , index)=>(
     <div
     key={member.id}
-    className="grid grid-cols-8 p-3 pr-8 border-b hover:bg-gray-200 bg-white  gap-x-4   "
+    style={{ gridTemplateColumns: tableColumns }}
+    className="grid  gap-x-3 p-3 pr-8 border-b hover:bg-gray-200   odd:bg-white even:bg-gray-200  "
     >
-        <div className='text-xs  xl:text-base'>{startIndex + index + 1}</div>
-        <div className='text-xs  xl:text-base'>{member.membershipNo}</div>
-        <div className='text-xs  xl:text-base'>{member.cnic}</div>
-        <div className='text-xs  xl:text-base'>{member.name}</div>   
-        <div className='text-xs  xl:text-base'>{member.regDate}</div>
-        <div className=' text-xs  xl:text-base px-4 '>{member.properties}</div>
+        <div className='text-xs  xl:text-base '>{startIndex + index + 1}</div>
+        <div className='text-xs  xl:text-base '>{member.membershipNo}</div>
+        <div className='text-xs  xl:text-base '>{member.cnic}</div>
+        <div className='text-xs  xl:text-base '>{member.name}</div>   
+        <div className='text-xs  xl:text-base '>{member.regDate}</div>
+        <div className=' text-xs  xl:text-base px-4  '>{member.properties}</div>
     <div className="flex items-center">
   <span >
    <button
@@ -74,3 +76,4 @@ const TableSection = ({ currentData, startIndex, toggleStatus , members , handle
 }
 
 export default TableSection
+

@@ -14,7 +14,7 @@ const OwnerShipHistory = ({property}) => {
         <div className='bg-yellow-500 flex  justify-center text-white font-bold'>
         OWNERSHIP HISTORY
         </div>
-         <div className="grid grid-cols-4 text-sm xl:text-base  gap-10 bg-[#111c57] text-white font-semibold p-2 ">
+         <div className="grid grid-cols-[0.8fr_1fr_1fr_1fr] text-sm xl:text-base  gap-10 bg-[#111c57] text-white font-semibold p-2 ">
 <div>Date</div>
 <div>Membership No.</div>
 <div>Owner Name</div>
@@ -29,7 +29,7 @@ const OwnerShipHistory = ({property}) => {
             ) : ownershipHistory.map((property , index)=>(
             <div
             key={index}
-             className="grid grid-cols-4 p-3  border-b hover:bg-[#f5f5f5] transition-colors duration-200"
+             className="grid grid-cols-[0.8fr_1fr_1fr_1fr] p-3  border-b hover:bg-[#f5f5f5] transition-colors duration-200"
             >
        <div>{property.date}</div>
        <div>{property.membershipNo}</div>

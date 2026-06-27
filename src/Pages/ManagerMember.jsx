@@ -4,6 +4,7 @@ import NotificationBar from '../MainPage/NotificationBar';
 import MainBody from '../ManageMember/Container';
 import Footer from '../ManageMember/Footer';
 import SignupNavbar from '../MainPage/SignupNavbar';
+import Container from '../ManageMember/Container';
 
 const ManagerMember = () => {
 
@@ -90,6 +91,213 @@ const ManagerMember = () => {
       properties: 1,
       status: "Inactive",
     },
+        {
+      id: 10,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 11,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 12,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 13,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 14,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 15,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 16,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 17,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 18,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 19,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 20,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 21,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 22,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 23,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 24,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 25,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 26,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },    {
+      id: 27,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+
+        {
+      id: 28,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 29,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 30,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 31,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
+        {
+      id: 32,
+      membershipNo: "M-1054202",
+      cnic: "965-42231098-7",
+      name: "Abdullah",
+      regDate: "2024-03-15",
+      properties: 1,
+      status: "Inactive",
+    },
    
   ]);
 
@@ -121,7 +329,8 @@ const ManagerMember = () => {
 
   // ================= PAGINATION =================
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const[rowsPerPage , setRowsPerPage] = useState(5)
+  // const itemsPerPage = 5;
 
   // ================= SEARCH BUTTON =================
   const handleSearch = () => {
@@ -174,14 +383,28 @@ const ManagerMember = () => {
   };
 
   // ================= PAGINATION =================
-  const startIndex = (currentPage - 1) * itemsPerPage;
+  const startIndex = (currentPage - 1) * rowsPerPage;
 
   const currentData = filteredMembers.slice(
     startIndex,
-    startIndex + itemsPerPage
+    startIndex + rowsPerPage
   );
 
-  const totalPages = Math.ceil(filteredMembers.length / itemsPerPage);
+  const totalPages = Math.ceil(filteredMembers.length / rowsPerPage);
+
+     const totalEntries = filteredMembers.length;
+
+const startEntry =
+  totalEntries === 0
+    ? 0
+    : startIndex + 1;
+
+const endEntry = Math.min(
+  startIndex + rowsPerPage,
+  totalEntries)
+
+
+
 
     // ================= HandleView (OPEN MODAL)=================
     const handleView = (member)=> {
@@ -224,7 +447,7 @@ const ManagerMember = () => {
       <UpdatedHeader />
       <SignupNavbar />
 
-      <MainBody
+      <Container
         searchKey={searchKey}
         setSearchKey={setSearchKey}
         searchValue={searchValue}
@@ -254,6 +477,11 @@ const ManagerMember = () => {
          setShowPrintModal={setShowPrintModal}
          handleAdd = {handleAdd}
          setShowAddModal = {setShowAddModal}
+         rowsPerPage = {rowsPerPage}
+         setRowsPerPage = {setRowsPerPage}
+         totalEntries = {totalEntries}
+         endEntry = {endEntry}
+         startEntry = {startEntry}
       />
 
       <Footer handleReset={handleReset} />

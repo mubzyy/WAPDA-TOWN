@@ -14,7 +14,7 @@ import AddNewModal from './AddNewModal'
 
 
 const Container = ({searchKey,setSearchKey,searchValue,setSearchValue,handleSearch,currentData,startIndex,setCurrentPage,
-toggleStatus, filteredMembers, totalPages,currentPage , members,handleView,showModal , setShowModal , selectedMember,handleEdit , setShowEditModal , showEditModal,handleDelete , setShowDeleteModal ,showDeleteModal, handlePrint , showPrintModal , setShowPrintModal , handleAdd , setShowAddModal}) => {
+toggleStatus ,startEntry , endEntry , totalEntries, totalPages,currentPage , filteredMembers, members,handleView,showModal , setShowModal , selectedMember,handleEdit , setShowEditModal , showEditModal,handleDelete , setShowDeleteModal ,showDeleteModal, handlePrint , showPrintModal , setShowPrintModal , handleAdd , setShowAddModal , rowsPerPage , setRowsPerPage}) => {
 
 
   
@@ -45,13 +45,19 @@ toggleStatus, filteredMembers, totalPages,currentPage , members,handleView,showM
        handlePrint = {handlePrint}
       />
       {/* PAGINATION + TOTAL RECORD SELECTED */}
-      <div className='flex flex-col items-center space-y-8  lg:space-y-0 lg:flex-row  lg:justify-around  mt-4'>
+      <div className='flex flex-col items-center space-y-8  lg:space-y-0 lg:flex-row  lg:justify-around  mt-4 mb-10'>
         {/* PAGINATION CONTROLS STATE  */}
         <Pagination
         currentPage={currentPage}
           currentData={currentData}
           setCurrentPage={setCurrentPage}
           totalPages={totalPages}
+          rowsPerPage = {rowsPerPage}
+          setRowsPerPage = {setRowsPerPage}
+          filteredMembers = {filteredMembers}
+          totalEntries = {totalEntries}
+          endEntry = {endEntry}
+          startEntry = {startEntry  }
          />
         <TotalRecordSelected
         TotalRecords={filteredMembers.length}
