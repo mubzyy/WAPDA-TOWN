@@ -21,13 +21,13 @@ const labelStyles = {
 }
 
 const inputStyles = {
-basic : " outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-full sm:w-80 no-spinner",
-Allott : "outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-80",
-Search : "outline-none bg-[#9daf77] rounded-lg px-2  py-1 text-sm w-full sm:mx-4 sm:w-64",
-unit : "outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-24 sm:w-36",
-newStyle : "outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-36 sm:w-48 no-spinner",
- email :"outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-full lg:w-140 no-spinner",
-short:"outline-none bg-[#9daf77] rounded-lg px-2 py-1 text-sm w-full sm:w-42 no-spinner"
+basic : "min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:w-80 no-spinner disabled:opacity-70",
+Allott : "min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:w-80 disabled:opacity-70",
+Search : "min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:mx-4 sm:w-64 disabled:opacity-70",
+unit : "min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-24 sm:w-36 disabled:opacity-70",
+newStyle : "min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:w-48 no-spinner disabled:opacity-70",
+ email :"min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full lg:w-160 no-spinner disabled:opacity-70",
+short:"min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:w-42 no-spinner disabled:opacity-70"
 }
 
 const InputFeild = ({
@@ -36,35 +36,61 @@ const InputFeild = ({
     disabled = false,
     placeholder = "",
     type = "text",
+    options = [],
     readOnly ,
     value,
     onChange,
     register,
     rules,
     errors,
-    varient = "default"
+    varient = "default",
+    variant
 }) => {
+  const fieldVariant = variant || varient;
+  const fieldClassName = inputStyles[fieldVariant];
+  const registerProps = register ? register(name, rules) : {};
+
   return (
-      <div className={wrapperStyles[varient]}>
+      <div className={wrapperStyles[fieldVariant]}>
 
       {label && (
-        <label className={labelStyles[varient]}>
+        <label className={labelStyles[fieldVariant]}>
           {label}
         </label>
       )}
   <div>
-      <input
-        className={inputStyles[varient]}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-        readOnly={readOnly}
-        type={type}
-        disabled={disabled}
-        {...(register ? register(name, rules) : {})}
+      {type === "select" ? (
+        <select
+          className={fieldClassName}
+          name={name}
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
+          {...registerProps}
+        >
+          <option value="" disabled>
+            {placeholder || "Select"}
+          </option>
+          {options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      ) : (
+        <input
+          className={fieldClassName}
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          readOnly={readOnly}
+          type={type}
+          disabled={disabled}
+          {...registerProps}
 
-      />
+        />
+      )}
 
 
        {/* Error Below Input */}

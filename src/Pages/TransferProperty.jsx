@@ -312,25 +312,30 @@ if (Object.keys(validationErrors).length > 0) {
 
   setNewOwner(member);
 };
-const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outline-none w-full sm:w-auto no-spinner"
+const InputStyle = "min-h-9 sm:min-h-10 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base outline-none w-full sm:w-80 no-spinner disabled:opacity-70"
+const compactInputStyle = "min-h-9 sm:min-h-10 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base outline-none w-full sm:w-52 no-spinner disabled:opacity-70"
+const labelStyle = "font-semibold text-slate-950 sm:w-52 sm:shrink-0"
+const sectionTitleStyle = "text-lg font-bold text-slate-950 sm:text-xl"
+const primaryButtonStyle = "min-h-10 rounded-md bg-blue-900 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-blue-800 disabled:opacity-60"
 
   return (
     
-    <div className=" bg-[#ebf1de] min-h-screen"> 
+    <div className="min-h-screen text-[15px] text-slate-950 sm:text-base"> 
         <NotificationBar />
         <Header />
         <Navbar />
-        <div className="w-full min-h-screen border p-3 sm:p-4 ">
-        <div className='border border-2xl min-h-screen overflow-hidden '>
-            <div className="border-b-2">
-                 <p className='w-full text-white bg-blue-700 px-4'>Transfer Property</p>
+        <div >
+        <div className='m-2 min-h-screen overflow-hidden rounded-lg border bg-[#ebf1de] shadow-sm sm:m-4 sm:rounded-2xl'>
+            <div>
+                 <p className='flex min-h-10 w-full items-center bg-blue-900 px-4 text-lg font-bold text-white sm:text-xl'>Transfer Property</p>
                 </div>
                 {/* PARENT DIV */}
-    <div className='m-3 space-y-8 sm:m-8 sm:space-y-10'>
+    <div className='m-3 space-y-6 sm:m-6 sm:space-y-8 lg:m-8'>
         {/* SEARCH SECTION */}
-    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
+    <div className="flex flex-col gap-3 rounded-lg border border-slate-300 bg-white/30 p-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:p-4">
 
-      <label className='p-0 sm:p-2 font-semibold'>Property Type:</label>
+      <label className='font-semibold text-slate-950'>Property Type:</label>
+      <div>
     <select
   value={searchData.propertyType}
   className = {InputStyle}
@@ -375,9 +380,10 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
   <p className="text-red-500 text-sm">
     {errors.propertyType}
   </p>
-)}
+)}</div>
 
-      <label className='font-semibold'>Property No:</label>
+      <label className='font-semibold text-slate-950'>Property No:</label>
+      <div className="flex w-full flex-col gap-1 sm:w-auto sm:items-center sm:gap-0">
     <input
       type="text"
       // placeholder="Property No"
@@ -402,14 +408,16 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
     {errors.propertyNo}
   </p>
 )}
+</div>
 
-    <button onClick={handleSearch} className='h-8 rounded bg-green-600 px-4 text-white sm:w-auto'>
+    <button onClick={handleSearch} className={primaryButtonStyle + ' sm:w-36'}>
       Search
     </button>
     </div>
     {/* Property Details */}
-    <div>
-  <div className="ml-0 flex w-full max-w-full flex-col space-y-3 sm:ml-4">
+    <div className="rounded-lg border border-slate-300 bg-white/20 p-3 sm:p-4">
+  <p className={sectionTitleStyle + " mb-3"}>Property Details</p>
+  <div className="ml-0 flex w-full max-w-full flex-col space-y-3 sm:ml-2">
   {propertyFields.map((field) => (
     <div key={field.name} className="flex w-full flex-col gap-2 sm:flex-row sm:items-center">
 
@@ -435,12 +443,13 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
   </div>
     </div>
    {/* Transfer Details  */}
-    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-  <label className='font-semibold'>Transfer Date:</label>
+    <div className="flex flex-col gap-3 rounded-lg border border-slate-300 bg-white/20 p-3 sm:flex-row sm:flex-wrap sm:items-center sm:p-4">
+  <p className={sectionTitleStyle + " w-full"}>Transfer Details</p>
+  <label className='font-semibold text-slate-950'>Transfer Date:</label>
   <input
     type="date"
     value={transferData.transferDate}
-    className={InputStyle + ' w-full border sm:m-2 sm:w-auto'}
+    className={InputStyle + ' sm:w-56'}
     onChange={(e) =>
       setTransferData({
         ...transferData,
@@ -453,12 +462,12 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
     {errors.transferDate}
   </p>
 )}
-    <label className='font-semibold'>Transfer Fee Paid:</label>
+    <label className='font-semibold text-slate-950'>Transfer Fee Paid:</label>
   <input
     type="number"
     // placeholder="Transfer Fee"
     value={transferData.transferFee}
-    className={InputStyle + ' w-full border sm:m-2 sm:w-auto'}
+    className={InputStyle + ' sm:w-56'}
     onChange={(e) =>
       setTransferData({
         ...transferData,
@@ -470,10 +479,10 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
     {errors.transferFee}
   </p>
 )}
-    <label className='font-semibold'>Payment Mode:</label>
+    <label className='font-semibold text-slate-950'>Payment Mode:</label>
   <select
     value={transferData.paymentMode}
-    className={InputStyle + ' w-full border sm:m-2 sm:w-auto'}
+    className={InputStyle + ' sm:w-60'}
     onChange={(e) =>
       setTransferData({
         ...transferData,
@@ -490,12 +499,12 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
     {errors.paymentMode}
   </p>
 )}
-    <label className='font-semibold'>Instrument No:</label>
+    <label className='font-semibold text-slate-950'>Instrument No:</label>
   <input
     type="text"
     // placeholder="Instrument No"
     value={transferData.instrumentNo}
-    className={InputStyle + ' w-full border sm:m-2 sm:w-auto'}
+    className={InputStyle + ' sm:w-60'}
     onChange={(e) =>
       setTransferData({
         ...transferData,
@@ -509,63 +518,63 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
 )}
 </div>
    {/* Property Transferer Details */}
-<div className="ml-0 flex w-full  sm:ml-2  justify-between">
-  <div className="flex flex-col items-center gap-4">
+<div className="ml-0 flex w-full flex-col gap-4 rounded-lg border border-slate-300 bg-white/20 p-3 sm:ml-0 sm:p-4 lg:flex-row lg:justify-between">
+  <div className="flex flex-1 flex-col gap-3">
 
-  <p className="text-lg font-bold sm:text-xl">
+  <p className={sectionTitleStyle}>
     PROPERTY TO BE TRANSFERRED FROM
   </p>
       
-  <div className="flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4">
+  <div className="flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2">
     
-    <label className="font-semibold sm:w-40 sm:shrink-0">
+    <label className={labelStyle}>
       Membership No:
     </label>
     <input
       type="text"
       value={currentOwner?.membershipNo || ""}
       readOnly
-      className={InputStyle + " w-full  sm:w-auto"}
+      className={InputStyle}
     />
   </div>
 
-  <div className="flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4">
-    <label className="font-semibold sm:w-40 sm:shrink-0">
+  <div className="flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2">
+    <label className={labelStyle}>
       Name:
     </label>
     <input
       type="text"
       value={currentOwner?.name || ""}
       readOnly
-      className={InputStyle + " w-full  sm:w-auto"}
+      className={InputStyle}
     />
   </div>
 
-  <div className="flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4">
-    <label className="font-semibold sm:w-40 sm:shrink-0">
+  <div className="flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2">
+    <label className={labelStyle}>
       Father Name:
     </label>
     <input
       type="text"
       value={currentOwner?.fatherName || ""}
       readOnly
-      className={InputStyle + " w-full  sm:w-auto"}
+      className={InputStyle}
     />
   </div>
 
-  <div className="flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4">
-    <label className="font-semibold sm:w-40 sm:shrink-0">
+  <div className="flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2">
+    <label className={labelStyle}>
       CNIC:
     </label>
     <input
       type="text"
       value={currentOwner?.cnic || ""}
       readOnly
-      className={InputStyle + " w-full sm:w-auto"}
+      className={InputStyle}
     />
   </div>
       </div>
-  <div className="w-34 h-34 border mt-10">
+  <div className="mt-0 flex h-36 w-36 shrink-0 items-center justify-center border border-black bg-slate-100 lg:mt-8">
 
   {currentOwner?.photo ? (
 
@@ -586,16 +595,16 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
 </div>
 </div>
    {/* Property Transferee Details */}
-<div className='ml-0 flex w-full max-w-3xl flex-col sm:ml-2 gap-2'>
-  <p className='text-lg font-bold sm:text-xl'>PROPERTY TO BE TRANSFERRED TO</p>
-  <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4'>
-  <label className='sm:w-40 sm:shrink-0 font-semibold'>Membership No:</label>
+<div className='ml-0 flex w-full max-w-4xl flex-col gap-3 rounded-lg border border-slate-300 bg-white/20 p-3 sm:ml-0 sm:p-4'>
+  <p className={sectionTitleStyle}>PROPERTY TO BE TRANSFERRED TO</p>
+  <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-2'>
+  <label className={labelStyle}>Membership No:</label>
   <input
     type="text"
     // placeholder="Membership No"
     disabled={!propertyDetails}
     value={newOwner.membershipNo}
-    className={InputStyle + ' w-full border sm:w-auto'}
+    className={InputStyle}
     onChange={(e) =>
       setNewOwner({
         ...newOwner,
@@ -608,47 +617,47 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
     {errors.membershipNo}
   </p>
 )}
-   <button onClick={handleMemberSearch} className='h-8 rounded bg-green-600 px-4 text-white sm:ml-4'>
+   <button onClick={handleMemberSearch} className={primaryButtonStyle + ' sm:ml-4'}>
     Search 
     </button>
     </div>
-    <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4'>
-  <label className='sm:w-40 sm:shrink-0 font-semibold'>Name:</label>
+    <div className='flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2'>
+  <label className={labelStyle}>Name:</label>
   <input
     type="text"
     // placeholder="Name"
     disabled={!propertyDetails}
     value={newOwner.name}
-    className={InputStyle + ' w-full border  sm:w-auto'}
+    className={InputStyle}
     readOnly
   />
   </div>
-  <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4'>
-  <label className='sm:w-40 sm:shrink-0 font-semibold'>Father Name:</label>
+  <div className='flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2'>
+  <label className={labelStyle}>Father Name:</label>
   <input
     type="text"
     // placeholder="Father Name"
     disabled={!propertyDetails}
     value={newOwner.fatherName}
-    className={InputStyle + ' w-full border  sm:w-auto'}
+    className={InputStyle}
     readOnly
   />
   </div>
-  <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-4'>
-  <label className='sm:w-40 sm:shrink-0 font-semibold'>CNIC:</label>
+  <div className='flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2'>
+  <label className={labelStyle}>CNIC:</label>
   <input
     type="text"
     // placeholder="CNIC"
     disabled={!propertyDetails}
     value={newOwner.cnic}
-    className={InputStyle + ' w-full border  sm:w-auto'}
+    className={InputStyle}
     readOnly
   />
   </div>
 </div>
     {/* PIN */}
-<div className="max-w-full">
-  <h2 className="text-lg font-bold sm:text-xl">Enter PIN to Transfer the Property</h2>
+<div className="max-w-full rounded-lg border border-slate-300 bg-white/20 p-3 sm:p-4">
+  <h2 className={sectionTitleStyle}>Enter PIN to Transfer the Property</h2>
 
   <input
     type="password"
@@ -656,23 +665,23 @@ const InputStyle = "bg-[#9daf77] rounded-2xl border-2 text-sm px-2 py-0.5 outlin
     placeholder="Enter PIN"
     value={pin}
     onChange={(e) => setPin(e.target.value)}
-    className={InputStyle + ' w-full border sm:w-auto'}
+    className={compactInputStyle + ' mt-2'}
   />
   {errors.pin && (
   <p className="text-red-500 text-sm">
     {errors.pin}
   </p>
 )}
-  <p className="text-sm text-gray-600">
+  <p className="mt-1 text-sm text-gray-600">
     and click Transfer Property
   </p>
 </div>
 {/* BUTTONS */}
-<div className="flex flex-col sm:block"> 
-<button type="button" className='bg-red-600 text-white px-4 py-2 rounded m-2' onClick={handleCancel}>
+<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap"> 
+<button type="button" className='min-h-10 rounded-md bg-red-600 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-red-700' onClick={handleCancel}>
   Cancel Process
 </button>
-<button type="button" className='bg-green-600 text-white px-4 py-2 rounded m-2' onClick={handleTransfer}>
+<button type="button" className='min-h-10 rounded-md bg-green-600 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-green-700' onClick={handleTransfer}>
   Transfer Property
 </button>
   </div>

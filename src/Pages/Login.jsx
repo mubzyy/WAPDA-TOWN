@@ -1,20 +1,20 @@
 import Header from "../Components/Header";
 import Navbar from "../Components/Navbar";
 import NotificationBar from "../Components/NotificationBar";
-import Sidebar from "../Components/Dashboard";
 import ImportantEvents from "../Components/ImportantEvents";
 import Dashboard from "../Components/Dashboard";
+
 const Login = () => {
   return (
-    <div className="min-h-screen ">
+    <div className="min-h-screen">
       <NotificationBar />
       <Header />
       <Navbar />
-      <div className="flex flex-row p-4 w-full">
-        <div className="w-[70%] border  border-r-0">
-        <Dashboard/>
+      <div className="flex w-full flex-col gap-4 p-3 sm:p-4 lg:flex-row lg:items-stretch">
+        <div className="w-full overflow-hidden rounded-xl bg-[#ebf1de] shadow-sm lg:flex lg:w-3/4">
+          <Dashboard />
         </div>
-        <div className="w-[30%]">
+        <div className="w-full lg:flex lg:w-1/4">
           <ImportantEvents />
         </div>
       </div>

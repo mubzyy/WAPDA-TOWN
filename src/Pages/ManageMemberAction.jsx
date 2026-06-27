@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputField from "../Components/InputField";
 import NotificationBar from "../Components/NotificationBar";
 import Header from "../Components/Header";
@@ -36,10 +36,7 @@ const requiredFields = [
   ["paymentMade", "Payment Made"],
   ["currency", "Currency"],
   ["paymentMode", "Payment Mode"],
-  ["paymentInstrumentNo", "Payment Instrument No"],
-  ["bank", "Bank"],
 ];
-
 const numberFields = [
   "membershipNo",
   "bps",
@@ -48,15 +45,50 @@ const numberFields = [
   "contactNo3",
   "paymentMade",
 ];
-
 const nameFields = [
   "name",
   "fatherName",
   "nomineeName",
   "nomineeFatherName",
 ];
-
+const employeeStatusOptions = [
+  "DISCO",
+  "GENCO",
+  "NTDC",
+  "WAPDA Serving",
+  "RETIRED",
+  "GENERAL PUBLIC",
+  "GOVT. SERVANT",
+];
+const identityTypeOptions = [
+  "CNIC",
+  "Passport No.",
+  "NTN",
+];
+const currencyOptions = [
+  "PKR",
+  "USD",
+  "GBP",
+  "EUR",
+];
+const paymentModeOptions = [
+  "Cash",
+  "Cheque",
+  "Pay Order",
+  "Demand Draft",
+  "Bank Transfer",
+];
+const attachmentTypeOptions = [
+  "CNIC Copy",
+  "Passport Copy",
+  "NTN Certificate",
+  "Photograph",
+  "Payment Receipt",
+  "Allotment Letter",
+  "Other",
+];
 const makeError = (message) => ({ message });
+
 
 const ManageMemberAction = () => {
    const [memberData, setMemberData] = useState({
@@ -95,8 +127,10 @@ const ManageMemberAction = () => {
   });
 
   const [memberPhoto, setMemberPhoto] = useState(null);
+  const [memberPhotoPreview, setMemberPhotoPreview] = useState("");
 
   const [nomineePhoto, setNomineePhoto] = useState(null);
+  const [nomineePhotoPreview, setNomineePhotoPreview] = useState("");
 
   const [attachments, setAttachments] = useState([]);
 
@@ -108,6 +142,30 @@ const ManageMemberAction = () => {
   const [records, setRecords] = useState([]);
 
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    if (!memberPhoto) {
+      setMemberPhotoPreview("");
+      return undefined;
+    }
+
+    const previewUrl = URL.createObjectURL(memberPhoto);
+    setMemberPhotoPreview(previewUrl);
+
+    return () => URL.revokeObjectURL(previewUrl);
+  }, [memberPhoto]);
+
+  useEffect(() => {
+    if (!nomineePhoto) {
+      setNomineePhotoPreview("");
+      return undefined;
+    }
+
+    const previewUrl = URL.createObjectURL(nomineePhoto);
+    setNomineePhotoPreview(previewUrl);
+
+    return () => URL.revokeObjectURL(previewUrl);
+  }, [nomineePhoto]);
 
   const setFieldError = (fieldName, message = "") => {
   setErrors((prev) => {
@@ -166,9 +224,9 @@ const ManageMemberAction = () => {
 
   if (
     memberData.currency.trim() &&
-    !/^[a-zA-Z\s]{2,20}$/.test(memberData.currency.trim())
+    !currencyOptions.includes(memberData.currency)
   ) {
-    nextErrors.currency = makeError("Use a valid currency code/name");
+    nextErrors.currency = makeError("Select a valid currency");
   }
 
   if (
@@ -186,13 +244,63 @@ const ManageMemberAction = () => {
     }
   });
 
-  ["identityNumber", "nomineeIdentityNumber"].forEach((fieldName) => {
-    const fieldValue = memberData[fieldName].trim();
+  const validateIdentityNumber = (typeField, numberField) => {
+    const identityType = memberData[typeField];
+    const identityNumber = memberData[numberField].trim();
 
-    if (fieldValue && !/^[a-zA-Z0-9-]{5,25}$/.test(fieldValue)) {
-      nextErrors[fieldName] = makeError("Use 5 to 25 letters, numbers, or dashes");
+    if (!identityNumber) {
+      return;
     }
-  });
+
+    if (
+      identityType === "CNIC" &&
+      !/^\d{5}-?\d{7}-?\d$/.test(identityNumber)
+    ) {
+      nextErrors[numberField] = makeError("Use CNIC format 12345-1234567-1");
+      return;
+    }
+
+    if (
+      identityType === "Passport No." &&
+      !/^[a-zA-Z0-9]{6,20}$/.test(identityNumber)
+    ) {
+      nextErrors[numberField] = makeError("Use 6 to 20 letters or numbers");
+      return;
+    }
+
+    if (
+      identityType === "NTN" &&
+      !/^\d{7}-?\d?$/.test(identityNumber)
+    ) {
+      nextErrors[numberField] = makeError("Use a valid NTN number");
+    }
+  };
+
+  validateIdentityNumber("identityType", "identityNumber");
+  validateIdentityNumber("nomineeIdentityType", "nomineeIdentityNumber");
+
+  if (
+    memberData.paymentMode &&
+    !paymentModeOptions.includes(memberData.paymentMode)
+  ) {
+    nextErrors.paymentMode = makeError("Select a valid payment mode");
+  }
+
+  if (
+    memberData.paymentMode &&
+    memberData.paymentMode !== "Cash" &&
+    String(memberData.paymentInstrumentNo).trim() === ""
+  ) {
+    nextErrors.paymentInstrumentNo = makeError("Payment Instrument No is required");
+  }
+
+  if (
+    memberData.paymentMode &&
+    memberData.paymentMode !== "Cash" &&
+    String(memberData.bank).trim() === ""
+  ) {
+    nextErrors.bank = makeError("Bank is required");
+  }
 
   if (!memberPhoto) {
     nextErrors.memberPhoto = makeError("Member photograph is required");
@@ -211,15 +319,23 @@ const ManageMemberAction = () => {
   return Object.keys(nextErrors).length === 0;
 };
 
-  const handleChange = (e) => {
+const handleChange = (e) => {
   const { name, value } = e.target;
 
   setMemberData((prev) => ({
     ...prev,
     [name]: value,
+    ...(name === "paymentMode" && value === "Cash"
+      ? { paymentInstrumentNo: "", bank: "" }
+      : {}),
   }));
 
   setFieldError(name);
+
+  if (name === "paymentMode" && value === "Cash") {
+    setFieldError("paymentInstrumentNo");
+    setFieldError("bank");
+  }
 };
 
 const handlePhotoChange = (e) => {
@@ -329,6 +445,16 @@ const handleDeleteAttachment = (id) => {
   );
 
 };
+const handleViewAttachment = (attachment) => {
+  if (!attachment?.file) {
+    alert("No file available to view");
+    return;
+  }
+
+  const fileUrl = URL.createObjectURL(attachment.file);
+  window.open(fileUrl, "_blank");
+  window.setTimeout(() => URL.revokeObjectURL(fileUrl), 1000);
+};
 const handleAdd = () => {
 
   if (!validateMemberForm()) {
@@ -420,13 +546,13 @@ const handleDelete = () => {
 };
 
   return (
-    <div className="bg-[#ebf1de] min-h-screen text-sm sm:text-base lg:[zoom:1.08] xl:[zoom:1.20]">
+    <div className=" min-h-screen text-sm sm:text-base lg:[zoom:1.08] xl:[zoom:1.20]">
       <NotificationBar />
       <Header />
       <Navbar />
       <div>
         {/* Container Div */}
-        <div className='border border-2xl min-h-screen overflow-hidden rounded-lg sm:rounded-2xl m-2 sm:m-4'>
+        <div className='bg-[#ebf1de] border border-2xl min-h-screen overflow-hidden rounded-lg sm:rounded-2xl m-2 sm:m-4'>
           {/* Header */}
           <div className="  h-8">
                  <p className='w-full text-white bg-blue-900 px-4 h-full flex items-center'>Manage Member - Search</p>
@@ -436,7 +562,7 @@ const handleDelete = () => {
                   {/* Member's Particulars */}
               <div className="p-3 sm:p-4 flex flex-col lg:flex-row gap-4 w-full space-y-2 ">
                 {/* left wrapper */}
-                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-yellow-300 border border-black flex justify-center items-center'>
+                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-yellow-400 flex justify-center items-center sm:rounded-2xl '>
                   <p className="lg:rotate-180 lg:[writing-mode:vertical-rl] font-semibold ">Member's Particulars</p>
                 </div>
                 {/* Middle div */}
@@ -478,11 +604,12 @@ const handleDelete = () => {
                   varient='email'
                 />
                 <InputField
-                  type="text"
+                  type="select"
                   label="Employee Status"
                   name="employeeStatus"
                   value={memberData.employeeStatus}
                   onChange={handleChange}
+                  options={employeeStatusOptions}
                   errors={errors}
                   varient='basic'
                   
@@ -515,11 +642,12 @@ const handleDelete = () => {
                   varient='basic'
                 />
                 <InputField
-                  type="text"
+                  type="select"
                   label="Identity Type"
                   name="identityType"
                   value={memberData.identityType}
                   onChange={handleChange}
+                  options={identityTypeOptions}
                   errors={errors}
                   varient='basic'
                 />
@@ -532,7 +660,7 @@ const handleDelete = () => {
                   errors={errors}
                   varient='basic'
                 />
-                <div className='flex flex-col xl:flex-row justify-between items-stretch xl:items-center gap-2 xl:gap-4'>
+                <div className='flex flex-col  xl:gap-90 xl:flex-row items-stretch xl:items-center gap-2 '>
                 <InputField
                   type="text"
                   label="Permanent Address"
@@ -552,7 +680,7 @@ const handleDelete = () => {
                   varient='short'
                 />
                 </div>
-                <div className='flex flex-col xl:flex-row justify-between items-stretch xl:items-center gap-2 xl:gap-4'>
+                <div className='flex flex-col xl:flex-row justify-between items-stretch xl:items-center gap-2 xl:gap-90'>
                 <InputField
                   type="text"
                   label="Present Address"
@@ -638,11 +766,11 @@ const handleDelete = () => {
                 <div className="w-full lg:w-auto flex flex-col items-center lg:items-start shrink-0">
                 <div className="w-32 h-36 border border-black bg-slate-100 flex items-center justify-center">
     
-                        {memberPhoto ? (
+                        {memberPhotoPreview ? (
                         <img
-                        src={URL.createObjectURL(memberPhoto)}
+                        src={memberPhotoPreview}
                         alt="member"
-                        className="w-full h-full object-cover"
+                        className="w-full  object-cover"
                          />
                         ) : (
                       <p>Photograph</p>
@@ -654,6 +782,7 @@ const handleDelete = () => {
                      type="file"
                      accept="image/*"
                      onChange={handlePhotoChange}
+                     className="mt-2 w-full max-w-48 text-sm file:mr-2 file:rounded-md file:border-0 file:bg-blue-900 file:px-3 file:py-1.5 file:text-white file:transition hover:file:bg-blue-800"
                      />                
                      {errors.memberPhoto && (
                       <p className="text-red-500 text-sm ml-2">
@@ -669,8 +798,8 @@ const handleDelete = () => {
                 {/* Nominee's Particulars */}
               <div className="p-3 sm:p-4 flex flex-col lg:flex-row gap-4 w-full space-y-2 ">
                 {/* Left Wrapper */}
-                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-orange-100 border border-black flex justify-center items-center'>
-                  <p className="lg:rotate-180 lg:[writing-mode:vertical-rl] font-semibold ">Nominee's </p>
+                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-orange-300 rounded-2xl flex justify-center items-center'>
+                  <p className="lg:rotate-180 lg:[writing-mode:vertical-rl] font-semibold ">Nominee </p>
                 </div>
                 {/* Middle div */}
                 <div className="flex-1 min-w-0 flex flex-col space-y-2">
@@ -693,11 +822,12 @@ const handleDelete = () => {
                   varient='email'
                 />
                 <InputField
-                  type="text"
+                  type="select"
                   label="Identity Type"
                   name="nomineeIdentityType"
                   value={memberData.nomineeIdentityType}
                   onChange={handleChange}
+                  options={identityTypeOptions}
                   errors={errors}
                   varient='basic'
                 />
@@ -724,11 +854,11 @@ const handleDelete = () => {
                 <div className="w-full lg:w-auto flex flex-col items-center lg:items-start shrink-0">
                 <div className="w-32 h-36 border border-black bg-slate-100 flex items-center justify-center">
 
-                {nomineePhoto ? (
+                {nomineePhotoPreview ? (
                    <img
-                   src={URL.createObjectURL(nomineePhoto)}
+                   src={nomineePhotoPreview}
                    alt="nominee"
-                   className="w-full h-full object-cover"
+                   className="w-full  object-cover"
                   />
             ) : (
                     <p>Photograph</p>
@@ -738,6 +868,7 @@ const handleDelete = () => {
                 type="file"
                 accept="image/*"
                 onChange={handleNomineePhotoChange}
+                className="mt-2 w-full max-w-48 text-sm file:mr-2 file:rounded-md file:border-0 file:bg-blue-900 file:px-3 file:py-1.5 file:text-white file:transition hover:file:bg-blue-800"
                 />
                 {errors.nomineePhoto && (
                   <p className="text-red-500 text-sm ml-2">
@@ -749,7 +880,7 @@ const handleDelete = () => {
               {/* Payment */}
               <div className="p-3 sm:p-4 flex flex-col lg:flex-row gap-4 w-full space-y-2">
                 {/* Left Wrapper */}
-                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-green-300 border border-black flex justify-center items-center'>
+                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-green-400 rounded-2xl flex justify-center items-center'>
                   <p className="lg:rotate-180 lg:[writing-mode:vertical-rl] font-semibold ">Payment</p>
                 </div>
                 {/* Middle div */}
@@ -765,21 +896,23 @@ const handleDelete = () => {
                   varient='basic'
                 />
                 <InputField
-                  type="text"
+                  type="select"
                   label="Currency"
                   name="currency"
                   value={memberData.currency}
                   onChange={handleChange}
+                  options={currencyOptions}
                   errors={errors}
                   varient='short'
                 />
                 </div>
                 <InputField
-                  type="text"
+                  type="select"
                   label="Payment Mode"
                   name="paymentMode"
                   value={memberData.paymentMode}
                   onChange={handleChange}
+                  options={paymentModeOptions}
                   errors={errors}
                   varient='basic'
                 />
@@ -790,6 +923,8 @@ const handleDelete = () => {
                   name="paymentInstrumentNo"
                   value={memberData.paymentInstrumentNo}
                   onChange={handleChange}
+                  disabled={memberData.paymentMode === "Cash"}
+                  placeholder={memberData.paymentMode === "Cash" ? "Not required for cash" : ""}
                   errors={errors}
                   varient='basic'
                 />
@@ -799,6 +934,8 @@ const handleDelete = () => {
                   name="bank"
                   value={memberData.bank}
                   onChange={handleChange}
+                  disabled={memberData.paymentMode === "Cash"}
+                  placeholder={memberData.paymentMode === "Cash" ? "Not required for cash" : ""}
                   errors={errors}
                   varient='short'
                 />
@@ -808,22 +945,28 @@ const handleDelete = () => {
               {/* Attachments */}
               <div className="p-3 sm:p-4 flex flex-col lg:flex-row gap-4 w-full border-b border-black">
                 {/* Left Wrapper */}
-                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-[#f2d0a3] border border-black flex justify-center items-center'>
+                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-[#f2d0a3] rounded-2xl flex justify-center items-center'>
                   <p className="lg:rotate-180 lg:[writing-mode:vertical-rl] font-semibold ">Attachments</p>
                 </div>
                 {/* Middle div */}
                 <div className="flex-1 min-w-0">
                   {/* Upper Section */}
                 <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-5 w-full text-base">
-                  <label className="font-normal">Attachment Type</label>
+                  <label className="font-semibold">Attachment Type</label>
                   <div>
-                    <input
-                      type="text"
+                    <select
                       name="attachmentType"
                       value={attachmentData.attachmentType}
                       onChange={handleAttachmentChange}
-                      className="h-7 w-full sm:w-40 border-black px-2 outline-none rounded bg-[#9daf77]"
-                    />
+                      className="h-8 w-full rounded-lg bg-[#9daf77] px-2 text-sm outline-none sm:w-48"
+                    >
+                      <option value="" disabled>Select type</option>
+                      {attachmentTypeOptions.map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
+                    </select>
                     {errors.attachmentType && (
                       <p className="text-red-500 text-sm ml-2">
                         {errors.attachmentType.message}
@@ -831,7 +974,7 @@ const handleDelete = () => {
                     )}
                   </div>
                   <div>
-                    <span className="flex min-h-7 rounded text-sm w-full sm:w-84 items-center justify-center border-black px-2 bg-[#9daf77]">
+                    <span className="flex min-h-8 rounded-lg text-sm w-full sm:w-84 items-center justify-center border-black px-2 bg-[#9daf77]">
                       {attachmentData.attachmentFile
                         ? attachmentData.attachmentFile.name
                         : "Document to be attached"}
@@ -842,7 +985,7 @@ const handleDelete = () => {
                       </p>
                     )}
                   </div>
-                  <label className="cursor-pointer underline">
+                  <label className="cursor-pointer rounded-md bg-blue-900 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-blue-800">
                     Browse
                     <input
                       type="file"
@@ -853,7 +996,7 @@ const handleDelete = () => {
                   <button
                   type="button"
                   onClick={handleLoadAttachment}
-                  className="bg-transparent underline"
+                  className="rounded-md bg-[#9daf77] px-4 py-1.5 text-sm font-semibold text-black transition hover:bg-[#879b61]"
                   >
                   Load
                   </button>
@@ -861,7 +1004,7 @@ const handleDelete = () => {
 
   {/* TABLE */}
  {/* MAIN DIV */}
-<div className="overflow-x-auto rounded-xl border border-gray-300 shadow-md mt-2">
+<div className="mt-3 overflow-x-auto rounded-lg border border-slate-300 bg-white/40 shadow-sm">
 
   {/* Table Header */}
   <div className="grid min-w-[720px] grid-cols-[60px_2fr_6fr_2fr_3fr] bg-blue-900 px-4 py-2 text-center font-semibold text-white">
@@ -876,7 +1019,7 @@ const handleDelete = () => {
   {attachments.map((attachment, index) => (
     <div
       key={attachment.id}
-      className="grid min-w-[720px] grid-cols-[60px_2fr_6fr_2fr_3fr] items-center border-b px-4 py-3 text-center transition-colors duration-200 hover:bg-gray-100"
+      className="grid min-w-[720px] grid-cols-[60px_2fr_6fr_2fr_3fr] items-center border-b border-slate-200 px-4 py-3 text-center transition-colors duration-200 hover:bg-white/70"
     >
       <div>{index+1}</div>
       <div>  {attachment.attachmentType}</div>
@@ -887,31 +1030,21 @@ const handleDelete = () => {
         {/* Buttons go here */}
         <button
   type="button"
-  className="rounded bg-blue-600 px-3 py-1 text-sm text-white transition hover:bg-blue-700"
-  onClick={() => {
-    if (!attachment?.file) {
-      alert("No file available to view");
-      return;
-    }
-
-    window.open(
-      URL.createObjectURL(attachment.file),
-      "_blank"
-    );
-  }}
+  className="inline-flex h-8 w-9 items-center justify-center rounded bg-blue-600 text-sm text-white transition hover:bg-blue-700"
+  onClick={() => handleViewAttachment(attachment)}
 >
   <GrView />
         </button>
         <button
   type="button"
-  className="rounded bg-red-600 px-3 py-1 text-sm text-white transition hover:bg-red-700"
+  className="inline-flex h-8 w-9 items-center justify-center rounded bg-red-600 text-sm text-white transition hover:bg-red-700"
   onClick={() => handleDeleteAttachment(attachment.id)}
 >
   <MdDelete />
         </button>
         <button
   type="button"
-  className="rounded bg-green-500 px-3 py-1 text-sm text-white transition hover:bg-green-600"
+  className="inline-flex h-8 w-9 items-center justify-center rounded bg-green-600 text-sm text-white transition hover:bg-green-700"
   onClick={() => {
     if (!attachment?.id) {
       setFieldError("attachments", "No attachment selected");
@@ -957,6 +1090,13 @@ const handleDelete = () => {
       attachmentType: "",
       attachmentFile: null,
     });
+
+    setErrors((prev) => {
+      const updatedErrors = { ...prev };
+      delete updatedErrors.attachmentType;
+      delete updatedErrors.attachmentFile;
+      return updatedErrors;
+    });
   }}
 >
   <CiEdit />
@@ -985,7 +1125,7 @@ const handleDelete = () => {
                   <button
                   type="button"
                   onClick={() => window.location.reload()}
-                  className="min-w-24 rounded-md border bg-blue-900 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-blue-900 hover:text-white"
+                  className="min-w-24 rounded-md border border-blue-900 bg-blue-900 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-blue-800"
                   >
                    Main
                   </button>
@@ -1006,21 +1146,21 @@ const handleDelete = () => {
                   <button
                   type="button"
                   onClick={handleUpdate}
-                  className="min-w-24 rounded-md bg-[#9daf77] px-5 py-2 font-semibold bg-green-600 text-white shadow-sm transition hover:bg-[#879b61]"
+                  className="min-w-24 rounded-md border border-green-700 bg-green-600 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-green-700"
                   >
                    Update
                   </button>
                   <button                 
                   type="button"
                   onClick={handleDelete}
-                  className="min-w-24 rounded-md border border-red-700 bg-red-700 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-red-700 hover:text-white"
+                  className="min-w-24 rounded-md border border-red-700 bg-red-700 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-red-800"
                   >
                    Delete
                   </button>
                   <button                 
                   type="button"
                   onClick={() => window.print()}
-                  className="min-w-24 rounded-md border border-blue-900 bg-blue-900 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-blue-900 hover:text-white"
+                  className="min-w-24 rounded-md border border-blue-900 bg-blue-900 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-blue-800"
                   >
                    Print
                   </button>

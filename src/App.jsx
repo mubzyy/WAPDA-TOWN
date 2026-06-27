@@ -7,9 +7,8 @@ const App = () => {
     <div>
        
       {/* <Login/> */}
-      {/* <TransferProperty/> */}
-     <ManageMemberAction />
-
+      {/* <ManageMemberAction /> */}
+      <TransferProperty/>
     </div>
   )
 }

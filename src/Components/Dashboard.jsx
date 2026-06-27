@@ -1,169 +1,127 @@
-import React from 'react';
+import { Fragment } from 'react';
 import DashboardSection from './DashboardSection';
+
+const metricRows = [
+  'a. Total Plots',
+  'b. Available',
+  'c. Available for Auction',
+];
+
+const duesRows = [
+  'a. Installments',
+  'b. Water/Sewerage Charges',
+  'c. Other Dues',
+];
+
+const applicationRows = [
+  'a. Application Category-1',
+  'b. Application Category-1',
+  'c. Application Category-1',
+];
+
+const Cell = ({ children, strong = false }) => (
+  <div className={strong ? 'font-semibold text-slate-950' : 'text-slate-800'}>
+    {children}
+  </div>
+);
 
 const Dashboard = () => {
   return (
-    <div>
-    <div>
-      {/* HEADER */}
-        <div>
-            <p className='w-full text-white underline bg-blue-700 px-4'>Executive Dashboard</p>
-        </div>
-        {/* MAINBODY */}
-        <div>
-        {/* left Content */}
-        <div >
-        <div> 
-          <DashboardSection title={
-            <div className='flex flex-row w-full justify-between items-center'>
-              <div className='w-1/3'>
-                <p>1. PLOTS STATUS</p>
+    <div className='flex h-full w-full flex-col text-slate-950'>
+      <div>
+        <p className='w-full bg-blue-700 px-4 py-2 text-base font-bold text-white underline shadow-sm sm:text-lg'>
+          Executive Dashboard
+        </p>
+      </div>
+      <div className='flex-1 overflow-x-auto'>
+        <div className='min-w-[760px]'>
+          <DashboardSection
+            title={
+              <div className='grid grid-cols-[1.7fr_repeat(4,minmax(90px,1fr))] items-center gap-4'>
+                <Cell strong>1. PLOTS STATUS</Cell>
+                <Cell strong>CAT-1</Cell>
+                <Cell strong>CAT-2</Cell>
+                <Cell strong>CAT-3</Cell>
+                <Cell strong>CAT-n</Cell>
               </div>
-              <div className='flex gap-4 w-1/3 px-1'>
-                <p className=''> CAT-1</p>
-                <p className=''> CAT-2</p>
-                <p className=''> CAT-3</p>
-              </div>
-              <div className=''>
-                <p >CAT-n</p>
-              </div>
-            </div>
-          }>
-          <div className='flex flex-row w-full justify-between items-start'>
-              <div>
-            <p>a. Total Plots</p>
-            <p>b. Available</p>
-            <p>c. Available for Auction</p>
-             </div>
-             <div className='flex gap-4'>
-            <div>
-            <p>xxxxx</p>
-            <p>xxxxx</p>
-            <p>xxxxx</p>
-            </div>
-            <div>
-            <p>xxxxx</p>
-            <p>xxxxx</p>
-            <p>xxxxx</p>
-            </div>
-            <div>
-            <p>xxxxx</p>
-            <p>xxxxx</p>
-            <p>xxxxx</p>
-            </div>
-            </div>
-            <div>
-            <p>xxxxx</p>
-            <p>xxxxx</p>
-            <p>xxxxx</p>
-            </div>
-          </div>
-          </DashboardSection>
-          
-          <DashboardSection title= '2. DUES PENDING' >
-            <div className='flex flex-row w-full gap-8 items-start w-full items-start'>
-              <div className='w-1/2 gap-2'>
-            <p>a. Installments</p>
-            <p>b. Water/Sewerage Charges</p>
-            <p>c. Other Dues</p>
-            </div>
-            <div className='w-1/2 gap-2 px-7'>
-              <p>xxxxxxxxxx</p>
-              <p>xxxxxxxxxx</p>
-              <p>xxxxxxxxxx</p>
-            </div>
+            }
+          >
+            <div className='grid grid-cols-[1.7fr_repeat(4,minmax(90px,1fr))] gap-x-4 gap-y-2'>
+              {metricRows.map((row) => (
+                <Fragment key={row}>
+                  <Cell key={`${row}-label`} strong>{row}</Cell>
+                  <Cell key={`${row}-cat-1`}>xxxxx</Cell>
+                  <Cell key={`${row}-cat-2`}>xxxxx</Cell>
+                  <Cell key={`${row}-cat-3`}>xxxxx</Cell>
+                  <Cell key={`${row}-cat-n`}>xxxxx</Cell>
+                </Fragment>
+              ))}
             </div>
           </DashboardSection>
-          <DashboardSection title={
-            <div className='flex flex-row w-full justify-between items-center'>
-              <div className='w-3/7'>
-                <p>3. PAYMENTS RECEIVED</p>
-              </div>
-              <div className='flex gap-3  px-8 w-3/5 justify-between'>
-                <p className=''>THIS MONTH</p>
-                <p className=''>LAST MONTH</p>
-                <p className=''>YEAR TO DATE</p>
-              </div>
-              <div className='w-2/6'>
 
-              </div>
-            </div>
-            
-            }>
-              <div className='flex flex-row w-full gap-8 items-start w-full items-start'>
-                <div> 
-            <p>a. Installments</p>
-            <p>b. Water/Sewerage Charges</p>
-            <p>c. Other Dues</p>
-            </div>
-            <div className='flex gap-2  px-9 w-3/6 justify-between'>
-            <div>
-            <p>xxxxxxxxxx</p>
-            <p>xxxxxxxxxx</p>
-            <p>xxxxxxxxxx</p>
-            </div>
-            <div>
-            <p>xxxxxxxxxx</p>
-            <p>xxxxxxxxxx</p>
-            <p>xxxxxxxxxx</p> 
-            </div>
-            <div>
-            <p>xxxxxxxxxx</p>
-            <p>xxxxxxxxxx</p>
-            <p>xxxxxxxxxx</p>
-            </div>
-            </div>
+          <DashboardSection title='2. DUES PENDING'>
+            <div className='grid grid-cols-[1.7fr_repeat(4,minmax(90px,1fr))] gap-x-4 gap-y-2'>
+              {duesRows.map((row) => (
+                <Fragment key={row}>
+                  <Cell key={`${row}-label`} strong>{row}</Cell>
+                  <Cell key={`${row}-value`}>xxxxxxxxxx</Cell>
+                  <div key={`${row}-empty-1`} />
+                  <div key={`${row}-empty-2`} />
+                  <div key={`${row}-empty-3`} />
+                </Fragment>
+              ))}
             </div>
           </DashboardSection>
+
+          <DashboardSection
+            title={
+              <div className='grid grid-cols-[1.7fr_repeat(3,minmax(120px,1fr))_minmax(60px,0.4fr)] items-center gap-4'>
+                <Cell strong>3. PAYMENTS RECEIVED</Cell>
+                <Cell strong>THIS MONTH</Cell>
+                <Cell strong>LAST MONTH</Cell>
+                <Cell strong>YEAR TO DATE</Cell>
+                <div />
+              </div>
+            }
+          >
+            <div className='grid grid-cols-[1.7fr_repeat(3,minmax(120px,1fr))_minmax(60px,0.4fr)] gap-x-4 gap-y-2'>
+              {duesRows.map((row) => (
+                <Fragment key={row}>
+                  <Cell key={`${row}-label`} strong>{row}</Cell>
+                  <Cell key={`${row}-this-month`}>xxxxxxxxxx</Cell>
+                  <Cell key={`${row}-last-month`}>xxxxxxxxxx</Cell>
+                  <Cell key={`${row}-year`}>xxxxxxxxxx</Cell>
+                  <div key={`${row}-empty`} />
+                </Fragment>
+              ))}
+            </div>
+          </DashboardSection>
+
           <DashboardSection title='4. ALLOTMENT APPLICATIONS PENDING FOR ACTION'>
-            <div className='flex flex-row w-full gap-8 items-start w-full items-start'>
-            <div className='w-1/4 gap-2'>
-            <p className='underline font-semibold'>APPLICANT CATEGORY</p>
-            <p>a. Apllication Category-1</p>
-            <p>b. Apllication Category-1</p>
-            <p>c. Apllication Category-1</p>
-            </div>
-            <div className='w-3/4 gap-2 px-7 flex flex-row justify-between'>
-            <div>
-              <p>Plot Size-1</p>
-              <p>xxxx</p>
-              <p>xxxx</p>
-              <p>xxxx</p>
-              </div>
-              <div>
-              <p>Plot Size-2</p>
-              <p>xxxx</p>
-              <p>xxxx</p>
-              <p>xxxx</p>
-              </div>
-              <div>
-              <p>Plot Size-3</p>
-              <p>xxxx</p>
-              <p>xxxx</p>
-              <p>xxxx</p>
-              </div>
-              <div>
-              <p>Plot Size-4</p>
-              <p>xxxx</p>
-              <p>xxxx</p>
-              <p>xxxx</p>
-              </div>
-              <div> 
-              <p>Plot Size-5</p>
-              <p>xxxx</p>
-              <p>xxxx</p>
-              <p>xxxx</p> 
-            </div>
-            </div>
+            <div className='grid grid-cols-[1.7fr_repeat(5,minmax(90px,1fr))] gap-x-4 gap-y-2'>
+              <Cell strong>
+                <span className='underline'>APPLICANT CATEGORY</span>
+              </Cell>
+              <Cell strong>Plot Size-1</Cell>
+              <Cell strong>Plot Size-2</Cell>
+              <Cell strong>Plot Size-3</Cell>
+              <Cell strong>Plot Size-4</Cell>
+              <Cell strong>Plot Size-5</Cell>
+              {applicationRows.map((row) => (
+                <Fragment key={row}>
+                  <Cell key={`${row}-label`} strong>{row}</Cell>
+                  <Cell key={`${row}-size-1`}>xxxx</Cell>
+                  <Cell key={`${row}-size-2`}>xxxx</Cell>
+                  <Cell key={`${row}-size-3`}>xxxx</Cell>
+                  <Cell key={`${row}-size-4`}>xxxx</Cell>
+                  <Cell key={`${row}-size-5`}>xxxx</Cell>
+                </Fragment>
+              ))}
             </div>
           </DashboardSection>
-          </div>
-          </div>
         </div>
-       
-        </div>
+      </div>
     </div>
-    
   );
 };
 
