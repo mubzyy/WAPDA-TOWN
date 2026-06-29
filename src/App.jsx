@@ -23,7 +23,7 @@ const App = () => {
         <Route path="/allottproperty" element={<AllottProperty />} />
         <Route path="/updatepayment" element={<UpdatePayment />} />
         <Route path="/propertyhistory" element={<PropertyHistory />} />
-        {/* test */}
+      
         {/* <Route path="/" element={<Navigate to="/transfer-property" replace />} /> */}
         {/* <Route path="/dashboard" element={<Login />} />
        <Route path="/manage-member" element={<ManageMemberAction />} />
