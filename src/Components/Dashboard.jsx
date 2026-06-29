@@ -29,7 +29,7 @@ const Dashboard = () => {
   return (
     <div className='flex h-full w-full flex-col text-slate-950'>
       <div>
-        <p className='w-full bg-blue-700 px-4 py-2 text-base font-bold text-white underline shadow-sm sm:text-lg'>
+        <p className='w-full bg-blue-900 px-4 py-2 text-lg font-bold text-white shadow-sm sm:text-xl'>
           Executive Dashboard
         </p>
       </div>

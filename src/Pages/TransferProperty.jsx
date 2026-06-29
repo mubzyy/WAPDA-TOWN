@@ -330,7 +330,7 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
         <div >
         <div className='m-2 min-h-screen overflow-hidden rounded-lg border bg-[#ebf1de] shadow-sm sm:m-4 sm:rounded-2xl'>
             <div>
-                 <p className='flex min-h-9 w-full items-center bg-blue-900 px-4 text-lg font-bold text-white sm:text-xl'>Transfer Property</p>
+                 <p className='flex w-full items-center bg-blue-900 px-4 py-2 text-lg font-bold text-white sm:text-xl'>Transfer Property</p>
                 </div>
                 {/* PARENT DIV */}
     <div className='m-3 space-y-6 sm:m-6 sm:space-y-8 lg:m-8'>

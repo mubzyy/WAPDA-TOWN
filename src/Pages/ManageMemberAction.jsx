@@ -554,7 +554,7 @@ const handleDelete = () => {
         {/* Container Div */}
         <div className='bg-[#ebf1de] border border-2xl min-h-screen overflow-hidden rounded-lg sm:rounded-2xl m-2 sm:m-4'>
           {/* Header */}
-          <div className="flex min-h-9 w-full items-center bg-blue-900 px-4 text-lg font-bold text-white sm:text-xl">
+          <div className="flex w-full items-center bg-blue-900 px-4 py-2 text-lg font-bold text-white sm:text-xl">
                  <p className=''>Manage Member - Search</p>
                 </div>
                 {/* Content */}
@@ -764,13 +764,13 @@ const handleDelete = () => {
                 </div>
                 {/* Right section */}
                 <div className="w-full lg:w-auto flex flex-col items-center lg:items-start shrink-0">
-                <div className="w-32 h-36 border border-black bg-slate-100 flex items-center justify-center">
+                <div className="w-32 h-36 overflow-hidden border border-black bg-slate-100 flex items-center justify-center">
     
                         {memberPhotoPreview ? (
                         <img
                         src={memberPhotoPreview}
                         alt="member"
-                        className="w-full  object-cover"
+                        className="h-full w-full object-cover"
                          />
                         ) : (
                       <p>Photograph</p>
@@ -852,13 +852,13 @@ const handleDelete = () => {
                 </div>
                 {/* Right section */}
                 <div className="w-full lg:w-auto flex flex-col items-center lg:items-start shrink-0">
-                <div className="w-32 h-36 border border-black bg-slate-100 flex items-center justify-center">
+                <div className="w-32 h-36 overflow-hidden border border-black bg-slate-100 flex items-center justify-center">
 
                 {nomineePhotoPreview ? (
                    <img
                    src={nomineePhotoPreview}
                    alt="nominee"
-                   className="w-full  object-cover"
+                   className="h-full w-full object-cover"
                   />
             ) : (
                     <p>Photograph</p>
