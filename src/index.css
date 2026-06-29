@@ -38,3 +38,100 @@ a {
 .no-spinner {
   -moz-appearance: textfield;
 }
+
+.route-loader-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(238, 243, 248, 0.5);
+	backdrop-filter: blur(0.5px);
+}
+
+.route-loader-panel {
+	display: flex;
+	width: min(300px, calc(100vw - 48px));
+	flex-direction: column;
+	align-items: center;
+	gap: 22px;
+}
+
+.route-loader-logo-wrap {
+	display: flex;
+	height: 118px;
+	width: 118px;
+	align-items: center;
+	justify-content: center;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.92);
+	box-shadow:
+		0 18px 42px rgba(17, 32, 116, 0.22),
+		0 0 0 8px rgba(255, 255, 255, 0.42);
+	animation: route-loader-float 1s ease-in-out infinite;
+}
+
+.route-loader-logo {
+	height: 92px;
+	width: 92px;
+	border-radius: 999px;
+	object-fit: contain;
+	animation: route-loader-spin-pop 1s ease-in-out infinite;
+}
+
+.route-loader-track {
+	position: relative;
+	height: 4px;
+	width: 100%;
+	overflow: hidden;
+	border-radius: 999px;
+	background: rgba(17, 32, 116, 0.08);
+	box-shadow: inset 0 0 0 1px rgba(17, 32, 116, 0.08);
+}
+
+.route-loader-line {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 1.5px;
+	border-radius: 999px;
+	background: rgba(17, 32, 116, 0.95);
+	box-shadow:
+		0 0 10px rgba(17, 32, 116, 0.8),
+		18px 0 26px rgba(17, 32, 116, 0.24);
+	animation: route-loader-scan 0.5s ease-in-out infinite;
+}
+
+@keyframes route-loader-float {
+	0%,
+	100% {
+		transform: translateY(0) scale(1);
+	}
+
+	50% {
+		transform: translateY(-7px) scale(1.04);
+	}
+}
+
+@keyframes route-loader-spin-pop {
+	0%,
+	100% {
+		transform: rotate(0deg) scale(1);
+	}
+
+	50% {
+		transform: rotate(6deg) scale(1.05);
+	}
+}
+
+@keyframes route-loader-scan {
+	from {
+		transform: translateX(-6px);
+	}
+
+	to {
+		transform: translateX(306px);
+	}
+}

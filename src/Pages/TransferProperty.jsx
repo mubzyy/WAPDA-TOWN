@@ -317,6 +317,9 @@ const compactInputStyle = "min-h-9 sm:min-h-10 bg-[#9daf77] rounded-lg px-3 py-1
 const labelStyle = "font-semibold text-slate-950 sm:w-52 sm:shrink-0"
 const sectionTitleStyle = "text-lg font-bold text-slate-950 sm:text-xl"
 const primaryButtonStyle = "min-h-10 rounded-md bg-blue-900 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-blue-800 disabled:opacity-60"
+const transferInputStyle = "min-h-9 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] outline-none w-full no-spinner disabled:opacity-70"
+const transferFieldStyle = "flex min-w-0 flex-col gap-1"
+const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-sm"
 
   return (
     
@@ -327,12 +330,12 @@ const primaryButtonStyle = "min-h-10 rounded-md bg-blue-900 px-5 py-2 font-semib
         <div >
         <div className='m-2 min-h-screen overflow-hidden rounded-lg border bg-[#ebf1de] shadow-sm sm:m-4 sm:rounded-2xl'>
             <div>
-                 <p className='flex min-h-10 w-full items-center bg-blue-900 px-4 text-lg font-bold text-white sm:text-xl'>Transfer Property</p>
+                 <p className='flex min-h-9 w-full items-center bg-blue-900 px-4 text-lg font-bold text-white sm:text-xl'>Transfer Property</p>
                 </div>
                 {/* PARENT DIV */}
     <div className='m-3 space-y-6 sm:m-6 sm:space-y-8 lg:m-8'>
         {/* SEARCH SECTION */}
-    <div className="flex flex-col gap-3 rounded-lg border border-slate-300 bg-white/30 p-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:p-4">
+    <div className="flex flex-col gap-3 rounded-lg border border-slate-300 p-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:p-4">
 
       <label className='font-semibold text-slate-950'>Property Type:</label>
       <div>
@@ -415,7 +418,7 @@ const primaryButtonStyle = "min-h-10 rounded-md bg-blue-900 px-5 py-2 font-semib
     </button>
     </div>
     {/* Property Details */}
-    <div className="rounded-lg border border-slate-300 bg-white/20 p-3 sm:p-4">
+    <div className="rounded-lg border border-slate-300 p-3 sm:p-4">
   <p className={sectionTitleStyle + " mb-3"}>Property Details</p>
   <div className="ml-0 flex w-full max-w-full flex-col space-y-3 sm:ml-2">
   {propertyFields.map((field) => (
@@ -443,82 +446,103 @@ const primaryButtonStyle = "min-h-10 rounded-md bg-blue-900 px-5 py-2 font-semib
   </div>
     </div>
    {/* Transfer Details  */}
-    <div className="flex flex-col gap-3 rounded-lg border border-slate-300 bg-white/20 p-3 sm:flex-row sm:flex-wrap sm:items-center sm:p-4">
+    <div className="rounded-lg border border-slate-300 p-3 sm:p-4">
   <p className={sectionTitleStyle + " w-full"}>Transfer Details</p>
-  <label className='font-semibold text-slate-950'>Transfer Date:</label>
-  <input
-    type="date"
-    value={transferData.transferDate}
-    className={InputStyle + ' sm:w-56'}
-    onChange={(e) =>
-      setTransferData({
-        ...transferData,
-        transferDate: e.target.value,
-      })
-    }
-  />
-  {errors.transferDate && (
-  <p className="text-red-500 text-sm">
-    {errors.transferDate}
-  </p>
-)}
-    <label className='font-semibold text-slate-950'>Transfer Fee Paid:</label>
-  <input
-    type="number"
-    // placeholder="Transfer Fee"
-    value={transferData.transferFee}
-    className={InputStyle + ' sm:w-56'}
-    onChange={(e) =>
-      setTransferData({
-        ...transferData,
-        transferFee: e.target.value,
-      })
-    }
-  />{errors.transferFee && (
-  <p className="text-red-500 text-sm">
-    {errors.transferFee}
-  </p>
-)}
-    <label className='font-semibold text-slate-950'>Payment Mode:</label>
-  <select
-    value={transferData.paymentMode}
-    className={InputStyle + ' sm:w-60'}
-    onChange={(e) =>
-      setTransferData({
-        ...transferData,
-        paymentMode: e.target.value,
-      })
-    }
-  >
-    <option value="">Select Payment Mode</option>
-    <option value="Cash">Cash</option>
-    <option value="Cheque">Cheque</option>
-    <option value="Bank Transfer">Bank Transfer</option>
-  </select>{errors.paymentMode && (
-  <p className="text-red-500 text-sm">
-    {errors.paymentMode}
-  </p>
-)}
-    <label className='font-semibold text-slate-950'>Instrument No:</label>
-  <input
-    type="text"
-    // placeholder="Instrument No"
-    value={transferData.instrumentNo}
-    className={InputStyle + ' sm:w-60'}
-    onChange={(e) =>
-      setTransferData({
-        ...transferData,
-        instrumentNo: e.target.value,
-      })
-    }
-  />{errors.instrumentNo && (
-  <p className="text-red-500 text-sm">
-    {errors.instrumentNo}
-  </p>
-)}
+  <div className="mt-3 grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-[minmax(145px,0.85fr)_minmax(150px,0.9fr)_minmax(165px,1fr)_minmax(150px,0.9fr)]">
+  <div className={transferFieldStyle}>
+    <label className={transferLabelStyle}>Transfer Date:</label>
+    <div>
+      <input
+        type="date"
+        value={transferData.transferDate}
+        className={transferInputStyle}
+        onChange={(e) =>
+          setTransferData({
+            ...transferData,
+            transferDate: e.target.value,
+          })
+        }
+      />
+      {errors.transferDate && (
+        <p className="text-red-500 text-sm">
+          {errors.transferDate}
+        </p>
+      )}
+    </div>
+  </div>
+  <div className={transferFieldStyle}>
+    <label className={transferLabelStyle}>Transfer Fee Paid:</label>
+    <div>
+      <input
+        type="number"
+        // placeholder="Transfer Fee"
+        value={transferData.transferFee}
+        className={transferInputStyle}
+        onChange={(e) =>
+          setTransferData({
+            ...transferData,
+            transferFee: e.target.value,
+          })
+        }
+      />
+      {errors.transferFee && (
+        <p className="text-red-500 text-sm">
+          {errors.transferFee}
+        </p>
+      )}
+    </div>
+  </div>
+  <div className={transferFieldStyle}>
+    <label className={transferLabelStyle}>Payment Mode:</label>
+    <div>
+      <select
+        value={transferData.paymentMode}
+        className={transferInputStyle}
+        onChange={(e) =>
+          setTransferData({
+            ...transferData,
+            paymentMode: e.target.value,
+          })
+        }
+      >
+        <option value="">Select Payment Mode</option>
+        <option value="Cash">Cash</option>
+        <option value="Cheque">Cheque</option>
+        <option value="Bank Transfer">Bank Transfer</option>
+      </select>
+      {errors.paymentMode && (
+        <p className="text-red-500 text-sm">
+          {errors.paymentMode}
+        </p>
+      )}
+    </div>
+  </div>
+  <div className={transferFieldStyle}>
+    <label className={transferLabelStyle}>Instrument No:</label>
+    <div>
+      <input
+        type="text"
+        // placeholder="Instrument No"
+        value={transferData.instrumentNo}
+        className={transferInputStyle}
+        onChange={(e) =>
+          setTransferData({
+            ...transferData,
+            instrumentNo: e.target.value,
+          })
+        }
+      />
+      {errors.instrumentNo && (
+        <p className="text-red-500 text-sm">
+          {errors.instrumentNo}
+        </p>
+      )}
+    </div>
+  </div>
+  </div>
 </div>
    {/* Property Transferer Details */}
-<div className="ml-0 flex w-full flex-col gap-4 rounded-lg border border-slate-300 bg-white/20 p-3 sm:ml-0 sm:p-4 lg:flex-row lg:justify-between">
+<div className="ml-0 flex w-full flex-col gap-4 rounded-lg border border-slate-300 p-3 sm:ml-0 sm:p-4 lg:flex-row lg:justify-between">
   <div className="flex flex-1 flex-col gap-3">
 
   <p className={sectionTitleStyle}>
@@ -595,7 +619,8 @@ const primaryButtonStyle = "min-h-10 rounded-md bg-blue-900 px-5 py-2 font-semib
 </div>
 </div>
    {/* Property Transferee Details */}
-<div className='ml-0 flex w-full max-w-4xl flex-col gap-3 rounded-lg border border-slate-300 bg-white/20 p-3 sm:ml-0 sm:p-4'>
+<div className='ml-0 flex w-full flex-col gap-4 rounded-lg border border-slate-300 p-3 sm:ml-0 sm:p-4 lg:flex-row lg:justify-between'>
+  <div className="flex flex-1 flex-col gap-3">
   <p className={sectionTitleStyle}>PROPERTY TO BE TRANSFERRED TO</p>
   <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-2'>
   <label className={labelStyle}>Membership No:</label>
@@ -654,9 +679,23 @@ const primaryButtonStyle = "min-h-10 rounded-md bg-blue-900 px-5 py-2 font-semib
     readOnly
   />
   </div>
+  </div>
+  <div className="mt-0 flex h-36 w-36 shrink-0 items-center justify-center border border-black bg-slate-100 lg:mt-8">
+    {newOwner.photo ? (
+      <img
+        src={newOwner.photo}
+        alt="New Owner"
+        className="h-full w-full object-cover"
+      />
+    ) : (
+      <span className="flex h-full items-center justify-center text-gray-500">
+        No Photo
+      </span>
+    )}
+  </div>
 </div>
     {/* PIN */}
-<div className="max-w-full rounded-lg border border-slate-300 bg-white/20 p-3 sm:p-4">
+<div className="max-w-full rounded-lg border border-slate-300 p-3 sm:p-4">
   <h2 className={sectionTitleStyle}>Enter PIN to Transfer the Property</h2>
 
   <input

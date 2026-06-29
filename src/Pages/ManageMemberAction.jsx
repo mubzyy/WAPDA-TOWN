@@ -546,7 +546,7 @@ const handleDelete = () => {
 };
 
   return (
-    <div className=" min-h-screen text-sm sm:text-base lg:[zoom:1.08] xl:[zoom:1.20]">
+    <div className=" min-h-screen text-sm sm:text-base  ">
       <NotificationBar />
       <Header />
       <Navbar />
@@ -554,8 +554,8 @@ const handleDelete = () => {
         {/* Container Div */}
         <div className='bg-[#ebf1de] border border-2xl min-h-screen overflow-hidden rounded-lg sm:rounded-2xl m-2 sm:m-4'>
           {/* Header */}
-          <div className="  h-8">
-                 <p className='w-full text-white bg-blue-900 px-4 h-full flex items-center'>Manage Member - Search</p>
+          <div className="flex min-h-9 w-full items-center bg-blue-900 px-4 text-lg font-bold text-white sm:text-xl">
+                 <p className=''>Manage Member - Search</p>
                 </div>
                 {/* Content */}
                 <div>
@@ -660,7 +660,7 @@ const handleDelete = () => {
                   errors={errors}
                   varient='basic'
                 />
-                <div className='flex flex-col  xl:gap-90 xl:flex-row items-stretch xl:items-center gap-2 '>
+                <div className='flex flex-col xl:flex-row justify-between items-stretch xl:items-center gap-2 xl:gap-90'>
                 <InputField
                   type="text"
                   label="Permanent Address"
