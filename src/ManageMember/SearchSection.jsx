@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 
 const SearchSection = ({searchKey,setSearchKey,searchValue,setSearchValue,handleSearch , handleAdd , setShowAddModal}) => {
@@ -50,7 +51,9 @@ const SearchSection = ({searchKey,setSearchKey,searchValue,setSearchValue,handle
             {/* Action Button */}
             <div className='flex ml-20 lg:ml-8 lg:mb-0  gap-2 md:gap-4 lg:gap-2' >
                 <button   onClick={handleSearch} className={buttonStylePrimary}>Search</button>
-                <button onClick={handleAdd} className={buttonStyleSecondary }>Add New</button>
+                <Link to = "/addmember">
+                <button  className={buttonStyleSecondary }>Add New</button>
+                </Link>
             </div>
             </div>
 

@@ -20,6 +20,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/managemember" element={<ManagerMember />} />
+        <Route path="/addmember" element={<ManageMemberAction />} />
         <Route path="/allottproperty" element={<AllottProperty />} />
         <Route path="/transferproperty" element={<TransferProperty />} />
         <Route path="/updatepayment" element={<UpdatePayment />} />
