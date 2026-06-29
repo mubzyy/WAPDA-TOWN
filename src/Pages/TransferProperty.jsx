@@ -1,10 +1,15 @@
 import {useState} from 'react'
-import Header from '../Components/Header'
-import Navbar from '../Components/Navbar'
+// import Header from '../Components/Header'
+// import Navbar from '../Components/Navbar'
 import InputField from '../Components/InputField'
-import NotificationBar from '../Components/NotificationBar'
+import UpdatedHeader from '../MainPage/UpdatedHeader'
+// import NotificationBar from '../Components/NotificationBar'
+import NotificationBar from '../MainPage/NotificationBar'
+import { useNavigate } from 'react-router'
+import SignupNavbar from '../MainPage/SignupNavbar'
 
 const TransferProperty = () => {
+    const navigate = useNavigate();
   const properties = [
   {
     propertyType: "Residential Plot",
@@ -325,8 +330,8 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
     
     <div className="min-h-screen text-[15px] text-slate-950 sm:text-base"> 
         <NotificationBar />
-        <Header />
-        <Navbar />
+        <UpdatedHeader/>
+        <SignupNavbar/>
         <div >
         <div className='m-2 min-h-screen overflow-hidden rounded-lg border bg-[#ebf1de] shadow-sm sm:m-4 sm:rounded-2xl'>
             <div>

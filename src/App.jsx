@@ -1,5 +1,5 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { RouteLoaderProvider } from "./Components/RouteLoaderContext";
+import {  Navigate, Route, Routes } from "react-router-dom";
+// import { RouteLoaderProvider } from "./Components/RouteLoaderContext";
 import Login from "./Pages/Login";
 import ManageMemberAction from "./Pages/ManageMemberAction";
 import TransferProperty from "./Pages/TransferProperty";
@@ -18,17 +18,13 @@ const App = () => {
     //     </div>
     <Loader>
       <Routes>
-        <Route path="/" element={<ManagerMember />} />
-        <Route path="/members" element={<ManagerMember />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/managemember" element={<ManagerMember />} />
         <Route path="/allottproperty" element={<AllottProperty />} />
+        <Route path="/transferproperty" element={<TransferProperty />} />
         <Route path="/updatepayment" element={<UpdatePayment />} />
         <Route path="/propertyhistory" element={<PropertyHistory />} />
-      
-        {/* <Route path="/" element={<Navigate to="/transfer-property" replace />} /> */}
-        {/* <Route path="/dashboard" element={<Login />} />
-       <Route path="/manage-member" element={<ManageMemberAction />} />
-        <Route path="/transfer-property" element={<TransferProperty />} />
-         <Route path="*" element={<Navigate to="/transfer-property" replace />} /> */}
+  
       </Routes>
     </Loader>
   );

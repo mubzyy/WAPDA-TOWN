@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import InputField from "../Components/InputField";
 import NotificationBar from "../Components/NotificationBar";
 import Header from "../Components/Header";
-import Navbar from "../Components/Navbar";
+// import Navbar from "../Components/Navbar";
 import { GrView } from "react-icons/gr";
 import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
+import SignupNavbar from "../MainPage/SignupNavbar";
 
 const requiredFields = [
   ["membershipNo", "Membership No"],
@@ -549,7 +550,7 @@ const handleDelete = () => {
     <div className=" min-h-screen text-sm sm:text-base  ">
       <NotificationBar />
       <Header />
-      <Navbar />
+     <SignupNavbar/>
       <div>
         {/* Container Div */}
         <div className='bg-[#ebf1de] border border-2xl min-h-screen overflow-hidden rounded-lg sm:rounded-2xl m-2 sm:m-4'>
