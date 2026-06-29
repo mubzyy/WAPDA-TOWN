@@ -1,0 +1,210 @@
+import { useState } from 'react'
+import NotificationBar from '/src/MainPage/NotificationBar'
+import UpdatedHeader from '/src/MainPage/UpdatedHeader'
+import Layout from '../UpdatePayment/Layout'
+import OpenPaymentModal from '../UpdatePayment/OpenPaymentModal'
+import SignupNavbar from '../MainPage/SignupNavbar'
+
+const UpdatePayment = () => {
+  const [members , setMembers] = useState([
+    {
+      id: 1,
+      sr: 1,
+      membershipNo: "M-1001",
+      propertyType: "Agricultural Land",
+      propertyNumber: "P-002",
+      block: "B-Block",
+      landArea: "5 Acres",
+      coveredArea: "2 Acres",
+      amountDue: "20000000",
+      name: "Ahmed Ali",
+      fatherName: "Muhammad Ali",
+    },
+     {
+      id: 2,
+      sr: 2,
+      membershipNo: "M-1002",
+      propertyType: "Fertile Land",
+      propertyNumber: "P-003",
+      block: "C-Block",
+      landArea: "15 Acres",
+      coveredArea: "21 Acres",
+      amountDue: "16000000",
+      name: "Qasim Abdullah",
+      fatherName: "Muhammad Raees",
+    },
+     {
+      id: 3,
+      sr: 3,
+      membershipNo: "M-1005",
+      propertyType: "Raw Land",
+      propertyNumber: "P-0010",
+      block: "D-Block",
+      landArea: "25 Acres",
+      coveredArea: "22 Acres",
+      amountDue: "10000000",
+      name: "Muhammad Taha ",
+      fatherName: "Muhammad Baloch",
+    }
+  ])
+
+  //   USESTATES
+  const[searchKey , setSearchKey] = useState("membershipNo")
+  const[value , setValue] = useState("")
+
+// State For Edit 
+const [edit , setEdit] = useState(null)
+
+// STATE FOR EDITFORMDATA
+ const [editFormData , setEditFormData]  = useState()
+
+  // FILTER 
+  const [filterMembers , setFilterMembers] = useState(members)
+  const [searchedMember , setSearchedMember] = useState(null)
+
+// STATE FOR OPENPAYMENT MODAL
+const [showPaymentModal  , setShowPaymentModal] = useState(false)
+const[selectedMember , setSelectedMember] = useState(null)
+
+//  handlePay 
+const handlePay = (member) => {
+  setSelectedMember(member);
+  setShowPaymentModal(true)
+}
+
+// HANDLE PAYMENT SUBMISSION FROM MODAL
+const handlePaymentSubmit = (paymentData) => {
+  if (!selectedMember) return;
+  
+  const updatedMembers = members.map((member) => {
+    if (member.id === selectedMember.id) {
+      return {
+        ...member,
+        amountDue: Math.max(0, Number(member.amountDue) - Number(paymentData.amountReceived))
+      };
+    }
+    return member;
+  });
+  
+  setMembers(updatedMembers);
+  setFilterMembers(updatedMembers);
+  setShowPaymentModal(false);
+  setSelectedMember(null);
+  console.log("Payment received:", paymentData);
+}
+
+  //  handleSearch 
+  const  handleSearch = () => {
+    if (value.trim() === "") {
+    setFilterProperty([]);
+    setSearchedMember(null);
+    return;
+  }
+    console.log("button Clicked")
+    const updatedFilter =  members.filter((member)=> 
+   member[searchKey]
+   .toString()
+   .toLowerCase()
+   .includes(value.trim().toLowerCase())
+)
+setFilterMembers(updatedFilter)
+setSearchedMember(updatedFilter[0] || null)
+  }
+
+  // Amount Due 
+const totalAmountDue = filterMembers.reduce(
+  (total, member) => total + (Number(member.amountDue) || 0),
+  0
+);
+
+//  handleEdit 
+const handleEdit = (member) => {
+  setEdit(member.id)
+  setEditFormData(member)
+    
+}
+
+const handleResetPaymentForm = () => {
+  setEdit(null)
+  setEditFormData(null)
+}
+
+ const handleUpdatePayment = (data, mode = "update") => {
+if (!data || edit === null) return;
+
+const updatedMembers = members.map((member)=> {
+  if(member.id !== edit ) return member;
+
+  if (mode === "update") {
+    return {
+      ...member,
+        propertyType: data.PropertyType,
+        propertyNumber: data.PropertyNo,
+        block: data.Block,
+        landArea: data.LandArea,
+        coveredArea: data.CoveredArea,
+      }
+  }
+
+  const paymentRecord = {
+    id: Date.now(),
+    challanNo: data.ChallanNo,
+    amountReceived: data.AmountReceived,
+    paymentMode: data.PaymentMode,
+    instrumentNo: data.InstrumentNo,
+    paymentDate: data.PaymentDate,
+    bank: data.Bank,
+  }
+
+  return {
+    ...member,
+    amountDue: Math.max(0, Number(member.amountDue)- Number(data.AmountReceived)),
+    payments: [...(member.payments || []), paymentRecord],
+    }
+})
+  setMembers(updatedMembers)
+  setFilterMembers(updatedMembers)
+  setEdit(null)
+  setEditFormData(null)
+ }
+
+  return ( 
+        <div className='bg-[#ebf1de] min-h-screen border-b '>
+      <NotificationBar/>
+      <UpdatedHeader/>
+      <SignupNavbar/>
+      <Layout 
+      members = {members}
+      setMembers = {setMembers}
+      searchKey = {searchKey}
+      setSearchKey = {setSearchKey}
+      value = {value}
+      setValue={setValue}
+      handleSearch = {handleSearch}
+      filterMembers = {filterMembers}
+      totalAmountDue = {totalAmountDue}
+      handleEdit = {handleEdit}
+      editFormData = {editFormData}
+      setEditFormData = {setEditFormData}
+      handleUpdatePayment = {handleUpdatePayment}
+      handleResetPaymentForm = {handleResetPaymentForm}
+      handlePay = {handlePay}
+      searchedMember = {searchedMember}
+      />
+      
+      {/* PAYMENT MODAL */}
+      <OpenPaymentModal 
+      isOpen={showPaymentModal}
+      onClose={() => {
+        setShowPaymentModal(false)
+        setSelectedMember(null)
+      }}
+      onSubmit={handlePaymentSubmit}
+      memberData={selectedMember}
+      />
+      
+    </div>
+  )
+}
+
+export default UpdatePayment
