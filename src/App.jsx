@@ -19,12 +19,16 @@ const App = () => {
     <Loader>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Navigate to="/" replace />} />
         <Route path="/managemember" element={<ManagerMember />} />
+        <Route path="/manage-member" element={<Navigate to="/managemember" replace />} />
         <Route path="/addmember" element={<ManageMemberAction />} />
         <Route path="/allottproperty" element={<AllottProperty />} />
         <Route path="/transferproperty" element={<TransferProperty />} />
+        <Route path="/transfer-property" element={<Navigate to="/transferproperty" replace />} />
         <Route path="/updatepayment" element={<UpdatePayment />} />
         <Route path="/propertyhistory" element={<PropertyHistory />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
   
       </Routes>
     </Loader>

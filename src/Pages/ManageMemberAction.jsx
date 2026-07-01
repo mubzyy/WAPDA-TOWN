@@ -555,8 +555,8 @@ const handleDelete = () => {
         {/* Container Div */}
         <div className='bg-[#ebf1de] border border-2xl min-h-screen overflow-hidden rounded-lg sm:rounded-2xl m-2 sm:m-4'>
           {/* Header */}
-          <div className="flex w-full items-center bg-blue-900 px-4 py-2 text-lg font-bold text-white sm:text-xl">
-                 <p className=''>Manage Member - Search</p>
+          <div className=" h-6 text-xs lg:text-base lg:h-8 bg-[#233494] flex items-center p-2 font-semibold ">
+                 <p className='text-white'>Manage Member - Search</p>
                 </div>
                 {/* Content */}
                 <div>

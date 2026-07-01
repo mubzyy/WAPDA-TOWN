@@ -27,9 +27,9 @@ const Cell = ({ children, strong = false }) => (
 
 const Dashboard = () => {
   return (
-    <div className='flex h-full w-full flex-col text-slate-950'>
-      <div>
-        <p className='w-full bg-blue-900 px-4 py-2 text-lg font-bold text-white shadow-sm sm:text-xl'>
+    <div className='flex h-full w-full flex-col text-slate-950 border border-black'>
+      <div className=' h-6 text-xs lg:text-base lg:h-8 bg-[#233494] flex items-center p-2 font-semibold '>
+        <p className='text-white'>
           Executive Dashboard
         </p>
       </div>

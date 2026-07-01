@@ -317,25 +317,25 @@ if (Object.keys(validationErrors).length > 0) {
 
   setNewOwner(member);
 };
-const InputStyle = "min-h-9 sm:min-h-10 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base outline-none w-full sm:w-80 no-spinner disabled:opacity-70"
-const compactInputStyle = "min-h-9 sm:min-h-10 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base outline-none w-full sm:w-52 no-spinner disabled:opacity-70"
-const labelStyle = "font-semibold text-slate-950 sm:w-52 sm:shrink-0"
+const InputStyle = "outline-none bg-[#9daf77] rounded-lg px-1 lg:px-2 py-1 text-xs lg:text-sm w-68 lg:w-80 no-spinner disabled:opacity-70"
+const compactInputStyle = "min-h-6 sm:min-h-5 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base outline-none w-full sm:w-52 no-spinner disabled:opacity-70"
+const labelStyle = "font-semibold text-slate-950  sm:w-52 sm:shrink-0"
 const sectionTitleStyle = "text-lg font-bold text-slate-950 sm:text-xl"
-const primaryButtonStyle = "min-h-10 rounded-md bg-blue-900 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-blue-800 disabled:opacity-60"
-const transferInputStyle = "min-h-9 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] outline-none w-full no-spinner disabled:opacity-70"
+const primaryButtonStyle = "min-h-6 rounded-2xl bg-blue-900 px-5 py-1 font-semibold text-white shadow-sm transition hover:bg-blue-800 disabled:opacity-60"
+const transferInputStyle = "min-h-6 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] outline-none w-full no-spinner disabled:opacity-70"
 const transferFieldStyle = "flex min-w-0 flex-col gap-1"
 const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-sm"
 
   return (
     
-    <div className="min-h-screen text-[15px] text-slate-950 sm:text-base"> 
+    <div className="min-h-screen text-[15px] text-slate-950 sm:text-base bg-[#ebf1de]"> 
         <NotificationBar />
         <UpdatedHeader/>
         <SignupNavbar/>
         <div >
         <div className='m-2 min-h-screen overflow-hidden rounded-lg border bg-[#ebf1de] shadow-sm sm:m-4 sm:rounded-2xl'>
-            <div>
-                 <p className='flex w-full items-center bg-blue-900 px-4 py-2 text-lg font-bold text-white sm:text-xl'>Transfer Property</p>
+            <div className=' h-6 text-xs lg:text-base lg:h-8 bg-[#233494] flex items-center p-2 font-semibold '>
+                 <p className='text-white'>Transfer Property</p>
                 </div>
                 {/* PARENT DIV */}
     <div className='m-3 space-y-6 sm:m-6 sm:space-y-8 lg:m-8'>
@@ -425,7 +425,7 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
     {/* Property Details */}
     <div className="rounded-lg border border-slate-300 p-3 sm:p-4">
   <p className={sectionTitleStyle + " mb-3"}>Property Details</p>
-  <div className="ml-0 flex w-full max-w-full flex-col space-y-3 sm:ml-2">
+  <div className="ml-0 flex w-full max-w-full flex-col space-y-4 sm:ml-2">
   {propertyFields.map((field) => (
     <div key={field.name} className="flex w-full flex-col gap-2 sm:flex-row sm:items-center">
 

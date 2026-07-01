@@ -43,6 +43,7 @@
     "find-up": "^5.0.0",
     "flat-cache": "^4.0.1",
     "flatted": "^3.4.2",
+    "framer-motion": "^12.42.0",
     "gensync": "^1.0.0-beta.2",
     "glob-parent": "^6.0.2",
     "globals": "^17.6.0",
@@ -72,6 +73,7 @@
     "nanoid": "^3.3.12",
     "natural-compare": "^1.4.0",
     "node-releases": "^2.0.47",
+    "nprogress": "^0.2.0",
     "optionator": "^0.9.4",
     "p-limit": "^3.1.0",
     "p-locate": "^5.0.0",
@@ -114,11 +116,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Shahbazz-khann/wapda-project.git"
+    "url": "git+https://github.com/mubzyy/WAPDA-TOWN.git"
   },
   "keywords": [],
   "author": "",
@@ -127,5 +130,9 @@
   "bugs": {
     "url": "https://github.com/Shahbazz-khann/wapda-project/issues"
   },
-  "homepage": "https://github.com/Shahbazz-khann/wapda-project#readme"
+  "homepage": "https://mubzyy.github.io/WAPDA-TOWN",
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+  
 }

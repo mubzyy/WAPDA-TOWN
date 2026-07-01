@@ -51,7 +51,7 @@ const ImportantEvents = () => {
 
     ];
   return (
-    <div className='flex h-full w-full flex-col rounded-xl bg-[#e6c5a5] p-3 shadow-sm sm:p-4'>
+    <div className='flex h-full w-full flex-col rounded-xl bg-[#e6c5a5] p-3 shadow-sm sm:p-4 border border-black'>
       <div className='border border-black text-center shadow-[inset_0_-1px_0_rgba(0,0,0,0.16)]'>
         <p className='py-2 text-lg font-bold leading-tight text-slate-950 sm:text-xl lg:text-lg'>Important Events</p>
       </div>

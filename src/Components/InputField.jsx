@@ -21,13 +21,13 @@ const labelStyles = {
 }
 
 const inputStyles = {
-basic : "min-h-9 sm:min-h-6 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:w-80 no-spinner disabled:opacity-70",
+basic : "outline-none bg-[#9daf77] rounded-lg px-1 lg:px-2 py-1 text-xs lg:text-sm w-68 lg:w-80 no-spinner disabled:opacity-70",
 Allott : "min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:w-80 disabled:opacity-70",
 Search : "min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:mx-4 sm:w-64 disabled:opacity-70",
-unit : "min-h-9 sm:min-h-10 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-24 sm:w-36 disabled:opacity-70",
-newStyle : "min-h-9 sm:min-h-6 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:w-48 no-spinner disabled:opacity-70",
- email :"min-h-9 sm:min-h-6 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full lg:w-160 no-spinner disabled:opacity-70",
-short:"min-h-9 sm:min-h-6 outline-none bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base w-full sm:w-42 no-spinner disabled:opacity-70"
+unit : "outline-none bg-[#9daf77] rounded-lg px-3 py-1 text-xs sm:text-base w-24 sm:w-36 disabled:opacity-70",
+newStyle :"outline-none bg-[#9daf77] rounded-lg px-1 lg:px-2 py-1 text-xs sm:text-sm w-full sm:w-42 no-spinner disabled:opacity-70",
+ email :"outline-none bg-[#9daf77] rounded-lg px-1 lg:px-2 py-1 text-xs lg:text-sm w-68 lg:w-160 no-spinner disabled:opacity-70",
+short  :"outline-none bg-[#9daf77] rounded-lg px-1 lg:px-2 py-1 text-xs sm:text-sm w-full sm:w-42 no-spinner disabled:opacity-70"
 }
 
 const InputFeild = ({
