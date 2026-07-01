@@ -317,32 +317,32 @@ if (Object.keys(validationErrors).length > 0) {
 
   setNewOwner(member);
 };
-const InputStyle = "outline-none bg-[#9daf77] rounded-lg px-1 lg:px-2 py-1 text-xs lg:text-sm w-68 lg:w-80 no-spinner disabled:opacity-70"
-const compactInputStyle = "min-h-6 sm:min-h-5 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] sm:text-base outline-none w-full sm:w-52 no-spinner disabled:opacity-70"
-const labelStyle = "font-semibold text-slate-950  sm:w-52 sm:shrink-0"
-const sectionTitleStyle = "text-lg font-bold text-slate-950 sm:text-xl"
-const primaryButtonStyle = "min-h-6 rounded-2xl bg-blue-900 px-5 py-1 font-semibold text-white shadow-sm transition hover:bg-blue-800 disabled:opacity-60"
-const transferInputStyle = "min-h-6 bg-[#9daf77] rounded-lg px-3 py-1.5 text-[15px] outline-none w-full no-spinner disabled:opacity-70"
+const InputStyle = "outline-none bg-[#9daf77] rounded-lg px-2 py-1.5 text-xs lg:text-sm w-full sm:w-68 lg:w-80 no-spinner disabled:opacity-70"
+const compactInputStyle = "min-h-8 bg-[#9daf77] rounded-lg px-3 py-1.5 text-sm lg:text-base outline-none w-full max-w-xs sm:w-52 no-spinner disabled:opacity-70"
+const labelStyle = "font-semibold text-slate-950 sm:w-52 sm:shrink-0"
+const sectionTitleStyle = "text-base font-bold text-slate-950 lg:text-xl"
+const primaryButtonStyle = "min-h-8 rounded-2xl bg-blue-900 px-5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-blue-800 disabled:opacity-60 lg:text-sm"
+const transferInputStyle = "min-h-8 bg-[#9daf77] rounded-lg px-3 py-1.5 text-xs lg:text-sm outline-none w-full no-spinner disabled:opacity-70"
 const transferFieldStyle = "flex min-w-0 flex-col gap-1"
 const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-sm"
 
   return (
     
-    <div className="min-h-screen text-[15px] text-slate-950 sm:text-base bg-[#ebf1de]"> 
+    <div className="min-h-screen bg-[#ebf1de] text-sm text-slate-950 lg:text-base"> 
         <NotificationBar />
         <UpdatedHeader/>
         <SignupNavbar/>
-        <div >
-        <div className='m-2 min-h-screen overflow-hidden rounded-lg border bg-[#ebf1de] shadow-sm sm:m-4 sm:rounded-2xl'>
+        <div>
+        <div className='m-2 min-h-screen overflow-hidden rounded-lg border-2 bg-[#e7eed8] shadow-sm sm:m-4 sm:rounded-2xl'>
             <div className=' h-6 text-xs lg:text-base lg:h-8 bg-[#233494] flex items-center p-2 font-semibold '>
                  <p className='text-white'>Transfer Property</p>
                 </div>
                 {/* PARENT DIV */}
-    <div className='m-3 space-y-6 sm:m-6 sm:space-y-8 lg:m-8'>
+    <div className='m-3 space-y-5 sm:m-5 lg:m-8'>
         {/* SEARCH SECTION */}
-    <div className="flex flex-col gap-3 rounded-lg border border-slate-300 p-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4 sm:p-4">
+    <div className="flex flex-col gap-3 rounded-lg border border-slate-300 p-3 lg:flex-row lg:flex-wrap lg:items-center lg:gap-4 lg:p-4">
 
-      <label className='font-semibold text-slate-950'>Property Type:</label>
+      <label className='font-semibold text-slate-950 lg:whitespace-nowrap'>Property Type:</label>
       <div>
     <select
   value={searchData.propertyType}
@@ -390,8 +390,8 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
   </p>
 )}</div>
 
-      <label className='font-semibold text-slate-950'>Property No:</label>
-      <div className="flex w-full flex-col gap-1 sm:w-auto sm:items-center sm:gap-0">
+      <label className='font-semibold text-slate-950 lg:whitespace-nowrap'>Property No:</label>
+      <div className="flex w-full flex-col gap-1 lg:w-auto lg:items-center lg:gap-0">
     <input
       type="text"
       // placeholder="Property No"
@@ -418,16 +418,16 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
 )}
 </div>
 
-    <button onClick={handleSearch} className={primaryButtonStyle + ' sm:w-36'}>
+    <button onClick={handleSearch} className={primaryButtonStyle + ' w-full sm:w-36'}>
       Search
     </button>
     </div>
     {/* Property Details */}
     <div className="rounded-lg border border-slate-300 p-3 sm:p-4">
   <p className={sectionTitleStyle + " mb-3"}>Property Details</p>
-  <div className="ml-0 flex w-full max-w-full flex-col space-y-4 sm:ml-2">
+  <div className="ml-0 flex w-full max-w-full flex-col space-y-4 lg:ml-2">
   {propertyFields.map((field) => (
-    <div key={field.name} className="flex w-full flex-col gap-2 sm:flex-row sm:items-center">
+    <div key={field.name} className="flex w-full flex-col gap-2 lg:flex-row lg:items-center">
 
       <InputField
         label={field.label}
@@ -547,14 +547,14 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
   </div>
 </div>
    {/* Property Transferer Details */}
-<div className="ml-0 flex w-full flex-col gap-4 rounded-lg border border-slate-300 p-3 sm:ml-0 sm:p-4 lg:flex-row lg:justify-between">
+<div className="ml-0 flex w-full flex-col gap-4 rounded-lg border border-slate-300 p-3 sm:p-4 lg:flex-row lg:justify-between">
   <div className="flex flex-1 flex-col gap-3">
 
   <p className={sectionTitleStyle}>
     PROPERTY TO BE TRANSFERRED FROM
   </p>
       
-  <div className="flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2">
+  <div className="flex flex-col gap-1 px-0 lg:flex-row lg:items-center lg:px-2">
     
     <label className={labelStyle}>
       Membership No:
@@ -567,7 +567,7 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
     />
   </div>
 
-  <div className="flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2">
+  <div className="flex flex-col gap-1 px-0 lg:flex-row lg:items-center lg:px-2">
     <label className={labelStyle}>
       Name:
     </label>
@@ -579,7 +579,7 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
     />
   </div>
 
-  <div className="flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2">
+  <div className="flex flex-col gap-1 px-0 lg:flex-row lg:items-center lg:px-2">
     <label className={labelStyle}>
       Father Name:
     </label>
@@ -591,7 +591,7 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
     />
   </div>
 
-  <div className="flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2">
+  <div className="flex flex-col gap-1 px-0 lg:flex-row lg:items-center lg:px-2">
     <label className={labelStyle}>
       CNIC:
     </label>
@@ -603,7 +603,7 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
     />
   </div>
       </div>
-  <div className="mt-0 flex h-36 w-36 shrink-0 items-center justify-center border border-black bg-slate-100 lg:mt-8">
+  <div className="mt-0 flex h-36 w-36 shrink-0 self-center justify-center overflow-hidden border border-black bg-slate-100 lg:mt-8 lg:self-start">
 
   {currentOwner?.photo ? (
 
@@ -624,10 +624,10 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
 </div>
 </div>
    {/* Property Transferee Details */}
-<div className='ml-0 flex w-full flex-col gap-4 rounded-lg border border-slate-300 p-3 sm:ml-0 sm:p-4 lg:flex-row lg:justify-between'>
+<div className='ml-0 flex w-full flex-col gap-4 rounded-lg border border-slate-300 p-3 sm:p-4 lg:flex-row lg:justify-between'>
   <div className="flex flex-1 flex-col gap-3">
   <p className={sectionTitleStyle}>PROPERTY TO BE TRANSFERRED TO</p>
-  <div className='flex flex-col gap-2 px-0 sm:flex-row sm:items-center sm:px-2'>
+  <div className='flex flex-col gap-2 px-0 lg:flex-row lg:items-center lg:px-2'>
   <label className={labelStyle}>Membership No:</label>
   <input
     type="text"
@@ -647,11 +647,11 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
     {errors.membershipNo}
   </p>
 )}
-   <button onClick={handleMemberSearch} className={primaryButtonStyle + ' sm:ml-4'}>
+   <button onClick={handleMemberSearch} className={primaryButtonStyle + ' w-full sm:w-36 lg:ml-4'}>
     Search 
     </button>
     </div>
-    <div className='flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2'>
+    <div className='flex flex-col gap-1 px-0 lg:flex-row lg:items-center lg:px-2'>
   <label className={labelStyle}>Name:</label>
   <input
     type="text"
@@ -662,7 +662,7 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
     readOnly
   />
   </div>
-  <div className='flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2'>
+  <div className='flex flex-col gap-1 px-0 lg:flex-row lg:items-center lg:px-2'>
   <label className={labelStyle}>Father Name:</label>
   <input
     type="text"
@@ -673,7 +673,7 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
     readOnly
   />
   </div>
-  <div className='flex flex-col gap-1 px-0 sm:flex-row sm:items-center sm:px-2'>
+  <div className='flex flex-col gap-1 px-0 lg:flex-row lg:items-center lg:px-2'>
   <label className={labelStyle}>CNIC:</label>
   <input
     type="text"
@@ -685,7 +685,7 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
   />
   </div>
   </div>
-  <div className="mt-0 flex h-36 w-36 shrink-0 items-center justify-center border border-black bg-slate-100 lg:mt-8">
+  <div className="mt-0 flex h-36 w-36 shrink-0 self-center justify-center overflow-hidden border border-black bg-slate-100 lg:mt-8 lg:self-start">
     {newOwner.photo ? (
       <img
         src={newOwner.photo}
@@ -721,11 +721,11 @@ const transferLabelStyle = "font-semibold text-slate-950 whitespace-nowrap text-
   </p>
 </div>
 {/* BUTTONS */}
-<div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap"> 
-<button type="button" className='min-h-10 rounded-md bg-red-600 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-red-700' onClick={handleCancel}>
+<div className="flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap"> 
+<button type="button" className='min-h-10 rounded-md bg-red-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-red-700 lg:text-base' onClick={handleCancel}>
   Cancel Process
 </button>
-<button type="button" className='min-h-10 rounded-md bg-green-600 px-5 py-2 font-semibold text-white shadow-sm transition hover:bg-green-700' onClick={handleTransfer}>
+<button type="button" className='min-h-10 rounded-md bg-green-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-green-700 lg:text-base' onClick={handleTransfer}>
   Transfer Property
 </button>
   </div>

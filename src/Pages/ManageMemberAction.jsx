@@ -547,27 +547,27 @@ const handleDelete = () => {
 };
 
   return (
-    <div className=" min-h-screen text-sm sm:text-base  ">
+    <div className="min-h-screen bg-[#ebf1de] text-sm text-slate-950 lg:text-base">
       <NotificationBar />
       <Header />
      <SignupNavbar/>
       <div>
         {/* Container Div */}
-        <div className='bg-[#ebf1de] border border-2xl min-h-screen overflow-hidden rounded-lg sm:rounded-2xl m-2 sm:m-4'>
+        <div className='m-2 min-h-screen overflow-hidden rounded-lg border-2 bg-[#e7eed8] shadow-sm sm:m-4 sm:rounded-2xl'>
           {/* Header */}
           <div className=" h-6 text-xs lg:text-base lg:h-8 bg-[#233494] flex items-center p-2 font-semibold ">
                  <p className='text-white'>Manage Member - Search</p>
                 </div>
                 {/* Content */}
-                <div>
+                <div className="space-y-4">
                   {/* Member's Particulars */}
-              <div className="p-3 sm:p-4 flex flex-col lg:flex-row gap-4 w-full space-y-2 ">
+              <div className="flex w-full flex-col gap-4 p-3 sm:p-4 lg:flex-row">
                 {/* left wrapper */}
-                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-yellow-400 flex justify-center items-center sm:rounded-2xl '>
-                  <p className="lg:rotate-180 lg:[writing-mode:vertical-rl] font-semibold ">Member's Particulars</p>
+                <div className='flex min-h-8 w-full items-center justify-center rounded-xl bg-yellow-400 lg:min-h-0 lg:w-8 lg:rounded-2xl'>
+                  <p className="font-semibold lg:rotate-180 lg:[writing-mode:vertical-rl]">Member's Particulars</p>
                 </div>
                 {/* Middle div */}
-                <div className="flex-1 min-w-0 flex flex-col space-y-2">
+                <div className="flex min-w-0 flex-1 flex-col space-y-2">
                 <InputField
                   type="number"
                   label="Membership No"
@@ -661,7 +661,7 @@ const handleDelete = () => {
                   errors={errors}
                   varient='basic'
                 />
-                <div className='flex flex-col xl:flex-row justify-between items-stretch xl:items-center gap-2 xl:gap-90'>
+                <div className='flex flex-col items-stretch gap-2 xl:flex-row xl:items-center xl:gap-8'>
                 <InputField
                   type="text"
                   label="Permanent Address"
@@ -681,7 +681,7 @@ const handleDelete = () => {
                   varient='short'
                 />
                 </div>
-                <div className='flex flex-col xl:flex-row justify-between items-stretch xl:items-center gap-2 xl:gap-90'>
+                <div className='flex flex-col items-stretch gap-2 xl:flex-row xl:items-center xl:gap-8'>
                 <InputField
                   type="text"
                   label="Present Address"
@@ -719,9 +719,9 @@ const handleDelete = () => {
                   errors={errors}
                   varient='basic'
                   />
-                  <div className = "flex flex-col sm:flex-row gap-1 sm:gap-0">
-                    <p className="font-semibold w-full sm:w-42 sm:shrink-0 ">Contact No</p>
-                      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 lg:gap-10">
+                  <div className="flex flex-col gap-1 lg:flex-row lg:gap-0">
+                    <p className="w-full font-semibold lg:w-42 lg:shrink-0">Contact No</p>
+                      <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-3 lg:flex lg:flex-wrap lg:gap-6">
                     <InputField
                       type="number"
                       label=" 1"
@@ -764,7 +764,7 @@ const handleDelete = () => {
                 />
                 </div>
                 {/* Right section */}
-                <div className="w-full lg:w-auto flex flex-col items-center lg:items-start shrink-0">
+                <div className="flex w-full shrink-0 flex-col items-center lg:w-auto lg:items-start">
                 <div className="w-32 h-36 overflow-hidden border border-black bg-slate-100 flex items-center justify-center">
     
                         {memberPhotoPreview ? (
@@ -797,13 +797,13 @@ const handleDelete = () => {
               </div>
 
                 {/* Nominee's Particulars */}
-              <div className="p-3 sm:p-4 flex flex-col lg:flex-row gap-4 w-full space-y-2 ">
+              <div className="flex w-full flex-col gap-4 p-3 sm:p-4 lg:flex-row">
                 {/* Left Wrapper */}
-                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-orange-300 rounded-2xl flex justify-center items-center'>
-                  <p className="lg:rotate-180 lg:[writing-mode:vertical-rl] font-semibold ">Nominee </p>
+                <div className='flex min-h-8 w-full items-center justify-center rounded-xl bg-orange-300 lg:min-h-0 lg:w-8 lg:rounded-2xl'>
+                  <p className="font-semibold lg:rotate-180 lg:[writing-mode:vertical-rl]">Nominee</p>
                 </div>
                 {/* Middle div */}
-                <div className="flex-1 min-w-0 flex flex-col space-y-2">
+                <div className="flex min-w-0 flex-1 flex-col space-y-2">
                 <InputField
                   type="text"
                   label="Name"
@@ -852,7 +852,7 @@ const handleDelete = () => {
                 />
                 </div>
                 {/* Right section */}
-                <div className="w-full lg:w-auto flex flex-col items-center lg:items-start shrink-0">
+                <div className="flex w-full shrink-0 flex-col items-center lg:w-auto lg:items-start">
                 <div className="w-32 h-36 overflow-hidden border border-black bg-slate-100 flex items-center justify-center">
 
                 {nomineePhotoPreview ? (
@@ -879,14 +879,14 @@ const handleDelete = () => {
                 </div>
               </div>
               {/* Payment */}
-              <div className="p-3 sm:p-4 flex flex-col lg:flex-row gap-4 w-full space-y-2">
+              <div className="flex w-full flex-col gap-4 p-3 sm:p-4 lg:flex-row">
                 {/* Left Wrapper */}
-                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-green-400 rounded-2xl flex justify-center items-center'>
-                  <p className="lg:rotate-180 lg:[writing-mode:vertical-rl] font-semibold ">Payment</p>
+                <div className='flex min-h-8 w-full items-center justify-center rounded-xl bg-green-400 lg:min-h-0 lg:w-8 lg:rounded-2xl'>
+                  <p className="font-semibold lg:rotate-180 lg:[writing-mode:vertical-rl]">Payment</p>
                 </div>
                 {/* Middle div */}
-                <div className="flex-1 min-w-0 flex flex-col space-y-2">
-                  <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-2 xl:gap-8">
+                <div className="flex min-w-0 flex-1 flex-col space-y-2">
+                  <div className="flex flex-col items-stretch gap-2 xl:flex-row xl:items-center xl:gap-8">
                 <InputField
                   type="number"
                   label="Payment Made"
@@ -917,7 +917,7 @@ const handleDelete = () => {
                   errors={errors}
                   varient='basic'
                 />
-                <div className="flex flex-col xl:flex-row items-stretch xl:items-center gap-2 xl:gap-8">
+                <div className="flex flex-col items-stretch gap-2 xl:flex-row xl:items-center xl:gap-8">
                 <InputField
                   type="text"
                   label="Payment Instrument No"
@@ -944,16 +944,16 @@ const handleDelete = () => {
                 </div>
               </div>
               {/* Attachments */}
-              <div className="p-3 sm:p-4 flex flex-col lg:flex-row gap-4 w-full border-b border-black">
+              <div className="flex w-full flex-col gap-4 border-b border-black p-3 sm:p-4 lg:flex-row">
                 {/* Left Wrapper */}
-                <div className='w-full lg:w-8 min-h-8 lg:min-h-0 bg-[#f2d0a3] rounded-2xl flex justify-center items-center'>
-                  <p className="lg:rotate-180 lg:[writing-mode:vertical-rl] font-semibold ">Attachments</p>
+                <div className='flex min-h-8 w-full items-center justify-center rounded-xl bg-[#f2d0a3] lg:min-h-0 lg:w-8 lg:rounded-2xl'>
+                  <p className="font-semibold lg:rotate-180 lg:[writing-mode:vertical-rl]">Attachments</p>
                 </div>
                 {/* Middle div */}
                 <div className="flex-1 min-w-0">
                   {/* Upper Section */}
-                <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-3 sm:gap-5 w-full text-base">
-                  <label className="font-semibold">Attachment Type</label>
+                <div className="flex w-full flex-col items-stretch gap-3 text-sm sm:flex-row sm:flex-wrap sm:items-center sm:gap-5 lg:text-base">
+                  <label className="font-semibold sm:whitespace-nowrap">Attachment Type</label>
                   <div>
                     <select
                       name="attachmentType"
@@ -975,7 +975,7 @@ const handleDelete = () => {
                     )}
                   </div>
                   <div>
-                    <span className="flex min-h-8 rounded-lg text-sm w-full sm:w-84 items-center justify-center border-black px-2 bg-[#9daf77]">
+                    <span className="flex min-h-8 w-full max-w-full items-center justify-center truncate rounded-lg bg-[#9daf77] px-2 text-sm sm:w-84">
                       {attachmentData.attachmentFile
                         ? attachmentData.attachmentFile.name
                         : "Document to be attached"}
@@ -986,7 +986,7 @@ const handleDelete = () => {
                       </p>
                     )}
                   </div>
-                  <label className="cursor-pointer rounded-md bg-blue-900 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-blue-800">
+                  <label className="cursor-pointer rounded-md bg-blue-900 px-4 py-1.5 text-center text-sm font-semibold text-white transition hover:bg-blue-800">
                     Browse
                     <input
                       type="file"
@@ -1122,7 +1122,7 @@ const handleDelete = () => {
                 </div> 
               </div>
                 {/* CRUDS */}
-                <div className="flex flex-wrap justify-center gap-3 sm:gap-4 px-3 sm:px-0 py-8 sm:py-11">
+                <div className="grid grid-cols-2 gap-3 px-3 py-8 sm:flex sm:flex-wrap sm:justify-center sm:gap-4 sm:px-0 sm:py-11">
                   <button
                   type="button"
                   onClick={() => window.location.reload()}

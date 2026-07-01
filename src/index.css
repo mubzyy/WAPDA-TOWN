@@ -135,6 +135,24 @@ a {
 		transform: translateX(306px);
 	}
 }
+
+.signup-nav-scroll {
+	scrollbar-width: thin;
+	scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
+}
+
+.signup-nav-scroll::-webkit-scrollbar {
+	height: 4px;
+}
+
+.signup-nav-scroll::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.signup-nav-scroll::-webkit-scrollbar-thumb {
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.45);
+}
 @import "tailwindcss";
 
 @keyframes wapda-loader {
